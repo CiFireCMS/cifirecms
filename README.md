@@ -108,8 +108,8 @@ define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'producti
 
 ## Backend
 
-* Access url ``http://your-web-domain/l-admin``
-* for first login, please enter the login data same as the installation process.
+* Backend url ``http://your-web-domain/l-admin``
+* For first login, please enter the login data same as the installation process.
 
 
 ## Thanks to
