@@ -128,10 +128,10 @@ define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'producti
 
 
 ## Official Links
-Website        : https://www.alweak.com\
-GitHub         : https://github.com/CiFireCMS\
-Facebook       : https://web.facebook.com/cifirecms\
-Facebook group : https://web.facebook.com/groups/cifirecms/\
+- Website        : https://www.alweak.com
+- GitHub         : https://github.com/CiFireCMS
+- Facebook       : https://web.facebook.com/cifirecms
+- Facebook group : https://web.facebook.com/groups/cifirecms/
 
 
 ## License
