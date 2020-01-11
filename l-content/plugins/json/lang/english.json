@@ -1,0 +1,41 @@
+{
+  "button" :
+  {
+    "yes"    : "Yes",
+    "no"     : "No",
+    "save"   : "Save",
+    "active" : "Active",
+    "submit" : "Submit",
+    "update" : "Update",
+    "delete" : "Delete",
+    "cancel" : "Cancel",
+    "banned" : "Banned"
+  },
+  
+  "modal":
+  {
+    "delete_title"   : "Delete Data",
+    "delete_content" : "Are you sure you want to delete this data ?",
+    "comment_activate_title" : "Activate Comment",
+    "comment_activate_content" : "Are you sure you want to activate this comment ?",
+    "comment_banned_title" : "Banned Comment",
+    "comment_banned_content" : "Are you sure you want to ban this comment ?",
+    "theme_activate_title" : "Activate Theme",
+    "theme_activate_content" : "Are you sure you want to activate this theme ?"
+  },
+  
+  "message":
+  {
+    "add_success"   : "Data has been successfully added",
+    "update_success": "Data has been successfully updated",
+    "delete_success": "Data has been successfully deleted",
+    "error_filetype": "The file type you are attempting to upload is not allowed.!"
+  },
+  
+  "validation":
+  {
+    "required"   : "This field is required",
+    "minlength"  : "Please enter at least {0} characters",
+    "maxlength"  : "Please enter no more than {0} characters"
+  }
+}
