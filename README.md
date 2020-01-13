@@ -16,10 +16,10 @@ Created using the CodeIgniter3 framework with an interesting concept and easy to
 ```
 
 
-## PHP Ekstension
+## PHP Extension
 ```
 +--------------+----------+
-|  Ekstension  |  Config  |
+|  Extension   |  Config  |
 +--------------+----------+
 |  pdo_mysql   |  ON      |
 |  pdo_sqlite  |  ON      |
