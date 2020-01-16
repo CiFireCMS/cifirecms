@@ -69,7 +69,7 @@ $(function() {
 			break;
 
 			case 'file':
-				$('#formType').html('<div class="input-group"><div class="input-group-prepend"><button type="button" id="browse" href="'+content_url+'plugins/filemanager/dialog.php?type=1&relative_url=1&field_id=valz&sort_by=date&descending=1'+'" class="btn btn-default">Browse</button></div><input id="valz" type="text" name="value" class="form-control" value="'+VALUE+'" /></div>');
+				$('#formType').html('<div class="input-group"><div class="input-group-prepend"><button type="button" id="browse" href="'+content_url+'plugins/filemanager/dialog.php?type=1&relative_url=1&field_id=valz&sort_by=date&descending=1&akey='+_FMKEY+'" class="btn btn-default">Browse</button></div><input id="valz" type="text" name="value" class="form-control" value="'+VALUE+'" /></div>');
 				$('#browse').fancybox({ 
 					type: 'iframe',
 					width: 1000,
