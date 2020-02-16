@@ -6,7 +6,7 @@
 				<div class="clearfix">
 					<div class="breadcrumb pd-0 pd-b-10 mg-0">
 						<a href="#" class="breadcrumb-item"><?=lang_line('ui_dashboard');?></a>
-						<a href="#" class="breadcrumb-item"><?=lang_line('ui_content');?></a>
+						<a href="#" class="breadcrumb-item"><?=lang_line('ui_apperance');?></a>
 						<a href="<?=admin_url($this->mod);?>" class="breadcrumb-item"><?=lang_line('mod_title');?></a>
 						<a href="#" class="breadcrumb-item"><?=lang_line('_edit_setting');?></a>
 					</div>

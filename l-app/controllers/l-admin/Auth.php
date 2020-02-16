@@ -57,7 +57,7 @@ class Auth extends MY_Controller {
 				$this->json_output($response);
 			}
 
-			if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
+			if ( $this->input->method() == 'post' )
 			{
 				return $this->_submit_login();
 			}
@@ -181,7 +181,7 @@ class Auth extends MY_Controller {
 		}
 		else
 		{		
-			if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
+			if ( $this->input->method() == 'post' )
 			{
 				$this->form_validation->set_rules(array(
 					array(

@@ -113,7 +113,12 @@ class Category extends Backend_Controller {
 					$in_parent = $this->input->post('parent');
 					$id_parent = ( $in_parent == '0' ? '0' : decrypt($in_parent) );
 
+					$lastRow = $this->db->select('id')->order_by('id','DESC')->limit(1)->get('t_category')->row_array();
+					$lastId = empty($lastRow) ? 0 : $lastRow['id'];
+					$CID = (int)$lastId + 1;
+
 					$data_form = array(
+						'id'          => $CID,
 						'id_parent'   => $id_parent,
 						'title'       => xss_filter($this->input->post('title'), 'xss'),
 						'seotitle'    => seotitle($this->input->post('seotitle')),

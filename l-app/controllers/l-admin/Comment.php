@@ -166,7 +166,7 @@ class Comment extends Backend_Controller {
 				$this->vars['result'] = $result_comment;
 				$this->vars['post'] = $this->db->select('title,seotitle')->where('id',$result_comment['id_post'])->get('t_post')->row_array();
 
-				if ($_SERVER['REQUEST_METHOD'] == 'POST' && $this->input->post('act') == 'reply')
+				if ($this->input->method() == 'post' && $this->input->post('act') == 'reply')
 				{
 					$parent = ($result_comment['parent'] != 0 ? $result_comment['parent'] : $result_comment['id']);
 

@@ -12,7 +12,7 @@ class Contact extends Web_controller {
 	
 	public function index()
 	{
-		if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
+		if ( $this->input->method() == 'post' )
 		{
 			$this->_submit();
 			redirect(selft_url());

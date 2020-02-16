@@ -20,9 +20,8 @@ class Post extends Web_controller {
 			$id_post = $this->post_model->id_post($getSeotitle);
 			$data_post = $this->post_model->get_post($getSeotitle);
 			
-			if ( $_SERVER['REQUEST_METHOD'] == 'POST' )  // Submit Komentar.
+			if ( $this->input->method() == 'post' )  // Submit Komentar.
 			{
-
 				if (get_setting('post_comment')=='Y' && $data_post['post_comment']=='Y')
 				{
 					$this->_submit_comment($id_post);

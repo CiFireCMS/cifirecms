@@ -6,7 +6,11 @@ $autoload['packages']  = array();
 $autoload['libraries'] = array(
                                 'database',
 								'session', 
-								'form_validation'
+								'form_validation',
+								'user_agent',
+								'Cifire_Alert',
+								'Cifire_Pagination',
+								'Cifire_Menu'
 							  );
 
 $autoload['drivers']   = array();

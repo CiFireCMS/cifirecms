@@ -12,7 +12,7 @@ $lang['back_to_login'] = 'Back to sign in';
 
 $lang['username'] = 'Username';
 $lang['password'] = 'Password';
-$lang['email'] = 'Email';
+$lang['login_email'] = 'Email';
 
 $lang['message_login_error'] = 'The password you entered is incorrect';
 $lang['message_forgot_error'] = 'Email not found';

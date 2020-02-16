@@ -56,7 +56,7 @@ class Backend_Controller extends MY_Controller {
 
 	public function render_403()
 	{
-		$this->meta_title = "403 Access Denied - CiFireCMS";
+		$this->meta_title = "403 Access Denied";
 		$this->vars['__modulez'] = "backend/error_403";
 		$this->load->view('backend/dashboard', $this->vars);
 	}
@@ -64,7 +64,7 @@ class Backend_Controller extends MY_Controller {
 
 	public function render_404()
 	{
-		$this->meta_title = "404 Not Found - CiFireCMS";
+		$this->meta_title = "404 Not Found";
 		$this->vars['__modulez'] = "backend/error_404";
 		$this->load->view('backend/dashboard', $this->vars);
 	}
@@ -76,7 +76,8 @@ class Backend_Controller extends MY_Controller {
 
 		if ($type == 'mail')
 		{
-			if ($data == TRUE) {
+			if ($data == TRUE) 
+			{
 				$result = $this->db
 					->where('box', 'in')
 					->order_by('id', 'DESC')
@@ -84,23 +85,17 @@ class Backend_Controller extends MY_Controller {
 					->get('t_mail')
 					->result_array();
 			}
-			else {
+			else 
+			{
 				$result = $this->db->where('active', 'N')->where('box', 'in')->get('t_mail')->num_rows();
 			}
 		}
 		
-		elseif ($type == 'comment')
+		if ($type == 'comment')
 		{
 			$result = $this->db->where('active', 'N')->get('t_comment')->num_rows();
 		}
 
 		return $result;
-	}
-
-
-	public function m_filter($str, $segment = 3) 
-	{
-		if ($this->uri->segment($segment) === $str)
-			show_404();
 	}
 } // End class.

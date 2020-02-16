@@ -83,7 +83,7 @@ class User extends Backend_Controller {
 			{
 				return $this->_submit('add');
 			}
-			elseif ( $_SERVER['REQUEST_METHOD'] == 'POST' ) // when submit without ajax.
+			elseif ( $this->input->method() == 'post' ) // when submit without ajax.
 			{
 				show_404();
 			}
@@ -115,7 +115,7 @@ class User extends Backend_Controller {
 					return $this->_submit('update',$data_user);
 				}
 
-				elseif ( $_SERVER['REQUEST_METHOD'] == 'POST' ) // when submit form without ajax.
+				elseif ( $this->input->method() == 'post' ) // when submit form without ajax.
 				{
 					show_404();
 				}

@@ -106,7 +106,7 @@ class Setting extends Backend_Controller {
 	{
 		if ($this->role->i('read') && $this->role->i('write'))
 		{
-			if ($_SERVER['REQUEST_METHOD']=='POST' && $this->input->post('pk')=='sitemap')
+			if ($this->input->method() == 'post' && $this->input->post('pk')=='sitemap')
 			{
 				$this->load->library('sitemap');
 
@@ -213,12 +213,15 @@ class Setting extends Backend_Controller {
 						}
 
 						$row[] =  $row_value;
-						$row[] ='<div class="text-center"><div class="btn-group">
-									<a href="'.admin_url($this->mod.'/detail/?id='.urlencode(encrypt($val['id']))).'" class="btn btn-xs btn-white" data-toggle="tooltip" data-placement="top" data-title="'.lang_line('button_view').'"><i class="cificon licon-eye"></i></a>
-									<a href="'.admin_url($this->mod.'/edit/?id='.urlencode(encrypt($val['id']))).'" class="btn btn-xs btn-white" data-toggle="tooltip" data-placement="top" data-title="'.lang_line('button_edit').'"><i class="cificon licon-edit"></i></a>
-									<button type="button" class="btn btn-xs btn-white delete_single" data-toggle="tooltip" data-placement="top" data-title="'.lang_line('button_delete').'" data-pk="'. encrypt($val['id']) .'"><i class="cificon licon-trash-2"></i></button>
-									</div></div>';
-
+						$action_tool = '<div class="text-center"><div class="btn-group">
+									<a href="'.admin_url($this->mod.'/detail/?id='.urlencode(encrypt($val['id']))).'" class="btn btn-xs btn-white" data-toggle="tooltip" data-placement="top" data-title="'.lang_line('button_view').'"><i class="cificon licon-eye"></i></a>';
+						if (group_active()=='root')
+						{
+							$action_tool = '<a href="'.admin_url($this->mod.'/edit/?id='.urlencode(encrypt($val['id']))).'" class="btn btn-xs btn-white" data-toggle="tooltip" data-placement="top" data-title="'.lang_line('button_edit').'"><i class="cificon licon-edit"></i></a>
+										<button type="button" class="btn btn-xs btn-white delete_single" data-toggle="tooltip" data-placement="top" data-title="'.lang_line('button_delete').'" data-pk="'. encrypt($val['id']) .'"><i class="cificon licon-trash-2"></i></button>
+										</div></div>';
+						}
+						$row[] =  $action_tool;
 						// generate rows data
 						$data[] = $row;
 					}
@@ -289,7 +292,7 @@ class Setting extends Backend_Controller {
 
 		if ($this->role->i('read') && $this->role->i('write'))
 		{
-			if ($_SERVER['REQUEST_METHOD']=='POST')
+			if ($this->input->method() == 'post')
 			{
 				$this->form_validation->set_rules(array(
 					array(
@@ -393,7 +396,7 @@ class Setting extends Backend_Controller {
 			
 			if ( $id!=0 && $this->setting_model->cek_id($id)==1 )
 			{
-				if ($_SERVER['REQUEST_METHOD']=='POST')
+				if ($this->input->method() == 'post')
 				{
 					$this->form_validation->set_rules(array(
 						array(
@@ -618,7 +621,7 @@ class Setting extends Backend_Controller {
 	{
 		if (group_active()=='root')
 		{
-			if ($_SERVER['REQUEST_METHOD']=='POST')
+			if ($this->input->method() == 'post')
 			{
 				$bakName     = 'cifiremasterz'.md5(date('Ymd'));
 				$backupWebz  = $this->input->post('web') == '1' ? TRUE : FALSE;

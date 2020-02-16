@@ -5,7 +5,7 @@ $route['default_controller']   = 'HomeIndex';
 $route['404_override']         = FALSE;
 $route['translate_uri_dashes'] = TRUE;
 
-// ADMIN.
+// BACKEND.
 $route[FADMIN] = FADMIN.'/auth';
 $route[FADMIN.'/login'] = FADMIN.'/auth';
 $route[FADMIN.'/auth-validation'] = FADMIN.'/auth/validation/user';
@@ -21,6 +21,7 @@ $route[FADMIN.'/permissions/edit-role/([0-9]+)'] = FADMIN.'/permissions/edit_lis
 
 
 // WEB.
+$route['maintenance'] = 'maintenance';
 $route['home'] = FWEB.'/home/index';
 $route['index-post'] = FWEB.'/index-post';
 $route['index-post/([0-9-]+)'] = FWEB.'/index-post/index/$1';
@@ -30,11 +31,15 @@ $route['tag/([a-z0-9-]+)'] = FWEB.'/tag/index/$1';
 $route['tag/([a-z0-9-]+)/([0-9]+)'] = FWEB.'/tag/index/$1/$2';
 $route['pages/([a-z0-9-]+)'] = FWEB.'/pages/index/$1';
 $route['search'] = FWEB.'/search';
-$route['gallery'] = FWEB.'/gallery';
 $route['contact'] = FWEB.'/contact';
-$route['maintenance'] = 'maintenance';
+$route['gallery'] = FWEB.'/gallery';
 
-// dinamic routes.
+$route['rss'] = FWEB.'/rss/index';
+$route['rss/([a-z0-9-]+)'] = FWEB.'/rss/index/$1';
+$route['rss/([a-z0-9-]+)/([a-z0-9-]+)'] = FWEB.'/rss/index/$1/$2';
+$route['rss/([a-z0-9-]+)/([a-z0-9-]+)/([0-9]+)'] = FWEB.'/rss/index/$1/$2/$3';
+
+// dinamic slug routes.
 foreach(glob(APPPATH."/config/routes/*.php") as $routes_file)
 {
 	require_once $routes_file;

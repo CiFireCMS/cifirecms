@@ -10,8 +10,60 @@ class Index_model extends CI_Model {
 		parent::__construct();
 	}
 
+	/**
+	 * get headline posts
+	 * 
+	 * @param    $limit      string
+	 * @param    $order_by   string
+	 * @return   array  
+	 * 
+	 */
+	public function get_headline($limit = '5', $order_by = 'post_id,DESC')
+	{
+		$query = $this->db->select('
+									t_post.id         AS post_id,
+									t_post.title      AS post_title,
+									t_post.seotitle   AS post_seotitle,
+									t_post.content    AS post_content,
+									t_post.picture,
+									t_post.datepost,
+									t_post.timepost,
+									t_category.id     AS category_id,
+									t_category.title  AS category_title
+									');
+		$query = $this->db->join('t_category', 't_category.id = t_post.id_category', 'LEFT');
+		$query = $this->db->where('t_post.active', 'Y');
+		$query = $this->db->where('t_post.headline', 'Y');
 
-	public function popular_post($interval, $limit)
+		$exLimit = explode(',', $limit);
+
+		if ( count($exLimit) > 1 )
+		{
+			$query = $this->db->limit((int)$exLimit[0], (int)$exLimit[1]);
+		}
+		else
+		{
+			$query = $this->db->limit($limit);
+		}
+
+		if ( $order_by != 'RAND()' )
+		{
+			$xo = explode(',', $order_by);
+			$query = $this->db->order_by($xo[0], $xo[1]);
+		}
+		else
+		{
+			$query = $this->db->order_by($order_by);
+		}
+		
+		$query = $this->db->get('t_post');
+		$result = $query->result_array();
+
+		return $result;
+	}
+
+
+	public function popular_post($interval = NULL, $limit = '5', $order_by='post_hits,DESC')
 	{
 		$query = $this->db->select('
 					 t_post.id            AS  post_id,
@@ -40,17 +92,38 @@ class Index_model extends CI_Model {
 		{
 			$query = $this->db->where('date(t_post.datepost) > DATE_SUB(NOW(), INTERVAL 1 WEEK)', NULL, FALSE);
 		} 
+
 		if ($interval === 'month')
 		{
 			$query = $this->db->where('MONTH(t_post.datepost)', date('m'));
 		}
+
 		if ($interval === 'year')
 		{
 			$query = $this->db->where('YEAR(t_post.datepost)', date('Y'));
 		}
 
-		$query = $this->db->order_by('t_post.hits','DESC');
-		$query = $this->db->limit($limit);
+		$exLimit = explode(',', $limit);
+		
+		if ( count($exLimit) > 1 )
+		{
+			$query = $this->db->limit((int)$exLimit[0], (int)$exLimit[1]);
+		}
+		else
+		{
+			$query = $this->db->limit($limit);
+		}
+
+		if ( $order_by != 'RAND()' )
+		{
+			$xo = explode(',', $order_by);
+			$query = $this->db->order_by($xo[0], $xo[1]);
+		}
+		else
+		{
+			$query = $this->db->order_by($order_by);
+		}
+
 		$query = $this->db->get('t_post');
 		$result = $query->result_array();
 
@@ -58,10 +131,9 @@ class Index_model extends CI_Model {
 	}
 
 
-	public function latest_post($limit)
+	public function latest_post($limit = '5', $order_by = 'post_id,DESC')
 	{
-		$query = $this->db
-			->select('
+		$query = $this->db->select('
 					 t_post.id            AS  post_id,
 					 t_post.title         AS  post_title,
 					 t_post.seotitle      AS  post_seotitle,
@@ -79,15 +151,36 @@ class Index_model extends CI_Model {
 					 
 					 t_user.id            AS  user_id,
 					 t_user.name          AS  user_name,
-					')
-			->join('t_category', 't_category.id = t_post.id_category', 'left')
-			->join('t_user', 't_user.id = t_post.id_user', 'left')
-			->where('t_post.active', 'Y')
-			->order_by('t_post.id','DESC')
-			->limit($limit)
-			->get('t_post');
+					');
+		$query = $this->db->join('t_category', 't_category.id = t_post.id_category', 'left');
+		$query = $this->db->join('t_user', 't_user.id = t_post.id_user', 'left');
+		$query = $this->db->where('t_post.active', 'Y');
 
-		return $query->result_array();
+		if ( $order_by != 'RAND()' )
+		{
+			$xo = explode(',', $order_by);
+			$query = $this->db->order_by($xo[0], $xo[1]);
+		}
+		else
+		{
+			$query = $this->db->order_by($order_by);
+		}
+
+		$exLimit = explode(',', $limit);
+		
+		if ( count($exLimit) > 1 )
+		{
+			$query = $this->db->limit((int)$exLimit[0], (int)$exLimit[1]);
+		}
+		else
+		{
+			$query = $this->db->limit($limit);
+		}
+		
+		$query = $this->db->get('t_post');
+		$result = $query->result_array();
+
+		return $result;
 	}
 
 
@@ -101,7 +194,7 @@ class Index_model extends CI_Model {
 					 t_post.active        AS  post_active,
 					 t_post.content,
 					 t_post.picture,
-			         t_post.datepost,
+			         t_post.datepost, 
 			         t_post.timepost,
 			         t_post.tag,
 			         t_post.hits,
@@ -114,7 +207,8 @@ class Index_model extends CI_Model {
 			->join('t_category', 't_category.id = t_post.id_category', 'left')
 			->join('t_user', 't_user.id = t_post.id_user', 'left')
 			->where('t_post.active', 'Y')
-			->order_by('t_post.id', 'DESC')
+			->order_by('t_post.datepost','DESC')
+			->order_by('t_post.timepost','DESC')
 			->limit($batas, $posisi)
 			->get('t_post');
 

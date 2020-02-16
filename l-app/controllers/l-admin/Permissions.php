@@ -96,8 +96,9 @@ class Permissions extends Backend_Controller {
 			if ($cek==1)
 			{
 				$res_group = $this->permissions_model->get_group($pk);
-				$this->vars['res_group'] =$res_group;
+				$this->vars['res_group'] = $res_group;
 				$this->vars['res_roles'] = $this->permissions_model->get_roles_by_group($res_group['group']);
+				$this->vars['keyGroup'] = $pk;
 				$this->render_view('view_group');
 			}
 
@@ -330,7 +331,11 @@ class Permissions extends Backend_Controller {
 			$pk = xss_filter($pk,'xss');
 			$cek = $this->permissions_model->cek_pk($pk);
 
-			if ( $cek == 1 && $pk!='root')
+			if ($pk == 'root')
+			{
+				$this->render_403();
+			}
+			elseif ($cek == 1)
 			{
 				$res_group = $this->permissions_model->get_group($pk);
 

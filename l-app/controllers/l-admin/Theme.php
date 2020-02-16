@@ -163,7 +163,7 @@ class Theme extends Backend_Controller {
 	{
 		if ( $this->role->i('write') )
 		{
-			if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
+			if ( $this->input->method() == 'post' )
 			{
 				$theme_title = xss_filter($this->input->post('title'), 'xss');
 				$theme_folder = seotitle($theme_title)."-".md5(date('YmdHis'));

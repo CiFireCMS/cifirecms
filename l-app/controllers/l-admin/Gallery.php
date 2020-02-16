@@ -19,7 +19,7 @@ class Gallery extends Backend_Controller {
 	{
 		if ( $this->role->i('read') )
 		{
-			if ($_SERVER['REQUEST_METHOD'] == 'POST')
+			if ($this->input->method() == 'post')
 			{
 				if ( $this->role->i('write') )
 				{
@@ -76,7 +76,7 @@ class Gallery extends Backend_Controller {
 			$getid = ($this->input->get('id') ? $this->input->get('id') : '0');
 			$id_album = xss_filter(urldecode(decrypt($getid)),'sql');
 
-			if ($_SERVER['REQUEST_METHOD'] == 'POST')
+			if ($this->input->method() == 'post')
 			{
 				if ( $this->role->i('write') )
 				{

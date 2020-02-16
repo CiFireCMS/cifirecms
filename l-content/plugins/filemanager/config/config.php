@@ -294,6 +294,23 @@ elseif ($_SESSION['filemanager_access']['read_access'] == TRUE)
 	//Add ?484899493349 (time value) to returned images to prevent cache
 	$config['add_time_to_img'] = true;
 
+	// -1: There is no lazy loading at all, 0: Always lazy-load images, 0+: The minimum number of the files in a directory
+	// when lazy loading should be turned on.
+	$config['lazy_loading_file_number_threshold']	= -1;
+
+	/*
+	|--------------------------------------------------------------------------
+	| Load more
+	|--------------------------------------------------------------------------
+	*/
+	// Enable "Load more" functionality
+	$config['load_more'] = true;
+	// Number of files/folders displayed at once
+	// Should be greater than "file_number_limit_js"
+	$config['load_more_limit'] = 21;
+	// Enable auto-loading on scroll
+	$config['load_more_auto'] = false;
+
 
 	//*******************************************
 	//Images limit and resizing configuration

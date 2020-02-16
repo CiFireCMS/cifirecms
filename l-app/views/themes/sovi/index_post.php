@@ -24,7 +24,7 @@
 							</h5>
 							<!-- meta -->
 							<ul class="entry-meta clearfix">
-								<li><i class="cificon licon-calendar"></i> <?=ci_date($res['datepost'].$res['timepost'], 'l, d F Y');?></li>
+								<li><i class="cificon licon-calendar"></i> <?=ci_date($res['datepost'].$res['timepost'], 'd F Y | H:i');?></li>
 								<li><i class="cificon licon-folder"></i> <a href="<?=site_url('category/'.$res['category_seotitle']);?>"><?=$res['category_title'];?></a></li>
 							</ul>
 							<!--/ meta -->

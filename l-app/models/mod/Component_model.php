@@ -57,14 +57,16 @@ class Component_model extends CI_Model {
 		{
 			if ( $this->input->post('search')['value'] )
 			{
+				$search_key = xss_filter($this->input->post('search')['value'], 'xss');
+				$search_key = trim($search_key);
 				if ( $i === 0 )
 				{
 					$this->db->group_start();
-					$this->db->like($item, $this->input->post('search')['value']);
+					$this->db->like($item, $search_key);
 				}
 				else
 				{
-					$this->db->or_like($item, $this->input->post('search')['value']);
+					$this->db->like($item, $search_key);
 				}
 
 				if ( count($this->_column_search) - 1 == $i ) 
@@ -77,10 +79,9 @@ class Component_model extends CI_Model {
 		
 		if ( !empty($this->input->post('order')) ) 
 		{
-			$this->db->order_by(
-				$this->_column_order[$this->input->post('order')['0']['column']], 
-				$this->input->post('order')['0']['dir']
-			);
+			$field = xss_filter($this->_column_order[$this->input->post('order')['0']['column']],'xss');
+			$value = xss_filter($this->input->post('order')['0']['dir'],'xss');
+			$this->db->order_by($field,$value);
 		}
 		else
 		{
@@ -97,8 +98,10 @@ class Component_model extends CI_Model {
 			$query = $this->db->where('id',$id)->get($this->_table)->row_array();
 			return $query;
 		}
-		else 
+		else
+		{
 			return FALSE;
+		}
 	}
 
 
@@ -107,9 +110,13 @@ class Component_model extends CI_Model {
 		$query = $this->db->insert($this->_table, $data);
 		
 		if ( $query == FALSE )
+		{
 			return FALSE;
-		else
+		}
+		else 
+		{
 			return TRUE;
+		}
 	}
 
 
@@ -118,15 +125,22 @@ class Component_model extends CI_Model {
 		if ( !empty($table_name) && $this->cek_id($id) == 1 ) 
 		{
 			$this->load->dbforge();
+			
 			if ( $this->dbforge->drop_table($table_name, TRUE) )
 			{
 				$this->db->where('id', $id)->delete($this->_table);
 				return TRUE;
 			}
-			else return FALSE;
+			else 
+			{
+				return FALSE;
+			}
 			
 		}
-		else return FALSE;
+		else 
+		{
+			return FALSE;
+		}
 	}
 
 

@@ -53,3 +53,28 @@ $lang['timeago_minutes'] = 'minutes ago';
 $lang['timeago_minute'] = 'minute ago';
 $lang['timeago_seconds'] = 'seconds ago';
 $lang['timeago_second'] = 'second ago';
+
+$lang['month_name'] = array(
+	1  => 'January', 
+	2  => 'February', 
+	3  => 'March', 
+	4  => 'April', 
+	5  => 'May', 
+	6  => 'June', 
+	7  => 'July', 
+	8  => 'August', 
+	9  => 'September', 
+	10 => 'October', 
+	11 => 'November', 
+	12 => 'December'
+);
+
+$lang['day_name'] = array(
+	'Sunday',
+	'Monday',
+	'Tuesday',
+	'Wednesday',
+	'Thursday',
+	'Friday',
+	'Saturday'
+);

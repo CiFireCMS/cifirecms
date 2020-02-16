@@ -15,7 +15,8 @@ $(function() {
 			{targets: 'no-sort', orderable: false, searchable: false},
 			{targets: 'th-action', orderable: false, searchable: false, width: '50px'},
 			{targets: [0], width: '20px'},
-			{targets: [1], width: '20px'}
+			{targets: [1], width: '20px'},
+			{targets: [4], width: '115px'}
 		],
 		lengthMenu: [
 			[10, 30, 50, 100, -1],
@@ -157,7 +158,7 @@ $(function() {
 		$('#imgprv').attr('src',content_url+'images/noimage.jpg')
 	});
 
-	$('input:not(textarea)').keydown(function(e){if(13==(e.witch||e.keyCode))return e.preventDefault(),!1});
+	// $('input:not(textarea)').keydown(function(e){if(13==(e.witch||e.keyCode))return e.preventDefault(),!1});
 	$('#title').on('input',function(){var e;e=(e=(e=$(this).val()).replace(/\s+/g,' ')).replace(/_/g,' '),$('#seotitle').val(e.toLowerCase()),$('#seotitle').val($('#seotitle').val().replace(/\W/g,' ')),$('#seotitle').val($('#seotitle').val().replace(/\s+/g,'-'))});
 	$('#seotitle').on('input',function(){var e;e=(e=(e=$(this).val()).replace(/\s+/g,' ')).replace(/_/g,' '),$(this).val(e.toLowerCase()),$(this).val($(this).val().replace(/\W/g,' ')),$(this).val($(this).val().replace(/\s+/g,'-'))});
 });

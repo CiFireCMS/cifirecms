@@ -12,7 +12,7 @@ class Search extends Web_controller {
 
 	public function index()
 	{
-		if ( $_SERVER['REQUEST_METHOD'] && !empty($this->input->post('kata')) ) 
+		if ( $this->input->method() == 'post' && !empty($this->input->post('kata')) ) 
 		{
 			$kata = $this->input->post('kata');
 			$urlq = url_encode($kata);

@@ -56,7 +56,6 @@ class Search_model extends CI_Model {
 									t_post.timepost,
 									t_post.tag,
 									t_post.hits,
-
 									t_category.id        AS  category_id,
 									t_category.title     AS  category_title,
 									t_category.seotitle  AS  category_seotitle,
@@ -83,7 +82,6 @@ class Search_model extends CI_Model {
 		$query = $this->db->get();
 
 		$result = $query->result_array();
-
 		return $result;
 	}
 

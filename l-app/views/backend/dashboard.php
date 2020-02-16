@@ -8,7 +8,7 @@
 	<meta name="description" content="<?=get_setting('web_description');?>"/>
 	<meta name="keyword" content="<?=get_setting('web_keyword');?>"/>
 	<meta name="author"  content="<?=get_setting('web_author');?>"/>
-	<title><?=$this->CI->meta_title;?></title>
+	<title><?=$this->CI->meta_title;?> - <?=get_setting('web_name');?></title>
 	<!-- Favicon -->	
 	<link rel="icon" href="<?=favicon();?>" type="image/x-icon"/>
 
@@ -55,7 +55,6 @@
 	<![endif]-->
 
 	<!-- Javascript -->
-	
 	<script>
 		var _FMKEY            = "<?=$a_fmkey;?>";
 		var site_url          = "<?=$a_site_url;?>";
@@ -117,8 +116,8 @@
 
 								<li class="list-inline-item"><a class="hidden-md hidden-lg" href="#" id="sidebar-toggle-button"><i data-feather="menu" class="wd-20"></i></a></li>
 								<!-- PC Toggle and Logo -->
-								<li class="list-inline-item"><a class=" hidden-xs hidden-sm" href="#" id="collapsed-sidebar-toggle-button"><i data-feather="menu" class="wd-20"></i></a></li>
-								<li class="list-inline-item">
+								<li class="list-inline-item"><a class="hidden-xs hidden-sm" href="#" id="collapsed-sidebar-toggle-button"><i data-feather="menu" class="wd-20"></i></a></li>
+								<li class="list-inline-item hidden-xs">
 									<a href="<?=admin_url('post/add');?>" id="sidebar-toggle-button" class="mg-l-15 tx-gray-600"><i data-feather="edit" class="wd-20"></i></a>
 								</li>
 							</ul>
@@ -131,7 +130,7 @@
 						<ul class="list-inline justify-content-end">
 
 							<!-- comment Dropdown Start -->
-							<li class="top-link list-inline-item dropdown hidden-xsX">
+							<li class="top-link list-inline-item dropdown hidden-xsX" data-toggle="tooltip" data-placement="bottom" title="<?=lang_line('menu_comment');?>">
 								<a href="<?=admin_url('comment');?>" class="message-icon top-link tx-gray-600">
 									<i data-feather="message-square" class="wd-20"></i>
 									<?php if ($this->CI->ds_notif('comment') > 0): ?>
@@ -142,7 +141,7 @@
 							<!--/ comment Dropdown End -->
 
 							<!-- Mail Dropdown Start -->
-							<li class="top-link list-inline-item dropdown hidden-xsX">
+							<li class="top-link list-inline-item dropdown hidden-xsX" data-toggle="tooltip" data-placement="bottom" title="<?=lang_line('menu_mail');?>">
 								<a href="<?=admin_url('mail');?>" class="notification-icon top-link tx-gray-600">
 									<i data-feather="mail" class="wd-20"></i>
 									<?php if ($this->CI->ds_notif('mail') > 0): ?>
@@ -180,7 +179,7 @@
 
 										<div class="dropdown-divider"></div>
 
-										<a href="" class="dropdown-item"><i data-feather="life-buoy" class="wd-16 mr-2"></i> <?=lang_line('menu_help_center');?></a>
+										<a href="https://web.facebook.com/groups/cifirecms/" target="_blank" class="dropdown-item"><i data-feather="life-buoy" class="wd-16 mr-2"></i> <?=lang_line('menu_help_center');?></a>
 										<a href="<?=admin_url('logout')?>" class="dropdown-item"><i data-feather="log-out" class="wd-16 mr-2"></i> <?=lang_line('menu_logout');?></a>
 									</div>
 								</div>

@@ -283,13 +283,15 @@ function cfTnyMCE(element,height){
 		tinymce.EditorManager.execCommand('mceAddEditor', true, 'Content');
 	});
 	tinymce.init({
+		contextmenu: false,
 		selector: _element,
 		editor_deselector: 'mceNoEditor',
 		// skin: 'lightgray',
 		plugins: [
+			// contextmenu   
 			"advlist autolink link image lists charmap print preview hr anchor pagebreak",
 			"searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
-			"table contextmenu directionality emoticons paste textcolor",
+			"table directionality emoticons paste textcolor",
 			"code fullscreen youtube autoresize codemirror codesample responsivefilemanager pagebreak"
 		],
 		toolbar1:'undo redo | bold italic underline forecolor backcolor | alignjustify alignleft aligncenter alignright | outdent indent bullist numlist table | pagebreak',
@@ -306,7 +308,7 @@ function cfTnyMCE(element,height){
 		autoresize_top_margin:5,
 		autoresize_bottom_margin:2,
 		visualblocks_default_state: true,
-		content_css: content_url+'plugins/tinymce/plugins/bootstrap/css/bootstrap.min.css,'+content_url+'plugins/font-awesome/font-awesome.min.css',
+		content_css: content_url+'plugins/tinymce/plugins/bootstrap/css/bootstrap.min.css,' + content_url + 'plugins/font-awesome/font-awesome.min.css',
 		codemirror: {
 		    indentOnInit: true,
 		    path: content_url+'/plugins/codemirror'
@@ -315,11 +317,12 @@ function cfTnyMCE(element,height){
 		filemanager_access_key: _FMKEY,
 		external_filemanager_path: content_url+'plugins/filemanager/',
 		external_plugins: {
-			"responsivefilemanager": content_url + "plugins/tinymce/plugins/responsivefilemanager/plugin.min.js",
+			'responsivefilemanager': content_url + 'plugins/tinymce/plugins/responsivefilemanager/plugin.min.js',
 			'filemanager': content_url+'plugins/filemanager/plugin.min.js'
 		}
 	});
 }
+
 
 function str_seotitle(str){
 	var seotitle;
@@ -385,7 +388,6 @@ function responsive_filemanager_callback(){
 	$('#imgprv').attr('src', url).show();
 	parent.$.fancybox.close();
 }
-
 
 
 $(document).ready(function() {

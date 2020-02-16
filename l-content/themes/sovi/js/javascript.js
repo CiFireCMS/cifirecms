@@ -19,7 +19,6 @@ $(document).ready(function(){
 		interval: 10900
 	});
 
-
 	var pw_container = [];
 
 	$('#gallery').find('.g-item').each(function() {

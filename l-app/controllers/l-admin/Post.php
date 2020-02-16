@@ -58,6 +58,8 @@ class Post extends Backend_Controller {
 
 						// category
 						$row[] = $val['category_title'];
+						// datepost
+						$row[] = ltrim(ci_date($val['post_datepost'],'d F Y'),'0').' <br/> <small>'.ltrim(ci_date($val['post_timepost'],'H:i'),'0').'</small>';
 
 						// status
 						$row[] = ($val['post_active'] == 'Y' ? '<span class="badge badge-outline-success">'. lang_line('ui_publish') .'</span>' : '<span class="badge badge-outline-default">'. lang_line('ui_draft') .'</span>');

@@ -1,7 +1,8 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Index_Post extends Web_controller {
+class Index_post extends Web_controller {
+	
 	var $mod = 'index-post';
 
 	public function __construct()

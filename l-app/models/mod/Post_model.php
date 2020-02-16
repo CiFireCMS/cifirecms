@@ -7,8 +7,8 @@ class Post_model extends CI_Model {
 	private $session_level;
 	private $session_key;
 	private $_table = 't_post';
-	private $_column_order = array(null, 't_post.id', 't_post.title', 't_category.seotitle', 't_post.active', null);
-	private $_column_search = array('t_post.id', 't_post.title', 't_category.title', 't_category.seotitle', 't_user.name');
+	private $_column_order = array(null, 't_post.id', 't_post.title', 't_category.seotitle', 't_post.datepost', 't_post.active', null);
+	private $_column_search = array('t_post.id', 't_post.title', 't_category.title', 't_category.seotitle', 't_post.datepost', 't_user.name');
 
 	public function __construct()
 	{

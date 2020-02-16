@@ -1,27 +1,88 @@
 <?php
+/**
+ * CiFireCMS Pagination Library
+ *
+ * @author    AdimanCifi
+ * @license   MIT License
+ * @version   1.0.0
+ * @link      https://www.alweak.com
+ * @package   CiFIreCMS v2.x
+*/
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Cifire_Pagination {
-
+	/**
+	 * @var string
+	*/
 	protected $base_url = ''; 
+	
+	/**
+	 * @var int
+	*/
 	protected $index_page;
+	
+	/**
+	 * @var int
+	*/
 	protected $per_page;
-	protected $total_rows; 
-	protected $limit_item = 3;
-	protected $total_link;  // contoh pemakaian di post content pagination
 
+	/**
+	 * @var int
+	*/
+	protected $total_rows;
+
+	/**
+	 * @var int
+	*/
+	protected $limit_item = 3;
+	
+	/**
+	 * for exaple to use : post content pagination
+	 * @var int
+	*/
+	protected $total_link;
+
+	/**
+	 * @var string
+	*/
 	protected $list_tag_open  = '<li class="page-item">';
+
+	/**
+	 * @var string
+	*/
 	protected $list_tag_close = '</li>';
 
+	/**
+	 * @var string
+	*/
 	protected $link_tag_open  = '<a>';
+	
+	/**
+	 * @var string
+	*/
 	protected $link_tag_close = '</a>';
+	
+	/**
+	 * @var string
+	*/
 	protected $link_tag_attributes = 'class="page-link"';
 
-	protected $prev_link = 'Previous'; // or bool
-	protected $next_link = 'Next'; // or bool
+	/**
+	 * @var string|bool
+	*/
+	protected $prev_link = 'Previous';
+	
+	/**
+	 * @var string|bool
+	*/
+	protected $next_link = 'Next';
 
 
-	public function __construct($params = array())
+	/**
+	 * @var array
+	*/
+	public function __construct(array $params = array())
 	{
 		$this->initialize($params);
 	}
@@ -231,5 +292,4 @@ class Cifire_Pagination {
 
 		return $this;
 	}
-
-} // End Class.
+} // End Class

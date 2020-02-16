@@ -221,17 +221,17 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="name">Name <span class="text-danger">*</span></label>
-						<input id="name" type="text" name="name" class="form-control" required/>
+						<input id="name" type="text" name="name" class="form-control"/>
 					</div>
 					<div class="form-group">
 						<label for="email">Email <span class="text-danger">*</span></label>
-						<input id="email" type="email" name="email" class="form-control" required/>
+						<input id="email" type="email" name="email" class="form-control"/>
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="comment">Comment <span class="text-danger">*</span></label>
-				<textarea name="comment" rows="3" class="form-control" required></textarea>
+				<textarea name="comment" rows="3" class="form-control"></textarea>
 			</div>
 			<div class=" text-right">
 				<div class="g-recaptcha pull-left" data-sitekey="<?=get_setting('recaptcha_site_key')?>" style="margin-bottom:9px;"></div>

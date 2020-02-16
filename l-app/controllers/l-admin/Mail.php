@@ -160,7 +160,7 @@ class Mail extends Backend_Controller {
 	{
 		if ( $this->role->i('write') )
 		{
-			if ( $_SERVER['REQUEST_METHOD'] == 'POST' )  // submit send
+			if ( $this->input->method() == 'post' )  // submit send
 			{
 				$this->form_validation->set_rules(array(
 					array(
@@ -238,7 +238,7 @@ class Mail extends Backend_Controller {
 			{
 				$this->vars['res_mail'] = $this->mail_model->get_mail($id);
 
-				if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) 
+				if ( $this->input->method() == 'post' ) 
 				{
 					$this->form_validation->set_rules(array(
 						array(

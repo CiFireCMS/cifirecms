@@ -191,7 +191,7 @@ class Post_model extends CI_Model {
 		$query = $this->db->select('*');
 		$query = $this->db->from('t_post');
 		$query = $this->db->where('active', 'Y');
-		$query = $this->db->where('id !=', $post_id);
+		$query = $this->db->where_not_in('id', $post_id);
 
 		$query = $this->db->group_start();
 		for ( $i=0; $i<=$count_tags; $i++ )

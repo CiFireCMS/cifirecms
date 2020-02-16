@@ -21,8 +21,6 @@ $lang['_time'] = 'Time';
 $lang['_metasocial'] = 'Meta Social';
 $lang['_ol_mod'] = 'Setting';
 
-
-
 $lang['_general'] = 'General';
 $lang['_local'] = 'Local';
 $lang['_mail'] = 'Mail';
@@ -34,7 +32,6 @@ $lang['_backup'] = 'Backup';
 $lang['_webz'] = 'Website';
 $lang['_webzdata'] = 'Website data (Include any files and folders)';
 $lang['_database'] = 'Database';
-
 
 $lang['_web_name'] = 'Website Name';
 $lang['_web_url'] = 'Website URL';
@@ -68,7 +65,6 @@ $lang['_option_desc'] = 'This is key for identify value of setting';
 
 $lang['_sitemap_was_created'] = 'Sitemap was created';
 
-
 $lang['button_save_metasocial'] = 'Save Meta Social';
 $lang['button_create_sitemap'] = 'Create Sitemap';
 $lang['button_set_cache'] = 'Set Cache';
@@ -76,4 +72,4 @@ $lang['button_clear_cache'] = 'Clear Cache';
 $lang['button_list_settings'] = 'List Settings';
 
 
-$lang['_back_warning_alert'] = '<h4 class="tx-medium tx-uppercase tx-dark mb-2"><i class="cificon licon-alert-triangle mr-2 text-danger"></i>Warning !</h4><div class="tx-dark">You are currently accessing the ROOT feature.<br/> Project more tahan 50mb, manual backup required.</div>';
+$lang['_back_warning_alert'] = '<h4 class="tx-medium tx-uppercase tx-dark mb-2"><i class="cificon licon-alert-triangle mr-2 text-danger"></i>Warning !</h4><div class="tx-dark">You are currently accessing the ROOT feature.<br/> Project more than 50mb, manual backup required.</div>';

@@ -42,9 +42,11 @@
 		<li class="nav-item">
 			<a href="#Tab-MetaSocial" class="nav-link tx-medium" data-toggle="tab" style="color:#1b2e4b;"><?=lang_line('_metasocial');?></a>
 		</li>
+		<?php if (group_active()=='root'): ?>
 		<li class="nav-item">
 			<a href="#Tab-Backup" class="nav-link tx-medium" data-toggle="tab" style="color:#1b2e4b;"><?=lang_line('_backup');?></a>
 		</li>
+		<?php endif ?>
 	</ul>
 
 	<div class="tab-content bd bd-gray-400 bd-t-0 pd-20 bg-white">

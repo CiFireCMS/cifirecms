@@ -15,6 +15,7 @@ $lang['_category'] = 'Category';
 $lang['_tags'] = 'Tags';
 $lang['_picture'] = 'Picture';
 $lang['_caption'] = 'Image Descripton';
+$lang['_datepost'] = 'Publish Date';
 $lang['_date'] = 'Date';
 $lang['_time'] = 'Time';
 $lang['_headline'] = 'Headline';

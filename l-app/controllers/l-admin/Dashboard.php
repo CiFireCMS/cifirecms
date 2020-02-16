@@ -9,6 +9,11 @@ class Dashboard extends Backend_Controller {
 	{
 		parent::__construct();
 
+		if ( !$this->role->i('read') )
+		{
+			redirect(admin_url('logout'));
+		}
+
 		$this->lang->load('mod/'.$this->mod);
 		$this->load->model('mod/dashboard_model', 'Model');
 		$this->meta_title(lang_line('mod_title'));

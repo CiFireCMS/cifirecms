@@ -33,43 +33,36 @@ if ( ! function_exists('ci_date'))
 		
 		$timestamp = strtotime($date);
 		
-		if ( $lang_active != 'english' )
-		{
-			$prety_date = date($new_format, $timestamp);
+		$prety_date = date($new_format, $timestamp);
 
-			if ( strpos($new_format, 'F') !== FALSE )
-			{
-				$month_name     = $CI->lang->line('month_name');
-				$month_global   = date('F', $timestamp);
-				$month_global_n = date('n', $timestamp);
-				$month_id       = $month_name[$month_global_n];
-				$prety_date     = str_replace($month_global, $month_id, $prety_date);
-			}
-			
-			if (strpos($new_format, 'M') !== FALSE) {
-				$month_name = $CI->lang->line('month_name');
-				$month_global2 = date('M', $timestamp);
-				$month_global_n2 = date('n', $timestamp);
-				$month_id2 = $month_name[$month_global_n2];
-				$prety_date = str_replace($month_global2, substr($month_id2, 0, 3), $prety_date);
-			}
-			if (strpos($new_format, 'l') !== FALSE) {
-				$day_name = $CI->lang->line('day_name');
-				$day_global = date('l', $timestamp);
-				$day_global_n = date('w', $timestamp);
-				$day_id = $day_name[$day_global_n];
-				$prety_date = str_replace($day_global, $day_id, $prety_date);
-			}
-			if (strpos($new_format, 'D') !== FALSE) {
-				$day_name = $CI->lang->line('day_name');
-				$day_global2 = date('D', $timestamp);
-				$day_global_n2 = date('w', $timestamp);
-				$day_id2 = $day_name[$day_global_n2];
-				$prety_date = str_replace($day_global2, substr($day_id2, 0, 3), $prety_date);
-			}
+		if ( strpos($new_format, 'F') !== FALSE )
+		{
+			$month_name     = $CI->lang->line('month_name');
+			$month_global   = date('F', $timestamp);
+			$month_global_n = date('n', $timestamp);
+			$month_id       = $month_name[$month_global_n];
+			$prety_date     = str_replace($month_global, $month_id, $prety_date);
 		}
-		else {
-			$prety_date = date($new_format, $timestamp);
+		if (strpos($new_format, 'M') !== FALSE) {
+			$month_name = $CI->lang->line('month_name');
+			$month_global2 = date('M', $timestamp);
+			$month_global_n2 = date('n', $timestamp);
+			$month_id2 = $month_name[$month_global_n2];
+			$prety_date = str_replace($month_global2, substr($month_id2, 0, 3), $prety_date);
+		}
+		if (strpos($new_format, 'l') !== FALSE) {
+			$day_name = $CI->lang->line('day_name');
+			$day_global = date('l', $timestamp);
+			$day_global_n = date('w', $timestamp);
+			$day_id = $day_name[$day_global_n];
+			$prety_date = str_replace($day_global, $day_id, $prety_date);
+		}
+		if (strpos($new_format, 'D') !== FALSE) {
+			$day_name = $CI->lang->line('day_name');
+			$day_global2 = date('D', $timestamp);
+			$day_global_n2 = date('w', $timestamp);
+			$day_id2 = $day_name[$day_global_n2];
+			$prety_date = str_replace($day_global2, substr($day_id2, 0, 3), $prety_date);
 		}
 		return $prety_date;
 	}

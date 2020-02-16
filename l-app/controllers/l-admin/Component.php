@@ -152,7 +152,7 @@ class Component extends Backend_Controller {
 		    $this->role->i('delete') 
 		    )
 		{
-			if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
+			if ( $this->input->method() == 'post' )
 			{
 				return $this->_install();
 			}

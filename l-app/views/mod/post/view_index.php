@@ -29,6 +29,7 @@
 							<th><?=lang_line('_id');?></th>
 							<th><?=lang_line('_title');?></th>
 							<th><?=lang_line('_category');?></th>
+							<th><?=lang_line('_datepost');?></th>
 							<th><?=lang_line('_status');?></th>
 							<th class="th-action text-center"><?=lang_line('_action');?></th>
 						</tr>
@@ -36,7 +37,7 @@
 					<tbody></tbody>
 					<tfoot>
 						<tr>
-							<td colspan="6">
+							<td colspan="7">
 								<button type="button" class="btn btn-sm btn-danger delete_multi"><?=lang_line('button_delete_selected_item');?></button>
 							</td>
 						</tr>

@@ -19,16 +19,11 @@ class MY_Controller extends CI_Controller {
 	{
 		parent::__construct();
 		$this->CI =& get_instance();
-
-		$this->load->library('cifire_alert');
-		$this->load->library('cifire_pagination');
-		$this->load->library('cifire_menu');
-		$this->load->library('cifire_role', ['modz'=>$this->mod], 'role');
-		$this->load->library('cifire_web');
-
+		$this->load->library('Cifire_Role', ['modz'=>$this->mod], 'role');
 		$this->_default_timezone();
 		$this->set_meta();
 	}
+
 
 	private function _default_timezone() 
 	{
@@ -163,6 +158,12 @@ class MY_Controller extends CI_Controller {
 						 ->update('t_visitor', $data_update);
 			}
 		}
+	}
+
+
+	public function m_filter($str, $segment = 3) 
+	{
+		if ($this->uri->segment($segment) === $str) show_404();
 	}
 } // End class.
 

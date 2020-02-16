@@ -11,7 +11,7 @@
 			<div class="tab-pane show active" id="tabsPopular" role="tabpanel" aria-labelledby="home-tab">
 				<ul class="items">
 					<?php 
-						$popular_posts = $this->cifire_web->popular_post('all',5);
+						$popular_posts = $this->CI->index_model->popular_post('all','5');
 						foreach ( $popular_posts as $popular_post):
 					?>
 					<li class="list-item">
@@ -28,8 +28,8 @@
 									</h5>
 								<!-- meta -->
 								<ul class="entry-meta clearfix">
-									<li><i class="cificon licon-calendar"></i> <?=ci_date($popular_post['post_datepost'].$popular_post['post_timepost'], 'd M Y');?></li>
 									<li><i class="cificon licon-folder"></i> <a href="<?=site_url('category/'.$popular_post['category_seotitle']);?>"><?=$popular_post['category_title'];?></a></li>
+									<li><?=ci_timeago($popular_post['post_datepost'].$popular_post['post_timepost']);?></li>
 								</ul>
 								<!--/ meta -->
 								</div>
@@ -45,7 +45,7 @@
 			<div class="tab-pane" id="tabsLatest" role="tabpanel" aria-labelledby="home-tab">
 				<ul class="items">
 					<?php 
-						$latest_posts = $this->cifire_web->latest_post(7);
+						$latest_posts = $this->CI->index_model->latest_post();
 						foreach ($latest_posts as $latest_post):
 					?>
 					<li class="list-item">
@@ -62,8 +62,8 @@
 									</h5>
 								<!-- meta -->
 								<ul class="entry-meta clearfix">
-									<li><i class="cificon licon-calendar"></i> <?=ci_date($latest_post['post_datepost'].$latest_post['post_timepost'], 'd M Y');?></li>
 									<li><i class="cificon licon-folder"></i> <a href="<?=site_url('category/'.$latest_post['category_seotitle']);?>"><?=$latest_post['category_title'];?></a></li>
+									<li><?=ci_timeago($latest_post['post_datepost'].$latest_post['post_timepost']);?></li>
 								</ul>
 								<!--/ meta -->
 								</div>
@@ -112,7 +112,7 @@
 							->get('t_post')
 							->num_rows();
 						
-						if ( is_null($row_scategory['id']) || $num_spost < 1 )
+						if ( is_null($row_scategory['id']) || $num_spost == 0 )
 							continue;
 				?>
 				<li class="nav-item">

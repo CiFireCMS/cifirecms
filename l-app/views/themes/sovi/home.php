@@ -8,18 +8,19 @@
 		<div class="carousel-inner">
 			<?php
 				$i = 0;
-				foreach ($this->CI->home_model->get_headline() as $res_headline):
+				$headlines = $this->CI->index_model->get_headline();
+				foreach ($headlines as $res_headline):
 					$i++;
-					$active = ($i==1?'active':'');
+					$active = ($i == 1 ? 'active' : '');
 			?>
 			<div class="carousel-item <?=$active;?>">
 				<a href="<?=post_url($res_headline['post_seotitle']);?>" class="img-href"><img src="<?=post_images($res_headline['picture'],'medium',TRUE)?>" class="d-block w-100" alt="<?=$res_headline['post_title']?>"></a>
 				
 				<div class="carousel-caption d-md-block">
 					<div class="tagcloud">
-						<a href="#" rel="tag" class="bg-red"><?=$res_headline['category_title']?></a> &nbsp;
+						<a href="#" rel="tag" class="bg-red"><?=$res_headline['category_title'];?></a> &nbsp;
 					</div>
-					<h5 class="clearfix mb-1"><?=$res_headline['post_title']?></h5>
+					<h5 class="clearfix mb-1"><?=$res_headline['post_title'];?></h5>
 					
 					<ul class="entry-meta clearfix mb-2">
 						<li><i class="cificon licon-calendar"></i> <?=ci_date($res_headline['datepost'], 'l, d F Y');?></li>
