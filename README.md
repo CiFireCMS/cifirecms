@@ -1,6 +1,5 @@
 # CiFireCMS - Gratis Rasa Premium
-CiFireCMS is a open source PHP web framework inspired by PopojiCMS and its use is almost like PopojiCMS.
-Created using the CodeIgniter3 framework with an interesting concept and easy to use by anyone.
+CiFireCMS is a open source PHP web framework inspired by PopojiCMS and its use is almost like PopojiCMS. Created using the CodeIgniter3 framework with an interesting concept and easy to use by anyone.
 
 
 ## Minimum System Requirements
@@ -19,7 +18,7 @@ Created using the CodeIgniter3 framework with an interesting concept and easy to
 ## PHP Extension
 ```
 +--------------+----------+
-|  Extension   |  Config  |
+|  Extension  |  Config  |
 +--------------+----------+
 |  pdo_mysql   |  ON      |
 |  pdo_sqlite  |  ON      |
@@ -128,10 +127,10 @@ define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'producti
 
 
 ## Official Links
-- Website        : https://www.alweak.com
-- GitHub         : https://github.com/CiFireCMS
-- Facebook       : https://web.facebook.com/cifirecms
-- Facebook group : https://web.facebook.com/groups/cifirecms/
+Website        : https://www.alweak.com
+GitHub         : https://github.com/CiFireCMS
+Facebook       : https://web.facebook.com/cifirecms
+Facebook group : https://web.facebook.com/groups/cifirecms/
 
 
 ## License
