@@ -119,8 +119,9 @@ class Profile extends Backend_Controller {
 					      $countMail != 1
 					    )
 					{
+						$in_pass = $this->input->post('input_password');
 						$data = array(
-							'password' => ( !empty($in_pass1) ? encrypt($this->input->post('input_password')) : $this->data['user_password'] ),
+							'password' => ( !empty($in_pass) ? encrypt($in_pass) : $this->data['user_password'] ),
 							'email'    => $email,
 							'name'     => xss_filter($this->input->post('name'), 'xss'),
 							'gender'   => xss_filter($this->input->post('gender'), 'xss'),
