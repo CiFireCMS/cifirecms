@@ -1,5 +1,5 @@
 # CiFireCMS - Gratis Rasa Premium
-CiFireCMS is a open source PHP web framework inspired by PopojiCMS and its use is almost like PopojiCMS. Created using the CodeIgniter3 framework with an interesting concept and easy to use by anyone.
+CiFireCMS is Indonesia's free open source CMS platform created using the CodeIgniter3 framework. With an attractive concept and easy to use by anyone.
 
 
 ## Minimum System Requirements
@@ -123,11 +123,10 @@ define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'producti
 - Easy Menu Manager sebagai pembuat plugin component Menu Manager.
 - responsivefilemanager sebagai pembuat plugin File Manager.
 - Jquery, Bootstrap dan semua plugins yang dipakai pada CiFireCMS.
-- DwiraSurvivor dan PopojiCMS untuk inspirasi, saran serta rekomendasi sehingga engine CiFireCMS bisa rilis.
+- DwiraSurvivor untuk inspirasi, saran serta rekomendasi sehingga engine CiFireCMS bisa rilis.
 
 
 ## Official Links
-Website        : https://www.alweak.com
 GitHub         : https://github.com/CiFireCMS
 Facebook       : https://web.facebook.com/cifirecms
 Facebook group : https://web.facebook.com/groups/cifirecms/
