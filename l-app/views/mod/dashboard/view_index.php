@@ -150,14 +150,8 @@
 <!-- apex-chart -->
 <script src="<?=content_url('plugins/apex-chart/apexcharts.min.js');?>"></script>
 <script>
-	<?php
-		$rrhari = implode($arrhari, ",");
-		$rrvisitors = implode(array_reverse($rvisitors), ",");
-		$rrhits = implode(array_reverse($rhits), ",");
-	?>
 	$(function () {
 		'use strict';
-
 		var options = {
 			chart: {
 				height: 315,
@@ -197,11 +191,11 @@
 			series: [
 				{
 					name: "<?=lang_line('hits');?>",
-					data: [<?php echo implode(array_reverse($rhits), ",");?>]
+					data: [<?php echo implode(",",array_reverse($rhits));?>]
 				},
 				{
 					name: "<?=lang_line('visitors');?>",
-					data: [<?php echo implode(array_reverse($rvisitors), ",");?>]
+					data: [<?php echo implode(",",array_reverse($rvisitors));?>]
 				}
 			],
 			grid: {
@@ -215,7 +209,7 @@
 				size: 4
 			},
 			xaxis: {
-				categories: [<?php echo implode($arrhari, ",");?>]
+				categories: [<?php echo implode(",",$arrhari);?>]
 			},
 			yaxis: {
 				title: {
@@ -244,14 +238,10 @@
 				},	
 			}
 		}
-
 		var chart = new ApexCharts(
 			document.querySelector("#DashboardVisitors"),
 			options
 		);
-
 		chart.render();
 	});
 </script>
-
-
