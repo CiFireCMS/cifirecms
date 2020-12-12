@@ -296,15 +296,10 @@ class Cifire_Menu {
 
 			$html = "\n$indent";
 
-			$getSmt = $this->CI->db->where('id', $parent)->get('t_menu')->row_array();
-			
-			if (!$getSmt) {
-        $submenu_title = '';
-			} else {
-			  $submenu_title = $getSmt['title'];
-			}
-			
-			
+			$submenu_title = $this->CI->db->where('id', $parent)->get('t_menu')->row_array();
+			$submenu_title = $submenu_title==NULL?"":$submenu_title['title'];
+
+
 			$html .= '<ul '.$attr.'>';
 
 			$i++;
@@ -365,6 +360,4 @@ class Cifire_Menu {
 	{
 		$this->vardata = array();
 	}
-} // End 
-
-
+} // End class
