@@ -233,8 +233,11 @@
 				<label for="comment">Comment <span class="text-danger">*</span></label>
 				<textarea name="comment" rows="3" class="form-control"></textarea>
 			</div>
+				
 			<div class=" text-right">
+				<?php if (get_setting('recaptcha')=="Y"): ?>
 				<div class="g-recaptcha pull-left" data-sitekey="<?=get_setting('recaptcha_site_key')?>" style="margin-bottom:9px;"></div>
+				<?php endif ?>
 				<button type="submit" tabindex="5" class="btn btn-primary btn-send pull-tight"><i class="cificon licon-send mr-1"></i><?=lang_line('button_send')?></button>
 			</div>
 

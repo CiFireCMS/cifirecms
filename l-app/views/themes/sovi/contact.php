@@ -54,7 +54,9 @@
 						<textarea name="message" class="form-control" rows="5"></textarea>
 					</div>
 					<div class="pull-left">
+					<?php if (get_setting('recaptcha')=="Y"): ?>
 						<div class="g-recaptcha pull-left" data-sitekey="<?=get_setting('recaptcha_site_key');?>" style="margin-bottom:5px;"></div>
+					<?php endif ?>
 					</div>
 					<div class="pull-right">
 						<button type="submit" class="btn btn-primary btn-send"><i class="cificon licon-send mr-1"></i> Send</button>
