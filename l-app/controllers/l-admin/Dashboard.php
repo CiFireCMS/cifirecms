@@ -24,7 +24,7 @@ class Dashboard extends Backend_Controller {
 	{
 		if (ENVIRONMENT == 'development')
 		{
-			$this->cifire_alert->set('ENV', 'default', lang_line('ui_environment_development_info').'<br/><small>CiFireCMS Version <a href="https://www.alweak.com/release" target="_blank" title="Build Version">'.$this->VERSION.'</a></small>',FALSE);
+			$this->cifire_alert->set('ENV', 'default', lang_line('ui_environment_development_info').'<br/><small>CiFireCMS Version <a href="#" target="_blank" title="Build Version">'.$this->VERSION.'</a></small>',FALSE);
 		}
 
 		$this->vars['h_post']       = $this->Model->card('post');
@@ -79,6 +79,10 @@ class Dashboard extends Backend_Controller {
 		$this->vars['rhits'] = array_combine(array_keys($arrhits), array_reverse(array_values($arrhits)));
 
 		
+		$this->vars['rrhari'] = implode(",",$this->vars['arrhari']);
+		$this->vars['rrvisitors'] = implode(",",array_reverse($this->vars['rvisitors']));
+		$this->vars['rrhits'] = implode(",",array_reverse($this->vars['rhits']));
+
 		$this->render_view('view_index');
 	}
 } // End Class.
