@@ -1,5 +1,5 @@
 # CiFireCMS - Gratis Rasa Premium
-CiFireCMS is Indonesia's free open source CMS platform created using the CodeIgniter3 framework. With an attractive concept and easy to use by anyone.
+CiFireCMS is a open source PHP web framework, using the CodeIgniter3 framework with an interesting concept and easy to use by anyone.
 
 
 ## Minimum System Requirements
@@ -18,7 +18,7 @@ CiFireCMS is Indonesia's free open source CMS platform created using the CodeIgn
 ## PHP Extension
 ```
 +--------------+----------+
-|  Extension  |  Config  |
+|  Extension   |  Config  |
 +--------------+----------+
 |  pdo_mysql   |  ON      |
 |  pdo_sqlite  |  ON      |
@@ -111,25 +111,10 @@ define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'producti
 * For first login, please enter the login data same as the installation process.
 
 
-## Thanks to
-- Tuhan Yang Maha Esa.
-- Semua rekan-rekan yang berkontribusi untuk CiFireCMS.
-- Codeigniter3 sebagai core engine CiFireCMS.
-- Cizthemes sebagai pembuat template frontend versi 1.0.0.
-- SemiColonWeb sebagai pembuat template frontend versi 1.1.0.
-- Kopyov sebagai pembuat template backend versi 1.1.0.
-- Colorlib sebagai pembuat template backend versi 1.2.0.
-- Creative-tim sebagai pembuat template dasbor member versi 1.0.0.
-- Easy Menu Manager sebagai pembuat plugin component Menu Manager.
-- responsivefilemanager sebagai pembuat plugin File Manager.
-- Jquery, Bootstrap dan semua plugins yang dipakai pada CiFireCMS.
-- DwiraSurvivor untuk inspirasi, saran serta rekomendasi sehingga engine CiFireCMS bisa rilis.
-
-
 ## Official Links
-GitHub         : https://github.com/CiFireCMS
-Facebook       : https://web.facebook.com/cifirecms
-Facebook group : https://web.facebook.com/groups/cifirecms/
+* GitHub         : https://github.com/CiFireCMS
+* Facebook       : https://web.facebook.com/cifirecms
+* Facebook group : https://web.facebook.com/groups/cifirecms/
 
 
 ## License

@@ -38,7 +38,6 @@ class Permissions extends Backend_Controller {
 				{
 					return $this->_delete_group();
 				}
-
 				elseif ($this->input->post('act') == 'dataTableGroups')
 				{
 					$data = array();
@@ -64,14 +63,12 @@ class Permissions extends Backend_Controller {
 
 					$this->json_output(['data' => $data, 'recordsFiltered' => $this->permissions_model->datatable('_data_groups', 'count')]);
 				}
-
 				else
 				{
 					$response = false;
 					$this->json_output($response);
 				}
 			}
-			
 			else
 			{
 				$this->render_view('list_group');
@@ -93,7 +90,7 @@ class Permissions extends Backend_Controller {
 			$pk  = xss_filter($pk,'xss');
 			$cek = $this->permissions_model->cek_pk($pk);
 
-			if ($cek==1)
+			if ($cek == 1)
 			{
 				$res_group = $this->permissions_model->get_group($pk);
 				$this->vars['res_group'] = $res_group;
@@ -101,7 +98,6 @@ class Permissions extends Backend_Controller {
 				$this->vars['keyGroup'] = $pk;
 				$this->render_view('view_group');
 			}
-
 			else
 			{
 				$this->render_404();
@@ -122,7 +118,7 @@ class Permissions extends Backend_Controller {
 		{
 			if ($this->input->is_ajax_request())
 			{
-				if ($this->input->post('act')=='add-group')
+				if ($this->input->post('act') == 'add-group')
 				{
 					$this->form_validation->set_rules(array(
 						array(
@@ -164,7 +160,6 @@ class Permissions extends Backend_Controller {
 
 				$this->json_output($response);
 			}
-
 			else
 			{
 				$this->render_view('add_group');
@@ -182,7 +177,7 @@ class Permissions extends Backend_Controller {
 		if ($this->role->i('read') && $this->role->i('write'))
 		{
 			$cek = $this->db->select('group')->where('group',$group)->get('t_user_group')->num_rows();
-			if ( $cek == 1 )
+			if ($cek == 1)
 			{
 				$this->form_validation->set_message('_cek_add_group', lang_line('form_validation_already_exists'));
 				return FALSE;
@@ -205,11 +200,11 @@ class Permissions extends Backend_Controller {
 		
 		if ($this->role->i('modify') && $pk!='root') 
 		{
-			if ($this->permissions_model->cek_pk($pk)==1)
+			if ($this->permissions_model->cek_pk($pk) == 1)
 			{
 				if ($this->input->is_ajax_request())
 				{
-					if ($this->input->post('act')=='edit-group')
+					if ($this->input->post('act') == 'edit-group')
 					{
 						$this->form_validation->set_rules(array(
 							array(
@@ -243,7 +238,6 @@ class Permissions extends Backend_Controller {
 							$response['alert']['content'] = validation_errors();
 						}
 					}
-
 					else
 					{
 						$response = false;
@@ -345,7 +339,6 @@ class Permissions extends Backend_Controller {
 					{
 						return $this->_delete_role();
 					}
-
 					elseif ($this->input->post('act')=='tableGroupRole')
 					{
 						$groupPk = $res_group['pk'];
@@ -464,13 +457,13 @@ class Permissions extends Backend_Controller {
 			$groupPk = xss_filter($groupPk,'xss');
 			$cekGroup = $this->permissions_model->cek_pk($groupPk);
 
-			if ( $cekGroup == 1)
+			if ( $cekGroup == 1 )
 			{
 				$res_group = $this->permissions_model->get_group($groupPk);
 
 				if ($this->input->is_ajax_request())
 				{
-					if ($this->input->post('act')=='add-group-role')
+					if ($this->input->post('act') == 'add-group-role')
 					{
 						$this->form_validation->set_rules(array(
 							array(
@@ -482,10 +475,11 @@ class Permissions extends Backend_Controller {
 
 						if ($this->form_validation->run())
 						{
-							$read_access = !empty($this->input->post('read_access')) ? 1:0;
-							$write_access = !empty($this->input->post('write_access')) ? 1:0;
+							$read_access   = !empty($this->input->post('read_access')) ? 1:0;
+							$write_access  = !empty($this->input->post('write_access')) ? 1:0;
 							$modify_access = !empty($this->input->post('modify_access')) ? 1:0;
 							$delete_access = !empty($this->input->post('delete_access')) ? 1:0;
+							
 							$data = array(
 								'group' => $res_group['group'],
 								'module' => seotitle($this->input->post('module')),
@@ -502,14 +496,14 @@ class Permissions extends Backend_Controller {
 								->get('t_roles')
 								->num_rows();
 
-							if ($cek==0 && $data['group']!='root')
+							if ($cek == 0 && $data['group'] != 'root')
 							{
 								$this->permissions_model->insert_role($data);
 								$response['success'] = true;
 								$response['url'] = admin_url($this->mod.'/role/'.$groupPk);
 								$this->json_output($response);
 							}
-							elseif ($data['group']=='root')
+							elseif ($data['group'] == 'root')
 							{
 								$response['success'] = false;
 								$response['alert']['type'] = 'error';
@@ -532,14 +526,12 @@ class Permissions extends Backend_Controller {
 							$this->json_output($response);
 						}
 					}
-
 					else
 					{
 						$response['success'] = false;
 						$this->json_output($response);
 					}
 				}
-
 				else
 				{
 					$this->vars['res_group'] = $res_group;
@@ -583,6 +575,7 @@ class Permissions extends Backend_Controller {
 						$write_access  = !empty($this->input->post('write_access')) ? 1:0;
 						$modify_access = !empty($this->input->post('modify_access')) ? 1:0;
 						$delete_access = !empty($this->input->post('delete_access')) ? 1:0;
+
 						$data = array(
 							'read_access'   => $read_access,
 							'write_access'  => $write_access,
@@ -603,13 +596,10 @@ class Permissions extends Backend_Controller {
 						$this->json_output($response);
 					}
 				}
-
 				else
 				{
-
 					$this->vars['res_role'] = $res_role;
 					$this->vars['res_group'] = $queryGroup;
-
 					$this->vars['read_access'] = ($res_role['read_access']==1?'checked':'');
 					$this->vars['write_access'] = ($res_role['write_access']==1?'checked':'');
 					$this->vars['modify_access'] = ($res_role['modify_access']==1?'checked':'');
@@ -643,7 +633,6 @@ class Permissions extends Backend_Controller {
 	}
 
 
-
 	public function add_list_role()
 	{
 		$this->meta_title(lang_line('_add_role'));
@@ -652,7 +641,7 @@ class Permissions extends Backend_Controller {
 		{
 			if ($this->input->is_ajax_request())
 			{
-				if ($this->input->post('act')=='add-role')
+				if ($this->input->post('act') == 'add-role')
 				{
 					$this->form_validation->set_rules(array(
 						array(
@@ -669,15 +658,16 @@ class Permissions extends Backend_Controller {
 
 					if ($this->form_validation->run())
 					{
-						$read_access = !empty($this->input->post('read_access')) ? 1:0;
-						$write_access = !empty($this->input->post('write_access')) ? 1:0;
+						$read_access   = !empty($this->input->post('read_access')) ? 1:0;
+						$write_access  = !empty($this->input->post('write_access')) ? 1:0;
 						$modify_access = !empty($this->input->post('modify_access')) ? 1:0;
 						$delete_access = !empty($this->input->post('delete_access')) ? 1:0;
+
 						$data = array(
-							'group' => seotitle($this->input->post('group')),
-							'module' => seotitle($this->input->post('module')),
-							'read_access' => $read_access,
-							'write_access' => $write_access,
+							'group'         => seotitle($this->input->post('group')),
+							'module'        => seotitle($this->input->post('module')),
+							'read_access'   => $read_access,
+							'write_access'  => $write_access,
 							'modify_access' => $modify_access,
 							'delete_access' => $delete_access
 						);
@@ -688,13 +678,13 @@ class Permissions extends Backend_Controller {
 							->get('t_roles')
 							->num_rows();
 
-						if ($cek==0 && $data['group'] != 'root')
+						if ($cek == 0 && $data['group'] != 'root')
 						{
 							$this->permissions_model->insert_role($data);
 							$response['success'] = true;
-							$response['url'] = admin_url($this->mod.'/list-roles');
+							$response['url'] = admin_url($this->mod.'/list-role');
 						}
-						elseif ($data['group']=='root')
+						elseif ($data['group'] == 'root')
 						{
 							$response['success'] = false;
 							$response['alert']['type'] = 'error';
@@ -747,7 +737,7 @@ class Permissions extends Backend_Controller {
 			{
 				if ($this->input->is_ajax_request())
 				{
-					if ($this->input->post('act')=='edit-role')
+					if ($this->input->post('act') == 'edit-role')
 					{
 						$data = array(
 							'read_access'   => !empty($this->input->post('read_access')) ? 1:0,
@@ -761,6 +751,7 @@ class Permissions extends Backend_Controller {
 						$response['success'] = true;
 						$response['alert']['type'] = 'success';
 						$response['alert']['content'] = lang_line('form_message_update_success');
+
 						$this->json_output($response);
 					}
 					else
@@ -799,7 +790,6 @@ class Permissions extends Backend_Controller {
 			foreach ($data as $pk)
 			{
 				$this->permissions_model->delete_role($pk);
-
 			}
 
 			$response['success'] = true;

@@ -15,7 +15,7 @@ $lang['_component_package'] = 'Component Package';
 $lang['_instructions'] = 'Instructions';
 
 $lang['_instruction_content'] = '
-		<li>Upload the .zip component package file which can be downloaded via <a href="https://www.alweak.com/" target="_blank" class="text-primary">CiFireCMS official website</a> or from a trusted developer.</li>
+		<li>Upload the .zip component package file which can be downloaded via <a href="#" target="_blank" class="text-primary">CiFireCMS official website</a> or from a trusted developer.</li>
 		<li>The system will automatically install the component files that you need.</li>
 		<li>If an error occurs, please repeat the steps from the beginning. If there are the same components, the system will not run the installation process.</li>
 		<li>A standard component package contains files : controllers, models, views, modjs, sql and configuration file for installation.</li>

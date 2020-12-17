@@ -28,7 +28,7 @@ Ekstensi PHP yang harus diperhatikan.
 ---                INSTALASI                  ---
 -------------------------------------------------
 
-1. Download source code CiFireCMS dari github atau dari situs resmi https://www.alweak.com
+1. Download source code CiFireCMS dari github https://github.com/CiFireCMS/cifirecms
 2. Extract file "cifirecms.zip" di directory web Anda. Pastikan file ".htaccess" ter-copy dengan baik.
 3. Buat database baru untuk menampung semua tabel konfigurasi CiFireCMS.
 4. Jalankan browser dan masuk ke alamat web anda.
@@ -74,32 +74,38 @@ RewriteRule ^(.*)$ index.php/$1 [L,QSA]
 Untuk menentukan web anda di akses dengan alamat "http://" atau "https://" silahkan ubah konfigurasi file ".htaccess" dan tambahkan kode berikut di bawah baris kode "RewriteEngine On".
 
 
-# Redirect HTTP to HTTPS - non-www to www.
+#- Redirect HTTP to HTTPS - non-www to www.
+
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
 RewriteRule ^ https://www.%1%{REQUEST_URI} [L,NE,R=301]
 
 
-# Redirect HTTP to HTTPS - www to non-www.
+- Redirect HTTP to HTTPS - www to non-www.
+
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
 RewriteRule ^ https://%1%{REQUEST_URI} [L,NE,R=301]
 
 
-# Redirect HTTPS to HTTP -  non-www to www.
+- Redirect HTTPS to HTTP -  non-www to www.
+
 RewriteCond %{HTTPS} on [OR]
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
 RewriteRule ^ http://www.%1%{REQUEST_URI} [L,NE,R=301]
 
 
-# Redirect HTTPS to HTTP -  www to non-www.
+- Redirect HTTPS to HTTP -  www to non-www.
+
 RewriteCond %{HTTPS} on [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
 RewriteRule ^ http://%1%{REQUEST_URI} [L,NE,R=301]
+
+
 
 
 
@@ -129,6 +135,8 @@ define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'producti
 
 
 
+
+
 -------------------------------------------------
 ---                   MAIL                    ---
 -------------------------------------------------
@@ -139,31 +147,56 @@ define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'producti
 
 
 -------------------------------------------------
----            Official Links                 ---
--------------------------------------------------
-## Official Links
-Website        : https://www.alweak.com
-GitHub         : https://github.com/CiFireCMS
-Facebook       : https://web.facebook.com/cifirecms
-Facebook group : https://web.facebook.com/groups/cifirecms/
-
-
-
--------------------------------------------------
----            Terima Kasih Kepada            ---
+---            Changelog CiFireCMS            ---
 -------------------------------------------------
 
-1. Tuhan Yang Maha Esa.
-2. Semua rekan-rekan yang berkontribusi untuk CiFireCMS.
-3. Codeigniter3 sebagai core engine CiFireCMS.
-4. Cizthemes sebagai pembuat template frontend versi 1.0.0.
-5. SemiColonWeb sebagai pembuat template frontend versi 1.1.0.
-6. Kopyov sebagai pembuat template backend.
-7. Creative-tim sebagai pembuat template dasbor member.
-8. Easy Menu Manager sebagai pembuat component menu manager.
-9. Jquery, Bootstrap dan semua plugins jquery yang dipakai pada CiFireCMS.
-10. DwiraSurvivor PopojiCMS untuk inspirasi, saran serta rekomendasi sehingga engine CiFireCMS bisa rilis.
+### Build Version 2.0.0 LTS Beta (7 January 2020) :
+- Perubahan nama direktori (l-app, l-content, l-system)
+- Pergantian sistem bahasa ke standar codeigniter.
+- Modifikasi CI System ``system/core/Lang.php`` line ``197``
+- Penghapusan fitur panel member.
+- Perubahan core controller backend menjadi Backend_Controller.
+- Perubahan setiap extends class component ke Backend_Controller.
+- Pergantian UI backend ke versi LTS (standard Bacend UI version 2.x).
+- Perubahan UI tema sovi menggunakan tema standar bootstrap.
+- Pembaharuan sistem templating pada frontend.
+- Penghapusan sistem user level diganti dengan user group.
+- Perubahan component Setting.
+- Penambahan component Permissions.
+- Pembaharuan sistem role permission.
+- Penambahan route permissions.
+- Pembaharuan sistem web route, bisa di ubah pada file index.php 
+- Penamaan helper dan libraries cifire.
+- Pembaharuan config filemanager disesuaikan dengan role permission.
+- Mengaktifkan fitur ``USE_ACCESS_KEYS`` pada plugin File Manager.
+- Pergantian controller Login manjadi Auth.
+- Penghapusan tabel database ``t_language``.
+- Penghapusan tabel database ``t_user_level``.
+- Penghapusan tabel database ``t_user_role``.
+- Penambahan tabel database ``t_user_group``.
+- Penambahan tabel database ``t_roles``.
+- Penambahan tabel database ``t_timezone``.
 
 
-## License
-CiFireCMS is licensed under the MIT License.
+### Build Version 1.1.0 (10 Oktober 2019) :
+- Upgrade core CI ke versi 3.1.11
+- Perubahan route error 404 ke controller Error_404.
+- Pergantian theme sovi.
+- Penambahan mod profile pada halaman administrator.
+- Penambahan website images pada setting picture.
+- Penambahan setingan ON/OFF visitors.
+- Penambahan setingan ON/OFF captcha.
+- Perbaikan engine dynamic menu.
+- Perbaikan engine pagination.
+- Perbaikan engine CompoGen.
+- Perbaikan keseluruhan code program pada halaman member. 
+- Perbaikan program pengiriman email register dan forgot password.
+- Minify script plugins.
+- Perubahan logic dinamic routes
+- Update submit setting slug.
+- Fixed other bugs.
+
+
+### Build Version 1.0.0 (1 Oktober 2019) :
+### Build Version 1.0.0-beta (9 Juli 2019) :
+### Build Version 1.0.0-alpha (8 Juni 2019) :

@@ -124,7 +124,7 @@ class Auth extends MY_Controller {
 						'read_access' => $this->role->access('filemanager','read_access'),
 						'write_access' => $this->role->access('filemanager','write_access'),
 						'modify_access' => $this->role->access('filemanager','modify_access'),
-						'delete_access' => $this->role->access('filemanager','delete_access')
+						'delete_access' => $this->role->access('filemanager','wdeleteaccess')
 					));
 					if ($this->role->access('filemanager','read_access')==true)
 					{

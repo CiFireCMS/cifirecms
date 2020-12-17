@@ -158,12 +158,13 @@ class Post extends Web_controller {
 	{
 		$data = $this->post_model->prev_post($id);
 
-		if ( $data == FALSE || $id == 0 )
+		if ( $data == FALSE )
 		{
 			$result = array(
 				'title' => '', 
 				'url'   => '#'
 			);
+			return $result;
 		}
 
 		else
@@ -172,9 +173,9 @@ class Post extends Web_controller {
 				'title' => $data['title'], 
 				'url'   => post_url($data['seotitle'])
 			);
+
+			return $result;
 		}
-		
-		return $result;
 	}
 
 
@@ -182,12 +183,13 @@ class Post extends Web_controller {
 	{
 		$data = $this->post_model->next_post($id);
 		
-		if ( $data == FALSE || $id == 0 )
+		if ( $data == FALSE )
 		{
 			$result = array(
 				'title' => '', 
 				'url'   => '#'
 			);
+			return $result;
 		}
 		else
 		{	
@@ -195,13 +197,8 @@ class Post extends Web_controller {
 				'title' => $data['title'], 
 				'url'   => post_url($data['seotitle'])
 			);
+			return $result;
 		}
-		
-		return $result;
 	}
 
 } // End class.
-				
-			
-				
-		

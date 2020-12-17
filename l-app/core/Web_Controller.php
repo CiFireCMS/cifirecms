@@ -31,20 +31,20 @@ class Web_Controller extends MY_Controller {
 
 	public function _layout($view='')
 	{
-		$this->load->view("$this->_theme_folder/$view", $this->vars);
+		$this->load->view($this->_theme_folder."/".$view, $this->vars);
 	}
 
 
 	public function render_view($view = '')
 	{
-		if (file_exists(VIEWPATH."$this->_theme_folder/$view.php"))
+		if (file_exists(VIEWPATH.$this->_theme_folder."/".$view.".php"))
 		{
 			$this->__content_view = $view;
-			$this->load->view("$this->_theme_folder/inc/template", $this->vars);
+			$this->load->view($this->_theme_folder."/inc/template", $this->vars);
 		} 
 		else
 		{
-			show_error("Unable to load the requested file: $this->_theme_folder/$view.php");
+			show_error("Unable to load the requested file: ".$this->_theme_folder."/".$view.".php");
 		}
 	}
 
@@ -53,7 +53,6 @@ class Web_Controller extends MY_Controller {
 	{
 		$this->meta_title('404 Page Not Found');
 		$this->meta_description('The page you requested was not found.');
-		
 		$this->render_view('404');
 	}
 

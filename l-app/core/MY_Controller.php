@@ -13,7 +13,7 @@ class MY_Controller extends CI_Controller {
 	public $meta_image;
 	public $CI;
 	public $CiFire;
-	public $VERSION = '2.0.0';
+	public $VERSION = '2.0.1';
 
 	public function __construct()
 	{

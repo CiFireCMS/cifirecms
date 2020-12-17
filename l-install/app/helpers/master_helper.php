@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-function build_version($ver = '2.0.0')
+function build_version($ver = '2.0.1')
 {
 	return $ver;
 }
@@ -124,6 +124,7 @@ $content = <<<EOS
   |
   | Install date      : {$date}
   | CiFireCMS Version : {$build_version}
+  | @link https://github.com/CiFireCMS/cifirecms
  */
 
 \$active_group  = 'default';
@@ -134,7 +135,6 @@ $content = <<<EOS
 \$_dbpass = '{$db_pass}';
 \$_dbname = '{$db_name}';
 \$_dbport = '{$db_port}';
-
 
 \$db['default'] = array(
 	'dsn'	   => "mysql:host=\$_dbhost;port=\$_dbport;dbname=\$_dbname;charset=utf8;",
@@ -760,7 +760,7 @@ $content = <<< EOS
  * @package	CiFireCMS
  * @author	Adiman
  * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://www.alweak.com
+ * @link	https://github.com/CiFireCMS/cifirecms
  * @since	Version {$build_version}
  * @filesource
 */

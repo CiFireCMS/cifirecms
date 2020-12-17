@@ -123,7 +123,7 @@
 
 	<section id="main" class="container main-content mt-5">
 		<div class="row">
-			<?php $this->CI->_layout($this->__content_view); ?>
+			<?php $this->CI->_layout($this->CI->__content_view); ?>
 		</div>
 	</section>
 

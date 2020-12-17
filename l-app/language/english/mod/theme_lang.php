@@ -31,7 +31,7 @@ $lang['theme_notfound'] = 'Theme not found';
 $lang['clear_temp_notice'] = 'Please clean fisrt temp dir';
 
 $lang['instruction_content'] = '
-		<li>Upload the .zip theme package file which can be downloaded via <a href="https://www.alweak.com/" target="_blank" class="text-primary">CiFireCMS official website</a> or from a trusted developer.</li>
+		<li>Upload the .zip theme package file which can be downloaded via <a href="#" target="_blank" class="text-primary">CiFireCMS official website</a> or from a trusted developer.</li>
 		<li>The system will automatically install the theme files that you need.</li>
 		<li>If an error occurred, please repeat the steps from the beginning. If there are the same theme, the system will not run the installation process.</li>
 		<li>A standard theme package contains files : views and theme assets.</li>';

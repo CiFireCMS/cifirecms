@@ -52,7 +52,7 @@ class Profile extends Backend_Controller {
 		{
 			if ($this->role->i('modify'))
 			{
-				$id = login_key('admin');
+				$id = decrypt(login_key('admin'));
 
 				$rules = array(
 					array(
@@ -63,7 +63,7 @@ class Profile extends Backend_Controller {
 					array(
 						'field' => 'email',
 						'label' => lang_line('_email'),
-						'rules' => 'required|trim|min_length[4]|max_length[80]|valid_email',
+						'rules' => 'required|trim|min_length[4]|max_length[80]|valid_email|callback__cek_email['.$id.']',
 					),
 					array(
 						'field' => 'input_password',
@@ -105,33 +105,17 @@ class Profile extends Backend_Controller {
 						->get('t_user');
 
 					$countMail = $cek_email->num_rows();
+					$currentMail = $cek_email->row_array()['email'];
 					
-					//$currentMail = $cek_email->row_array()['email'];
-					
-					$getCmail = $cek_email->row_array();
-					
-					if (!$getCmail) {
-					  $currentMail = "";
-					} else {
-					  $currentMail =$getCmail['email'];
-					}
-					
-					
-					$getEditEmail =  $this->db
+					$editMail =  $this->db
 						->select('email')
 						->where('id',$id)
 						->get('t_user')
 						->row_array();
-						
-					if (!$getEditEmail) {
-					  $editMail = "";
-					} else {
-					  $editMail = $getEditEmail['email'];
-					}
 
 					if ( 
 					      $countMail == 1 &&
-					      $currentMail == $editMail || 
+					      $currentMail == $editMail['email'] || 
 					      $countMail != 1
 					    )
 					{
@@ -156,7 +140,6 @@ class Profile extends Backend_Controller {
 							$response['alert']['content'] = lang_line('form_message_update_success');
 							$this->json_output($response);
 						}
-						
 						else
 						{
 							$new_photo = $this->profile_model->get_photo();
@@ -187,14 +170,13 @@ class Profile extends Backend_Controller {
 							}
 							else
 							{
-				       $response['success'] = false;
+								$response['success'] = false;
 								$response['alert']['type'] = 'error';
 								$response['alert']['content'] = $this->upload->display_errors();
 								$this->json_output($response);
 							}
 						}
 					}
-					
 					else
 					{
 						$response['success'] = false;
@@ -225,4 +207,23 @@ class Profile extends Backend_Controller {
 		}
 
 	}
+
+
+	public function _cek_email($email,$id) 
+	{
+		$cek = $this->profile_model->cek_email($id, $email);
+
+		if ($cek == FALSE) 
+		{
+			$this->form_validation->set_message('_cek_email', lang_line('form_validation_already_exists'));
+			return FALSE;
+		}
+		else 
+		{
+			return TRUE;
+		}
+	}
+
+
+
 } // End Calss

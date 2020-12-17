@@ -27,11 +27,12 @@ class Category extends Web_controller {
 			$config['base_url']     = site_url('category/'.$seotitle.'/');
 			$config['index_page']   = $page;
 			$config['total_rows']   = $this->category_model->total_category_post($result_category['id']);
+			
 			$this->cifire_pagination->initialize($config);
 			
-			$this->vars['page_link'] = $this->cifire_pagination->create_links();
+			$this->vars['page_link']       = $this->cifire_pagination->create_links();
 			$this->vars['result_category'] = $result_category;
-			$this->vars['category_post'] = $this->category_model->get_post($result_category['id'], $batas, $posisi);
+			$this->vars['category_post']   = $this->category_model->get_post($result_category['id'], $batas, $posisi);
 
 			if ( $this->vars['category_post'] ) 
 			{

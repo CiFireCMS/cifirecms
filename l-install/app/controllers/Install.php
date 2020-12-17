@@ -306,7 +306,7 @@ class Install extends CI_Controller {
 				$this->install_model->insert_setting(array(
 					'groups'  => 'config',
 					'options' => 'recaptcha',
-					'value'   => 'Y',
+					'value'   => 'N',
 					'type'    => 'select',
 					'content' => 'Y|N'
 				));

@@ -127,6 +127,7 @@ INSERT INTO `t_menu` (`id`, `parent_id`, `title`, `url`, `class`, `position`, `g
 (16, 0, 'Permissions', 'permissions', 'shield', 1, 1, 'Y'),
 (17, 0, 'MODULE', '#', 'header', 1, 1, 'Y'),
 (18, 0, 'Component', 'component', 'box', 1, 1, 'Y'),
+(19, 0, 'CoGen', 'cogen', 'coffee', 1, 1, 'Y'),
 (20, 0, 'APPERANCE', '#', 'header', 1, 1, 'Y'),
 (21, 0, 'Theme', 'theme', 'aperture', 1, 1, 'Y'),
 (22, 0, 'Menu Manager', 'menumanager/?', 'list', 1, 1, 'Y'),

@@ -1,7 +1,8 @@
 # Changelog CiFireCMS
 
-### Build Version 2.0.0 LTS Beta Final (16 February 2020) :
-- Perbaikan skrip
+### Build Version 2.0.1 LTS (16 December 2020) :
+- Penambahan component CoGen.
+- Perbaikan script.
 
 ### Build Version 2.0.0 LTS Beta (7 January 2020) :
 - Perubahan nama direktori (l-app, l-content, l-system)

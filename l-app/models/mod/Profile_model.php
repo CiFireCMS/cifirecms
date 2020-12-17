@@ -88,30 +88,18 @@ class Profile_model extends CI_Model {
 		return $result;
 	}
 
-	
-	public function cek_email($email)
+
+	public function cek_email($id, $email)
 	{
-		$query = $this->db->where("BINARY email = '$email'", NULL, FALSE);
-		$query = $this->db->get($this->_table);
-		$result = $query->num_rows();
-
-		if ( $result == 0 ) 
-			return TRUE;
-		else 
-			return FALSE;
-	}
-
-
-	public function cek_email2($id, $email)
-	{
-		$query = $this->db->select('id,email');
-		$query = $this->db->where("BINARY email = '$email'", NULL, FALSE);
-		$query = $this->db->get($this->_table);
+		$query = $this->db
+			->select('id')
+			->where("BINARY email = '$email'", NULL, FALSE)
+			->get($this->_table);
 
 		if (
 		    $query->num_rows() == 1 && 
 		    $query->row_array()['id'] == $id || 
-		    $query->num_rows() != 1
+		    $query->num_rows() == 0
 		   ) 
 		{
 			return TRUE;

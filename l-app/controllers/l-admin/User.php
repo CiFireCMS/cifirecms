@@ -40,7 +40,7 @@ class User extends Backend_Controller {
 
 						$row[] = $val['user_id'];
 
-						$row[] = '<div class="text-center"><a href="'.user_photo($val['user_photo']).'"><img src="'.user_photo($val['user_photo']).'" class="rounded-circle wd-30"></a></div>';
+						$row[] = '<div class="text-center"><a href="'.user_photo($val['user_photo']).'" class="fancybox"><img src="'.user_photo($val['user_photo']).'" class="rounded-circle wd-30"></a></div>';
 
 						$row[] = $val['user_username'];
 						$row[] = $val['user_name'];

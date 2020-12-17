@@ -32,17 +32,11 @@ $lang['button_upload'] = 'Upload';
 $lang['button_downoad'] = 'Download';
 $lang['button_install'] = 'Install';
 $lang['button_role'] = 'Role';
-
 $lang['button_block'] = 'Block';
 $lang['button_unblock'] = 'Unblock';
 $lang['button_ban'] = 'Banned';
-
 $lang['button_backup'] = 'Backup';
 $lang['button_reset'] = 'Reset';
-
-
-
 $lang['button_login'] = 'Sign In';
-
 $lang['button_text'] = 'Text';
 $lang['button_visual'] = 'Visual';

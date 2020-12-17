@@ -13,7 +13,6 @@ class Post_model extends CI_Model {
 	public function __construct()
 	{
 		parent::__construct();
-
 		$this->session_group = group_active('group');
 		$this->session_key = decrypt(login_key());
 	}
@@ -47,7 +46,6 @@ class Post_model extends CI_Model {
 
 		return $result;
 	}
-
 
 
 	private function _all_post()
@@ -102,7 +100,6 @@ class Post_model extends CI_Model {
 				{
 					$this->db->or_like($item, $search_key);
 				}
-
 				if ( count($this->_column_search)-1 == $i ) 
 				{
 					$this->db->group_end(); 
@@ -119,28 +116,39 @@ class Post_model extends CI_Model {
 		}
 		else
 		{
-			$this->db->order_by('t_post.id', 'DESC');
+			$this->db->order_by('t_post.id','DESC');
 		}
 		
 		$this->db->group_by('t_post.id');
 	}
 
 
-
 	public function ajax_tags($input = '')
 	{
 		$q = clean_tag($input);
-		$query = $this->db->like('title', $q)->order_by('title', 'ASC')->get('t_tag');
+		$query = $this->db
+			->select('title')
+			->like('title',$q)
+			->order_by('title','ASC')
+			->get('t_tag');
 		$query = $query->result_array();
-		return $query;
+		if (!$query)
+		{
+		  $result = [[ 'title' => $q ]];
+		}
+		else
+		{
+		  $result = $query;
+		}
+		return $result;
 	}
-
-
+	
+	
 	public function insert_post($data)
 	{
-		$this->db->insert($this->_table, $data);
+		$this->db->insert($this->_table,$data);
 	}
-
+	
 
 	public function insert_tag($data)
 	{
@@ -190,22 +198,22 @@ class Post_model extends CI_Model {
 	public function get_post($id_post)
 	{
 		$query = $this->db->select('*,
-		         t_post.id            AS post_id,
-		         t_post.title         AS post_title,
-		         t_post.seotitle      AS post_seotitle,
-		         t_post.content       AS post_content,
-		         t_post.headline      AS post_headline,
-		         t_post.active        AS post_active,
-		         t_post.tag           AS post_tag,
-		         t_post.picture       AS post_picture,
-		         t_post.image_caption AS image_caption,
-		         t_category.id        AS category_id,
-		         t_category.title     AS category_title,
-		         t_category.seotitle  AS category_seotitle,
-		         t_user.id            AS user_id,
-		         t_user.name          AS user_name,
-		         t_user.key_group     AS user_group
-		        ');
+				 t_post.id            AS post_id,
+				 t_post.title         AS post_title,
+				 t_post.seotitle      AS post_seotitle,
+				 t_post.content       AS post_content,
+				 t_post.headline      AS post_headline,
+				 t_post.active        AS post_active,
+				 t_post.tag           AS post_tag,
+				 t_post.picture       AS post_picture,
+				 t_post.image_caption AS image_caption,
+				 t_category.id        AS category_id,
+				 t_category.title     AS category_title,
+				 t_category.seotitle  AS category_seotitle,
+				 t_user.id            AS user_id,
+				 t_user.name          AS user_name,
+				 t_user.key_group     AS user_group
+				');
 		$query = $this->db->join('t_category', 't_category.id = t_post.id_category', 'left');
 		$query = $this->db->join('t_user', 't_user.id = t_post.id_user', 'left');
 		$query = $this->db->where('t_post.id', $id_post);
@@ -364,9 +372,9 @@ class Post_model extends CI_Model {
 	{
 		$cek = $this->db->where("BINARY seotitle = '$seotitle'", NULL, FALSE)->get($this->_table);
 		if (
-		    $cek->num_rows() == 1 && 
-		    $cek->row_array()['id'] == $id || 
-		    $cek->num_rows() != 1
+			$cek->num_rows() == 1 && 
+			$cek->row_array()['id'] == $id || 
+			$cek->num_rows() != 1
 		   ) 
 		{
 			return TRUE;

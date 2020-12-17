@@ -28,6 +28,7 @@ $(function() {
 		},
 		drawCallback: function(settings) {
 			var apiTable = this.api();
+			$('.fancybox').fancybox();
 			dataTableDrawCallback(apiTable);
 		}
 	});
