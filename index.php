@@ -2,7 +2,7 @@
 /**
  * MIT License
  * 
- * Copyright (c) 2019 - 2020 CiFireCMS
+ * Copyright (c) 2019 - 2021 CiFireCMS
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +23,9 @@
  * SOFTWARE.
  * 
  * @package	CiFireCMS
- * @author	Alweak
+ * @author	Adiman
  * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://www.alweak.com
+ * @link	https://github.com/CiFireCMS
 */
 
 define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
