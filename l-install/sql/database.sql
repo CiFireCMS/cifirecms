@@ -18,7 +18,7 @@ CREATE TABLE `t_category` (
   `title` varchar(255) NOT NULL,
   `seotitle` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `picture` text NOT NULL DEFAULT 'web.jpg',
+  `picture` text NOT NULL,
   `active` enum('Y','N') NOT NULL DEFAULT 'N',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -183,7 +183,7 @@ CREATE TABLE `t_pages` (
   `title` varchar(255) NOT NULL,
   `seotitle` varchar(255) NOT NULL,
   `content` text NOT NULL,
-  `picture` text NOT NULL DEFAULT 'noimage.jpg',
+  `picture` text NOT NULL,
   `active` enum('Y','N') NOT NULL DEFAULT 'N',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
