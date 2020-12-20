@@ -1820,7 +1820,7 @@ $content = <<< EOS
 				<div class="col-md-10">
 					<div class="input-group" style="max-width:400px;">
 						<div class="input-group-prepend">
-							<button type="button" id="browse-filemanager" href="<?=content_url('plugins/filemanager/dialog.php?type=1&relative_url=1&field_id=pictures&sort_by=date&descending=1');?>" class="btn btn-default">Browse</button>
+							<button type="button" id="browse-filemanager" href="<?=content_url('plugins/filemanager/dialog.php?type=1&relative_url=1&field_id=pictures&sort_by=date&descending=1&akey='.fmkey());?>" class="btn btn-default">Browse</button>
 						</div>
 						<input id="prv" type="text" {$value} class="form-control" placeholder="Choose file..." readonly />
 					</div>
