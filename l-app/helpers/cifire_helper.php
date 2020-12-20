@@ -998,6 +998,46 @@ if ( ! function_exists('decrypt'))
 }
 
 
+
+if ( ! function_exists('hashid_encode'))
+{
+	/**
+	 * - Fungsi untuk encrypt id.
+	 * 
+	 * @param 	int|string 	$val
+	 * @return 	int|string	
+	*/
+	function hashid_encode($val = '')
+	{
+		$CI =& get_instance();
+		$CI->load->library('Cifire_Hashids');
+		$result = $CI->cifire_hashids->encode($val);
+		return $result;
+	}
+}
+
+if ( ! function_exists('hashid_decode'))
+{
+	/**
+	 * - Fungsi untuk encrypt id.
+	 * 
+	 * @param 	int|string 	$val
+	 * @return 	int|string	
+	*/
+	function hashid_decode($val = '')
+	{
+		$CI =& get_instance();
+		$CI->load->library('Cifire_Hashids');
+		$result = $CI->cifire_hashids->decode($val);
+
+		if (count($result) > 0)
+			return $result[0];
+		else
+			return NULL;
+	}
+}
+
+
 if ( ! function_exists('fmkey'))
 {
 	/**
