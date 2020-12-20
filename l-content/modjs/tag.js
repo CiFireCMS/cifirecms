@@ -3,7 +3,7 @@ $(function() {
 
 	var _dTable = $('#DataTable').DataTable({
 		language: {
-			url: datatable_lang,
+			url: datatable_lang
 		},
 		autoWidth: false,
 		responsive: false,
@@ -23,10 +23,7 @@ $(function() {
 		],
 		ajax: {
 			type: 'POST',
-			delay: 500,
-			data: {
-				'csrf_name': csrfToken
-			}
+			data: csrfData
 		},
 		drawCallback: function(settings) {
 			var apiTable = this.api();

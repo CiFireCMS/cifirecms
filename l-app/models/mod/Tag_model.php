@@ -5,7 +5,7 @@ class Tag_model extends CI_Model {
 
 	private $_table = 't_tag';
 	private $_column_order = array(null, 'id', 'title', 'tag_count', null);
-	private $_column_search = array('t_tag.title');
+	private $_column_search = array('title');
 
 	public function __construct()
 	{
@@ -109,17 +109,16 @@ class Tag_model extends CI_Model {
 	}
 
 
-	public function delete($id)
+	public function delete($id = 0)
 	{
-		if ( $this->cek_id($id) > 0 ) 
+		if ($this->cek_id($id) == 1) 
 		{
-			$this->db->where('id', $id);
-			$this->db->delete($this->_table);
+			$this->db->where('id', $id)->delete($this->_table);
 			return TRUE;
 		}
 		else
 		{
-			return FALSE;	
+			return FALSE;
 		}
 	}
 
