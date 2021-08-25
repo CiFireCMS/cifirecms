@@ -1,15 +1,9 @@
 {
-    "name": "cifirecms/cifirecms",
     "description": "CiFireCMS Framework",
+    "name": "cifirecms/cifirecms",
     "type": "project",
-    "homepage": "https://www.cifirecms.org",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "adimancifi",
-            "email": "adiman@mail.here"
-        }
-    ],
+    "homepage": "https://www.cifirecms.org",
     "support": {
         "source": "https://github.com/adimancifi/adimancms"
     },
@@ -18,7 +12,7 @@
         "php": ">=5.6"
     },
     "suggest": {
-        "paragonie/random_compat": "Provides better randomness in PHP 7.x"
+        "paragonie/random_compat": "Provides better randomness in PHP 5.x"
     },
     "require-dev": {
        "mikey179/vfsstream": "1.1.*",
