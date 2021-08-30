@@ -1,1 +1,15 @@
+l-app/cache/*
+!l-app/cache/index.html
+
+l-app/logs/*
+!l-app/logs/index.html
+
+!l-app/*/.htaccess
+
 /vendor/
+/installer/
+composer.lock
+
+# PHPCS
+.php-cs-fixer.cache
+.env

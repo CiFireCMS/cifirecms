@@ -9,13 +9,17 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.6"
-    },
-    "suggest": {
-        "paragonie/random_compat": "Provides better randomness in PHP 5.x"
+        "php": ">=5.6",
+        "codeigniter/framework": "~3.1",
+        "vlucas/phpdotenv": "^4.1.8",
+        "afa28/installer": "dev-main"
     },
     "require-dev": {
-       "mikey179/vfsstream": "1.1.*",
-       "phpunit/phpunit": "4.* || 5.*"
+		"mikey179/vfsstream": "1.1.*",
+		"phpunit/phpunit": "4.* || 5.*",
+		"friendsofphp/php-cs-fixer": "^3.0"
+	},
+    "suggest": {
+        "paragonie/random_compat": "Provides better randomness in PHP 5.x"
     }
 }
