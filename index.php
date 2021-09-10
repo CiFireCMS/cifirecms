@@ -126,7 +126,7 @@ $system_path = 'vendor/codeigniter/framework/system';
  *
  * NO TRAILING SLASH!
 */
-$application_folder = file_exists('.env') ? 'l-app' : 'vendor/cifirecms/installer/app';
+$application_folder = file_exists('.env') ? 'app' : 'vendor/cifirecms/installer/app';
 
 /*
  *---------------------------------------------------------------
@@ -162,7 +162,7 @@ $web_folder = 'l-web';
  * CONTENT DIRECTORY NAME
  *---------------------------------------------------------------
 */
-$content_folder = 'l-content';
+$content_folder = 'content';
 
 /*
  * --------------------------------------------------------------------

@@ -5,19 +5,16 @@
     "license": "MIT",
     "homepage": "https://www.cifirecms.org",
     "support": {
-        "source": "https://github.com/adimancifi/adimancms"
+        "source": "https://github.com/CiFireCMS/cifirecms"
     },
     "minimum-stability": "dev",
     "require": {
         "cifirecms/installer": "dev-main",
         "codeigniter/framework": "~3.1",
-        "vlucas/phpdotenv": "^4.1.8",
-        "php": ">=5.6"
+        "vlucas/phpdotenv": "^4.1.8"
     },
     "require-dev": {
-		"mikey179/vfsstream": "1.1.*",
-		"phpunit/phpunit": "4.* || 5.*",
-		"friendsofphp/php-cs-fixer": "^3.0"
+		"mikey179/vfsstream": "1.1.*"
 	},
     "suggest": {
         "paragonie/random_compat": "Provides better randomness in PHP 5.x"
