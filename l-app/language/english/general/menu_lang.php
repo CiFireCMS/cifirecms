@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
 $lang['menu_dashboard']  = 'Dashboard';
 $lang['menu_view_web'] = 'View Website';
@@ -30,15 +30,3 @@ $lang['menu_apperance'] = 'Apperance';
 $lang['menu_theme'] = 'Theme';
 $lang['menu_menumanager'] = 'Menu Manager';
 $lang['menu_setting'] = 'Setting';
-
-
-
-
-
-
-
-
-
-
-
-
