@@ -1,9 +1,9 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 $route['default_controller']   = 'HomeIndex';
-$route['404_override']         = FALSE;
-$route['translate_uri_dashes'] = TRUE;
+$route['404_override']         = false;
+$route['translate_uri_dashes'] = true;
 
 // BACKEND.
 $route['login'] = FADMIN.'/auth';
@@ -42,7 +42,6 @@ $route['rss/([a-z0-9-]+)/([a-z0-9-]+)'] = FWEB.'/rss/index/$1/$2';
 $route['rss/([a-z0-9-]+)/([a-z0-9-]+)/([0-9]+)'] = FWEB.'/rss/index/$1/$2/$3';
 
 // dinamic slug routes.
-foreach(glob(APPPATH."/config/routes/*.php") as $routes_file)
-{
-	require_once $routes_file;
+foreach (glob(APPPATH."/config/routes/*.php") as $routes_file) {
+    require_once $routes_file;
 }

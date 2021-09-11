@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
 $lang['ui_dashboard'] = 'Dashboard';
 $lang['ui_content'] = 'Content';
