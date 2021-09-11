@@ -6,7 +6,7 @@ $route['404_override']         = FALSE;
 $route['translate_uri_dashes'] = TRUE;
 
 // BACKEND.
-$route[FADMIN] = FADMIN.'/auth';
+$route['login'] = FADMIN.'/auth';
 $route[FADMIN.'/login'] = FADMIN.'/auth';
 $route[FADMIN.'/auth-validation'] = FADMIN.'/auth/validation/user';
 $route[FADMIN.'/logout'] = FADMIN.'/auth/logout';
