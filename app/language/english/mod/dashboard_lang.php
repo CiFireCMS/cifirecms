@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
 $lang['mod_title'] = 'Dashboard';
 $lang['welcome_to_dashboard'] = 'Welcome to Dashboard';
@@ -25,4 +25,3 @@ $lang['hit'] = 'Hit';
 
 $lang['from'] = 'From';
 $lang['to'] = 'To';
-

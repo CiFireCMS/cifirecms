@@ -12,8 +12,7 @@
 		"php": ">=5.6",
         "cifirecms/installer": "dev-main",
         "codeigniter/framework": "~3.1",
-        "vlucas/phpdotenv": "^4.1.8",
-		"afa28/installer": "dev-main"
+        "vlucas/phpdotenv": "^4.1.8"
     },
     "require-dev": {
 		"mikey179/vfsstream": "1.1.*",
