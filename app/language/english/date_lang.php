@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['UM12']	= '(UTC -12:00) Baker/Howland Island';
 $lang['UM11']	= '(UTC -11:00) Niue';
@@ -55,26 +55,26 @@ $lang['timeago_seconds'] = 'seconds ago';
 $lang['timeago_second'] = 'second ago';
 
 $lang['month_name'] = array(
-    1  => 'January',
-    2  => 'February',
-    3  => 'March',
-    4  => 'April',
-    5  => 'May',
-    6  => 'June',
-    7  => 'July',
-    8  => 'August',
-    9  => 'September',
-    10 => 'October',
-    11 => 'November',
-    12 => 'December'
+	1  => 'January', 
+	2  => 'February', 
+	3  => 'March', 
+	4  => 'April', 
+	5  => 'May', 
+	6  => 'June', 
+	7  => 'July', 
+	8  => 'August', 
+	9  => 'September', 
+	10 => 'October', 
+	11 => 'November', 
+	12 => 'December'
 );
 
 $lang['day_name'] = array(
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
+	'Sunday',
+	'Monday',
+	'Tuesday',
+	'Wednesday',
+	'Thursday',
+	'Friday',
+	'Saturday'
 );

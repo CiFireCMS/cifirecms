@@ -44,7 +44,7 @@
 							</div>
 							<div class="theme-img-card mb-2">
 								<a class="fancybox" data-fancybox-group="gallery" title="<?=$res['title'];?>" href="<?=$src_imgs;?>">
-									<img src="<?=content_url('images/medium_noimage.jpg');?>" data-src="<?=$thumb;?>" class="lazy" style="width:100%;">
+									<img src="<?=site_url('images/medium_noimage.jpg');?>" data-src="<?=$thumb;?>" class="lazy" style="width:100%;">
 								</a>
 							</div>
 							<div><?=$res['title'];?></div>
@@ -77,7 +77,7 @@
 							<label><?=lang_line('_picture');?> <small class="text-danger">*</small></label>
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<a id="browse-files" href="<?=content_url('plugins/filemanager/dialog.php?type=1&relative_url=1&field_id=picture&sort_by=date&descending=1&akey='.fmkey());?>" class="btn btn-default"><?=lang_line('button_browse');?></a>
+									<a id="browse-files" href="<?=site_url('plugins/filemanager/dialog.php?type=1&relative_url=1&field_id=picture&sort_by=date&descending=1&akey='.fmkey());?>" class="btn btn-default"><?=lang_line('button_browse');?></a>
 								</div>
 								<input id="picture" type="text" name="picture" class="form-control" placeholder="<?=lang_line('button_choose_file');?>" readonly/>
 							</div>

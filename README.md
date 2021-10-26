@@ -98,7 +98,7 @@ RewriteRule ^ http://%1%{REQUEST_URI} [L,NE,R=301]
 ```
 
 ### Environment
-Jika web sudah siap di online-kan silahkan ubah kode pada ``.env`` cari code ``CI_ENV=development`` edit menjadi ``CI_ENV=production``
+Jika web sudah siap di online-kan silahkan ubah kode pada ``.env`` cari code ``CI_ENV=development`` edit menadi ``CI_ENV=production``
 
 ## Backend
 

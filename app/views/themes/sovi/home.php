@@ -147,10 +147,12 @@
 										<h5>
 											<a href="<?=post_url($res_post2b['post_seotitle']);?>" title="<?=$res_post2b['post_title'];?>"><?=$res_post2b['post_title'];?></a>
 										</h5>
+										<!-- meta -->
 										<ul class="entry-meta clearfix">
 											<li><i class="cificon licon-calendar"></i> <?=ci_date($res_post2b['datepost'].$res_post2b['timepost'], 'l, d F Y');?></li>
 											<li><i class="cificon licon-folder"></i> <a href="<?=site_url('category/'.$res_post2b['category_seotitle']);?>"><?=$res_post2b['category_title'];?></a></li>
 										</ul>
+										<!--/ meta -->
 									</div>
 								</div>
 							</div>

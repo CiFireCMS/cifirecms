@@ -77,7 +77,7 @@
 						<label><?=lang_line('_picture');?></label>
 						<img id="imgprv" class="img-thumbnail" src="<?=post_images('', '', TRUE);?>" style="width:100%;">
 						<div class="btn-group mt-2">
-							<a id="filemanager" href="<?=content_url('plugins/filemanager/dialog.php?type=1&relative_url=1&field_id=picture&sort_by=date&descending=1&akey='.fmkey());?>" class="btn btn-xs btn-white"><i class="cificon licon-folder-plus"></i> <?=lang_line('button_browse');?></a>
+							<a id="filemanager" href="<?=site_url('plugins/filemanager/dialog.php?type=1&relative_url=1&field_id=picture&sort_by=date&descending=1&akey='.fmkey());?>" class="btn btn-xs btn-white"><i class="cificon licon-folder-plus"></i> <?=lang_line('button_browse');?></a>
 							<button type="button" id="delpict" class="btn btn-xs btn-white"><i class="cificon licon-trash-2"></i> <?=lang_line('button_delete');?></button>
 						</div>
 						<input id="picture" type="hidden" name="picture"/>

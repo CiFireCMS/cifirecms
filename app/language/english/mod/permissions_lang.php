@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['mod_title'] = 'Permissions';
 
@@ -28,3 +28,8 @@ $lang['_delete_access'] = 'Delete Access';
 
 $lang['_root_cannot_be_changed'] = 'Root cannot be changed';
 $lang['_role_is_exist'] = 'Role is exist';
+
+
+
+
+

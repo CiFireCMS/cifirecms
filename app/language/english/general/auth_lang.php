@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['signin_title'] = 'Sign In to Administrator';
 $lang['signin_welcome'] = 'Welcome back! Please sign in to continue.';

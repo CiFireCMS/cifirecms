@@ -12,11 +12,11 @@
 
 	<link rel="icon" href="<?=favicon();?>" type="image/x-icon"/>
 	
-	<link rel="stylesheet" href="<?=content_url('plugins/icomoon/styles.css');?>" type="text/css"/>
-	<link rel="stylesheet" href="<?=content_url('plugins/font-awesome/font-awesome.min.css');?>" type="text/css"/>
-	<link rel="stylesheet" href="<?=content_url('plugins/cifireicon-feather/cifireicon-feather.min.css');?>" type="text/css"/>
-	<link rel="stylesheet" href="<?=content_url('plugins/bootstrap/css/bootstrap.min.css');?>" type="text/css"/>
-	<link rel="stylesheet" href="<?=content_url('themes/backend/css/style.css');?>" type="text/css"/>
+	<link rel="stylesheet" href="<?=site_url('plugins/icomoon/styles.css');?>" type="text/css"/>
+	<link rel="stylesheet" href="<?=site_url('plugins/font-awesome/font-awesome.min.css');?>" type="text/css"/>
+	<link rel="stylesheet" href="<?=site_url('plugins/cifireicon-feather/cifireicon-feather.min.css');?>" type="text/css"/>
+	<link rel="stylesheet" href="<?=site_url('plugins/bootstrap/css/bootstrap.min.css');?>" type="text/css"/>
+	<link rel="stylesheet" href="<?=site_url('themes/backend/css/style.css');?>" type="text/css"/>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn"t work if you view the page via file:// -->
@@ -33,6 +33,6 @@
 	    var csrfToken = '<?=$this->security->get_csrf_hash();?>';
 	</script>
 
-	<script src="<?=content_url('plugins/jquery/jquery.min.js');?>"></script>
+	<script src="<?=site_url('plugins/jquery/jquery.min.js');?>"></script>
 </head>
 <body id="auth">

@@ -146,7 +146,7 @@
 			</div>
 			<div id="loading">
 				<div id="loading-in">
-					<img src="<?=content_url('images/menu/ajax-loader.gif')?>"/>
+					<img src="<?=site_url('images/menu/ajax-loader.gif')?>"/>
 				</div>
 			</div>
 		</div>

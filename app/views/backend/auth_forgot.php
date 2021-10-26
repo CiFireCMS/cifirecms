@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 <div class="auth-container mg-t-50">
 	<div class="text-center mg-b-30">
-		<img class="img-fluid wd-50 rounded-circle mg-b-20" src="<?=content_url('images/logo.png');?>" alt="Logo">
+		<img class="img-fluid wd-50 rounded-circle mg-b-20" src="<?=site_url('images/logo.png');?>" alt="Logo">
 		<h4 class="mg-b-10 tx-semiboldX"><?=lang_line('forgot_title');?></h4>
 		<p><?=lang_line('forgot_content');?></p>
 	</div>

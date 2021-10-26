@@ -145,7 +145,7 @@
 
 <?php if (get_setting('web_analytics') == 'Y'): ?>
 <!-- apex-chart -->
-<script src="<?=content_url('plugins/apex-chart/apexcharts.min.js');?>"></script>
+<script src="<?=site_url('plugins/apex-chart/apexcharts.min.js');?>"></script>
 <script>
 	$(function () {
 		'use strict';

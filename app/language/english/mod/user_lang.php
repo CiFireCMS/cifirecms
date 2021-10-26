@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['mod_title'] = 'User';
 $lang['mod_title_all'] = 'All User';
@@ -21,3 +21,4 @@ $lang['_about'] = 'About';
 $lang['_address'] = 'Adderess';
 $lang['_photo'] = 'Photo';
 $lang['_pass_placholder'] = 'If password don\'t change, just leave this field';
+

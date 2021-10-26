@@ -1,2 +1,0 @@
-# installer
-CiFireCMS installer

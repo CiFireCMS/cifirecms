@@ -66,7 +66,7 @@
 						<?php endif ?>
 						<br>
 					<?php endif ?>
-					<link rel="stylesheet" href="<?php echo content_url('plugins/prism/prism.css');?>" type="text/css"/>
+					<link rel="stylesheet" href="<?=site_url('plugins/prism/prism.css');?>" type="text/css"/>
 					<div class="preview-content"><?=html_entity_decode($res['content']);?></div>	
 				</div>
 			</div>

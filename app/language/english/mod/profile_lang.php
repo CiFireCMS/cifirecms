@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['mod_title'] = 'Profile';
 $lang['mod_title_edit'] = 'Edit Profile';
@@ -28,3 +28,5 @@ $lang['_account'] = 'Account';
 $lang['_personal'] = 'Personal';
 
 $lang['_mail_exist'] = 'Email address is exist';
+
+

@@ -30,7 +30,7 @@
 			<div class="row">
 				<?php
 					foreach ( $all_themes as $res ):
-						$img_preview = ( file_exists(CONTENTPATH.'/themes/'.$res['folder'].'/preview.jpg') ? content_url('themes/'.$res['folder'].'/preview.jpg') : content_url('images/noimage.jpg') );
+						$img_preview = ( file_exists(PUBLICPATH.'/themes/'.$res['folder'].'/preview.jpg') ? site_url('themes/'.$res['folder'].'/preview.jpg') : site_url('images/noimage.jpg') );
 				?>
 				<div id="theme-item-<?=$res['id'];?>" class="col-lg-3">
 					<div class="card">

@@ -70,7 +70,7 @@
 						<label><?=lang_line('_picture');?></label>
 						<div class="input-group" style="max-width:405px;">
 							<div class="input-group-prepend">
-								<div href="<?=content_url('plugins/filemanager/dialog.php?type=1&relative_url=1&field_id=picture&sort_by=date&descending=1&akey='.fmkey());?>" class="btn btn-default browse-files"><?=lang_line('button_browse');?></div>
+								<div href="<?=site_url('plugins/filemanager/dialog.php?type=1&relative_url=1&field_id=picture&sort_by=date&descending=1&akey='.fmkey());?>" class="btn btn-default browse-files"><?=lang_line('button_browse');?></div>
 							</div>
 							<input id="picture" type="text" name="picture" value="<?=$res_category['picture'];?>" class="form-control" placeholder="Choose file..." readonly />
 						</div>
