@@ -34,7 +34,6 @@ CiFireCMS adalah platform CMS open source gratis Indonesia dibuat menggunakan fr
 - ``composer create-project cifirecms/cifirecms cifirecms-project``
 
 
-
 ## Permission
 Ubah user permission folder-folder berikut menjadi ``775``.
 ```
@@ -74,6 +73,7 @@ RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
 RewriteRule ^ https://%1%{REQUEST_URI} [L,NE,R=301]
 ```
 
+
 #### Redirect HTTPS to HTTP
 ```
 # non-www to www.
@@ -92,8 +92,8 @@ RewriteRule ^ http://%1%{REQUEST_URI} [L,NE,R=301]
 ### Environment
 Jika web sudah siap di online-kan silahkan ubah kode pada ``.env`` cari code ``CI_ENV=development`` edit menadi ``CI_ENV=production``
 
-## Backend
 
+## Backend
 * Untuk mengakses halaman administrator kunjungi link ``http://your-web-domain/l-admin``
 * Masukan Username dan Password seperti pada awal instalasi.
 
