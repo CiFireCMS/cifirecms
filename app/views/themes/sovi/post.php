@@ -138,9 +138,10 @@
 							->where('id', $comment['id_user'])
 							->get('t_user')
 							->row_array();
+						$usersa_photo = (!empty($usersa['photo']) ? $usersa['photo'] : '');
 				?>
 				<div class="media mt-2">
-					<img src="<?=user_photo($usersa['photo']);?>" class="mr-3" width="45">
+					<img src="<?=user_photo($usersa_photo);?>" class="mr-3" width="45">
 					<div class="media-body">
 						<h5 class="comment-name mt-0">
 							<?=$comment['name'];?> 
@@ -168,16 +169,17 @@
 									->get('t_comment');
 
 								foreach ($child_comments->result_array() as $res_child):
-									$users_rep = $this->CI->db
+									$ruser = $this->CI->db
 										->select('id,photo')
 										->where('id', $res_child['id_user'])
 										->where('active', 'Y')
 										->get('t_user')
 										->row_array();
+									$ruser_photo = (!empty($ruser['photo']) ? $ruser['photo'] : '');
 						?>
 						
 						<div class="media mt-4 mb-5">
-							<img src="<?=user_photo($users_rep['photo']);?>" class="mr-3" width="45">
+							<img src="<?=user_photo($ruser);?>" class="mr-3" width="45">
 							<div class="media-body">
 								<h5 class="comment-name mt-0">
 									<?=$res_child['name'];?> 
