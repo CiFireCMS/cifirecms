@@ -114,8 +114,12 @@ class Category_model extends CI_Model {
 		if ($id > 1 && $this->cek_id($id) == 1) 
 		{
 			$this->db->where('id', $id)->delete($this->_table);
+			
 			$scp = $this->db->where('id_parent', $id)->get($this->_table)->row_array();
-			$this->db->where('id_parent', $scp['id_parent'])->update($this->_table, array('id_parent'=>'0'));
+			if ($scp) 
+			{
+				$this->db->where('id_parent', $scp['id_parent'])->update($this->_table, array('id_parent'=>'0'));
+			}
 
 			return TRUE;
 		}
