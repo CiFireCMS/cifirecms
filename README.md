@@ -30,14 +30,6 @@ CiFireCMS adalah platform CMS open source gratis Indonesia dibuat menggunakan fr
 ```
 
 
-## Install
-- Download source code CiFireCMS dari github ``https://github.com/CiFireCMS/cifirecms``.
-- Extract file ``cifirecms.zip`` di directory web Anda. Pastikan file ``.htaccess`` ter-copy dengan baik.
-- Buat database baru dan atur Collation menjadi ``utf8_general_ci``.
-- Jalankan browser dan masuk ke alamat web anda. Jika tidak ada kesalahan, anda akan langsung di arahkan ke halaman instalasi.
-- Ikuti dengan benar prosedur dan langkah-langkah instalasi sampai selesai.
-- CiFireCMS siap digunakan.
-
 ## Install via composer
 - ``composer create-prject cifirecms/cifirecms cifirecms-project``
 
@@ -47,7 +39,7 @@ CiFireCMS adalah platform CMS open source gratis Indonesia dibuat menggunakan fr
 Ubah user permission folder-folder berikut menjadi ``775``.
 ```
 cifirecms
-├── l-content
+├── public
 │   ├── temp    --> 775
 │   ├── thumbs  --> 775
 └── └── uploads --> 775
