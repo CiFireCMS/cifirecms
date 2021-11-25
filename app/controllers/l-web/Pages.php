@@ -15,7 +15,7 @@ class Pages extends Web_controller {
 		$seotitle = xss_filter($get_seotitle ,'xss');
 		$cek_seotitle = $this->pages_model->check_seotitle($seotitle);
 
-		if ( !empty($get_seotitle) && $cek_seotitle == TRUE ) 
+		if ( !empty($get_seotitle) && $cek_seotitle == true ) 
 		{
 			$data = $this->pages_model->get_data($seotitle);
 			$this->vars['result_pages'] = $data;

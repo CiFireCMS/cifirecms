@@ -22,6 +22,7 @@ $route[FADMIN.'/permissions/edit-role/([0-9]+)'] = FADMIN.'/permissions/edit_lis
 $route[FADMIN.'/post-video'] = FADMIN.'/post-video';
 
 
+
 // WEB.
 $route['maintenance'] = 'maintenance';
 $route['home'] = FWEB.'/home/index';

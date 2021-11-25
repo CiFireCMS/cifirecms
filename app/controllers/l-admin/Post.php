@@ -162,7 +162,7 @@ class Post extends Backend_Controller {
 
 							$this->load->model('mod/tag_model'); // Load tag_model
 							
-							if ( $this->tag_model->cek_seotitle($tag_seotitle) == TRUE )
+							if ( $this->tag_model->cek_seotitle($tag_seotitle) == true )
 							{
 								$getLastRowTag = $this->db->select('id')->order_by('id','DESC')->limit(1)->get('t_tag')->row_array();
 								$lastIdTag = empty($getLastRowTag) ? 0 : $getLastRowTag['id'];
@@ -191,7 +191,7 @@ class Post extends Backend_Controller {
 					$data_post = array(
 						'id'            => $CID,
 						'title'         => xss_filter($this->input->post('title')),
-						'seotitle'      => seotitle($this->input->post('seotitle', TRUE)),
+						'seotitle'      => seotitle($this->input->post('seotitle', true)),
 						'content'       => xss_filter($this->input->post('content')),
 						'id_category'   => xss_filter(decrypt($this->input->post('category')),'sql'),
 						'tag'           => $tags,
@@ -298,7 +298,7 @@ class Post extends Backend_Controller {
 
 								$this->load->model('mod/tag_model'); // Load tag_model
 								
-								if ( $this->tag_model->cek_seotitle($tag_seotitle) == TRUE )
+								if ( $this->tag_model->cek_seotitle($tag_seotitle) == true )
 								{
 									$this->tag_model->insert(array(
 										'title' => $tag_title,
@@ -322,8 +322,8 @@ class Post extends Backend_Controller {
 						if ( group_active() == 'root' || group_active() == 'admin' )
 						{
 							$data = array(
-								'title'        => xss_filter($this->input->post('title', TRUE)),
-								'seotitle'     => seotitle($this->input->post('seotitle', TRUE)),
+								'title'        => xss_filter($this->input->post('title', true)),
+								'seotitle'     => seotitle($this->input->post('seotitle', true)),
 								'content'      => xss_filter($this->input->post('content')),
 								'id_category'  => $id_category,
 								'tag'          => $tags,
@@ -519,7 +519,7 @@ class Post extends Backend_Controller {
 	{
 		$cek = $this->post_model->cek_seotitle(seotitle($seotitle));
 
-		if ( $cek === FALSE ) 
+		if ( $cek === false ) 
 		{
 			$this->form_validation->set_message('_cek_add_seotitle', lang_line('form_validation_already_exists'));
 		}
@@ -533,7 +533,7 @@ class Post extends Backend_Controller {
 		$id_post = ($this->input->get('id') ? decrypt($this->input->get('id')) : 0);
 		$cek = $this->post_model->cek_seotitle2($id_post, seotitle($seotitle));
 		
-		if ( $cek === FALSE ) 
+		if ( $cek === false ) 
 		{
 			$this->form_validation->set_message('_cek_edit_seotitle', lang_line('form_validation_already_exists'));
 		} 

@@ -76,7 +76,7 @@ class Tag extends Backend_Controller {
 					{
 						$title = clean_tag($key);
 						$seotitle = seotitle($key,'');
-						if ( !empty($title) && $this->tag_model->cek_seotitle($seotitle) == TRUE )
+						if ( !empty($title) && $this->tag_model->cek_seotitle($seotitle) == true )
 						{
 							$getLastRow = $this->db->select('id')->order_by('id','DESC')->limit(1)->get('t_tag')->row_array();
 							$lastId = empty($getLastRow) ? 0 : $getLastRow['id'];

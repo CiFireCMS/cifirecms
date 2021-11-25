@@ -167,10 +167,10 @@ class Pages extends Backend_Controller {
 		if ( $cek >= 1 )
 		{
 			$this->form_validation->set_message('_cek_add_seotitle', lang_line('form_validation_already_exists'));
-			return FALSE;
+			return false;
 		}
 		else
-			return TRUE;
+			return ture;
 	}
 
 
@@ -269,13 +269,15 @@ class Pages extends Backend_Controller {
 		$id = ($this->input->get('id') ? decrypt($this->input->get('id')) : 0);
 		$cek = $this->pages_model->cek_seotitle2($id, $seotitle);
 		
-		if ( $cek == FALSE ) 
+		if ( $cek == false ) 
 		{
 			$this->form_validation->set_message('_cek_edit_seotitle', lang_line('form_validation_already_exists'));
-			return FALSE;
+			return false;
 		} 
-		else
-			return TRUE;
+		else 
+		{
+			return true;
+		}
 	}
 
 

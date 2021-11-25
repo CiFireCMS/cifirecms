@@ -169,7 +169,7 @@ class Theme extends Backend_Controller {
 				$theme_folder = seotitle($theme_title)."-".md5(date('YmdHis'));
 				$cek_theme_folder = $this->theme_model->cek_theme_folder($theme_folder);
 
-				if ( $cek_theme_folder == FALSE )
+				if ( $cek_theme_folder == false )
 				{
 					echo "Oups..! Themes is exist.";
 				}
@@ -296,7 +296,7 @@ class Theme extends Backend_Controller {
 						'allowed_types' => "zip",
 						'file_name'     => $zip_name,
 						'max_size'      => 1024 * 20, // 20Mb
-						'overwrite'     => FALSE
+						'overwrite'     => false
 					));
 
 					if ( $this->upload->do_upload('fupload') )
@@ -356,7 +356,7 @@ class Theme extends Backend_Controller {
 		    $this->role->i('delete')
 		    )
 		{
-			$id = $this->input->get('id',true);
+			$id = $this->input->get('id', true);
 			$idTheme = xss_filter(decrypt($id), 'sql');
 			$query = $this->db->where('id', $idTheme)->get('t_theme');
 			
@@ -394,8 +394,8 @@ class Theme extends Backend_Controller {
 			copy_folder($path_views, $dir_temp.'/views');
 			copy_folder($path_assets, $dir_temp.'/assets');
 
-			$this->zip->read_dir($dir_temp.'/views', FALSE);
-			$this->zip->read_dir($dir_temp.'/assets', FALSE);
+			$this->zip->read_dir($dir_temp.'/views', false);
+			$this->zip->read_dir($dir_temp.'/assets', false);
 			$this->zip->compression_level = 2;
 			$this->zip->archive(PUBLICPATH.'temp/'.$zip_name);
 			$this->zip->clear_data();
@@ -429,7 +429,7 @@ class Theme extends Backend_Controller {
 			$file = xss_filter(urldecode(decrypt($getFilez)),'xss');
 			if (!empty($file) && $file == $this->CI->session->flashdata('filez'))
 			{
-				force_download(PUBLICPATH."uploads/$file", NULL);
+				force_download(PUBLICPATH."uploads/$file", null);
 			}
 			else
 			{

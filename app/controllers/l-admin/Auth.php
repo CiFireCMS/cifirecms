@@ -21,7 +21,7 @@ class Auth extends MY_Controller {
 	{
 		$this->meta_title(lang_line('signin_title'));
 
-		if ( login_status() == TRUE )
+		if ( login_status() == true )
 		{
 			redirect(admin_url('dashboard'),'location',302);
 		}
@@ -74,7 +74,7 @@ class Auth extends MY_Controller {
 	}
 
 
-	private function _submit_login($name = NULL, $value = NULL)
+	private function _submit_login($name = null, $value = null)
 	{
 		foreach ($this->input->post() as $key => $val)
 		{
@@ -112,11 +112,11 @@ class Auth extends MY_Controller {
 
 				$cek_data_input = $this->auth_model->cek_login($data_input);
 
-				if ( $cek_data_input == TRUE )
+				if ( $cek_data_input == true )
 				{
 					$get_user = $this->auth_model->get_user($data_input);
 
-					$this->session->set_userdata('_CiFireLogin', TRUE);
+					$this->session->set_userdata('_CiFireLogin', true);
 					$this->session->set_userdata('key_id', encrypt($get_user['id']));
 					$this->session->set_userdata('key_group', encrypt($get_user['key_group']));
 					$this->session->set_userdata('filemanager_access', array(
@@ -162,11 +162,11 @@ class Auth extends MY_Controller {
 		if ($cek_username == '0') 
 		{
 			$this->form_validation->set_message('_cek_username', '{field} error.');
-			return FALSE;
+			return false;
 		}
 		if ($cek_username == '1')
 		{
-			return TRUE;
+			return true;
 		}
 	}
 
@@ -175,7 +175,7 @@ class Auth extends MY_Controller {
 	{
 		$this->meta_title(lang_line('forgot_title'));
 
-		if ( login_status() == TRUE )
+		if ( login_status() == true )
 		{
 			redirect(admin_url('dashboard'),'location',302);
 		}
@@ -193,10 +193,10 @@ class Auth extends MY_Controller {
 
 				if ( $this->form_validation->run() )
 				{
-					$user_email = $this->input->post('email', TRUE);
+					$user_email = $this->input->post('email', true);
 					$query = $this->db
 						->select('name,email,password')
-						->where("BINARY email='$user_email'", NULL, FALSE)
+						->where("BINARY email='$user_email'", null, false)
 						->where('active', 'Y')
 						->get('t_user');
 

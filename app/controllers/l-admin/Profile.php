@@ -96,11 +96,11 @@ class Profile extends Backend_Controller {
 
 				if ( $this->form_validation->run() ) 
 				{
-					$email = xss_filter($this->input->post('email', TRUE), 'xss');
+					$email = xss_filter($this->input->post('email', true), 'xss');
 
 					$cek_email = $this->db
 						->select('email')
-						->where("BINARY email='$email'", NULL, FALSE)
+						->where("BINARY email='$email'", null, false)
 						->where('email')
 						->get('t_user');
 
@@ -149,7 +149,7 @@ class Profile extends Backend_Controller {
 								'allowed_types' => "jpg|png|jpeg",
 								'file_name'     => $new_photo,
 								'max_size'      => 1024 * 10,
-								'overwrite'     => TRUE
+								'overwrite'     => true
 							));
 
 							if ($this->upload->do_upload('fupload')) 
@@ -213,14 +213,14 @@ class Profile extends Backend_Controller {
 	{
 		$cek = $this->profile_model->cek_email($id, $email);
 
-		if ($cek == FALSE) 
+		if ($cek == false) 
 		{
 			$this->form_validation->set_message('_cek_email', lang_line('form_validation_already_exists'));
-			return FALSE;
+			return false;
 		}
 		else 
 		{
-			return TRUE;
+			return true;
 		}
 	}
 

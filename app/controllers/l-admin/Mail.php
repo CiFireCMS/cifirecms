@@ -51,7 +51,7 @@ class Mail extends Backend_Controller {
 						}
 
 						$row[] = $val['name'].'<br><small class="text-muted">'. $val['email'] .'</small>';
-						$row[] = '<a href="'. admin_url($this->mod.'/read/'.$val['id']) .'">'. $val['subject'] .' <small class="text-muted"> <br> '. cut($val['message'], 80, TRUE) .'</small></a>';
+						$row[] = '<a href="'. admin_url($this->mod.'/read/'.$val['id']) .'">'. $val['subject'] .' <small class="text-muted"> <br> '. cut($val['message'], 80, true) .'</small></a>';
 						$row[] = ci_date($val['date'], 'l, d M Y');
 						$row[] = '<div class="text-center"><div class="btn-group">
 								<a href="'. admin_url($this->mod.'/read/'.$val['id']) .'" class="btn btn-xs btn-white" data-toggle="tooltip" data-placement="top" data-title="'. lang_line('button_view') .'"><i class="cificon licon-eye"></i></a>
@@ -183,7 +183,7 @@ class Mail extends Backend_Controller {
 				if ( $this->form_validation->run() )
 				{
 					$mail    = $this->input->post('mail');
-					$subject = $this->input->post('subject',TRUE);
+					$subject = $this->input->post('subject', true);
 					$message = $this->input->post('message');
 					$name    = explode('@', $mail)[0];
 
@@ -255,7 +255,7 @@ class Mail extends Backend_Controller {
 
 					if ( $this->form_validation->run() )
 					{
-						$subject = $this->input->post('subject',TRUE);
+						$subject = $this->input->post('subject', true);
 						$message = $this->input->post('message');
 
 						$this->mail_model->insert(array(

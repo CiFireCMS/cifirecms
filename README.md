@@ -35,13 +35,23 @@ CiFireCMS adalah platform CMS open source gratis Indonesia dibuat menggunakan fr
 
 
 ## Permission
-Ubah user permission folder-folder berikut menjadi ``775``.
+Ubah user permission folder dan file berikut menjadi ``0777``.
 ```
 cifirecms
-├── public
-│   ├── temp    --> 775
-│   ├── thumbs  --> 775
-└── └── uploads --> 775
+├── app/
+│   ├── cache  -->  777
+│   └── config
+│   │   └── routes
+│   │       └── slug_routes.php  -->  777
+│   ├── controllers  -->  777 (semua folder dan file)
+│   ├── language  -->  777 (semua folder dan file)
+│   ├── logs  -->  777
+│   ├── models  -->  777 (semua folder dan file)
+│   └── views
+│       ├── mod  -->  777 (semua folder dan file)
+│       ├── themes  -->  777 (semua folder dan file)
+│       └── meta_social.php  -->  777
+└── public  -->  0777 (semua folder dan file)
 ```
 
 ## .htaccess
@@ -103,6 +113,15 @@ Jika web sudah siap di online-kan silahkan ubah kode pada ``.env`` cari code ``C
 * GitHub         : https://github.com/CiFireCMS
 * Facebook       : https://web.facebook.com/cifirecms
 * Facebook group : https://web.facebook.com/groups/cifirecms
+
+
+## Penanganan Error ketika masuk halaman dashboard.
+Error ini biasanya terjadi ketika mengaktifkan setingan ``web_analytics``. Untuk memperbaiki error ini silakan ikuti langkah-langkah berikut :
+1. Masuk ke phpmyadmin
+2. Pilih menu ``Variables`` di menu bagian atas
+3. Pada bagian filter input/ketikan ``mode``
+4. Klik ``Edit`` pada variable ``sql mode`` hapus ``ONLY_FULL_GROUP_BY``
+5. Klik ``Save``
 
 
 ## License

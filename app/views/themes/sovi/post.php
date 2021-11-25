@@ -176,10 +176,11 @@
 										->get('t_user')
 										->row_array();
 									$ruser_photo = (!empty($ruser['photo']) ? $ruser['photo'] : '');
+									// var_dump($ruser_photo);exit;
 						?>
 						
 						<div class="media mt-4 mb-5">
-							<img src="<?=user_photo($ruser);?>" class="mr-3" width="45">
+							<img src="<?=user_photo($ruser_photo);?>" class="mr-3" width="45">
 							<div class="media-body">
 								<h5 class="comment-name mt-0">
 									<?=$res_child['name'];?> 

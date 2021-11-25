@@ -450,10 +450,12 @@ if ( ! function_exists('user_photo'))
 	*/
 	function user_photo($photo = '')
 	{
-		if ( !empty($photo) && file_exists(PUBLICPATH."uploads/user/$photo") ) 
+		$user_photo = site_url('images/avatar.jpg');
+		
+		if (!empty($photo) && file_exists(PUBLICPATH."uploads/user/$photo") ) 
+		{
 			$user_photo = site_url("uploads/user/$photo");
-		else
-			$user_photo = site_url('images/avatar.jpg');
+		}
 
 		$photo = $user_photo."?".strtotime(date('YmdHis'));
 		return $photo;

@@ -196,6 +196,4 @@ class Gallery extends Backend_Controller {
 			$this->render_404();
 		}
 	}
-
-
 } // End Class.

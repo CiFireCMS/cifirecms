@@ -10,12 +10,12 @@ class Category extends Web_controller {
 	}
 	
 	
-	public function index($get_seotitle = NULL, $get_page = 1)
+	public function index($get_seotitle = null, $get_page = 1)
 	{
 		$seotitle = xss_filter($get_seotitle ,'xss');
 		$check_seotitle = $this->category_model->check_seotitle($seotitle);
 
-		if ( !empty($seotitle) && $check_seotitle == TRUE ) 
+		if ( !empty($seotitle) && $check_seotitle == true ) 
 		{
 			$result_category = $this->category_model->get_data($seotitle);
 			
@@ -39,7 +39,7 @@ class Category extends Web_controller {
 				$this->meta_title($result_category['title'].' - '.get_setting('web_name'));
 				$this->meta_keywords($result_category['title'].', '.get_setting('web_keyword'));
 				$this->meta_description($result_category['description']);
-				$this->meta_image(post_images($result_category['picture'],'medium',TRUE));
+				$this->meta_image(post_images($result_category['picture'],'medium',true));
 				$this->render_view('category');
 			}
 			else
