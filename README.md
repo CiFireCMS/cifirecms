@@ -1,5 +1,5 @@
 # CiFireCMS - Gratis Rasa Premium
-CiFireCMS adalah platform CMS open source gratis Indonesia dibuat menggunakan framework CodeIgniter3. Dengan konsep yang menarik dan mudah digunakan oleh siapa saja.
+CiFireCMS adalah platform CMS open source gratis Indonesia dibuat menggunakan framework CodeIgniter3 dengan konsep yang menarik dan mudah digunakan oleh siapa saja.
 
 
 ## Minimum System Requirements
@@ -31,7 +31,7 @@ CiFireCMS adalah platform CMS open source gratis Indonesia dibuat menggunakan fr
 
 
 ## Install via composer
-- ``composer create-project cifirecms/cifirecms cifirecms-project``
+``composer create-project cifirecms/cifirecms cifirecms-project``
 
 
 ## Permission
@@ -115,7 +115,7 @@ Jika web sudah siap di online-kan silahkan ubah kode pada ``.env`` cari code ``C
 * Facebook group : https://web.facebook.com/groups/cifirecms
 
 
-## Penanganan Error ketika masuk halaman dashboard.
+## Penanganan Error Ketika Masuk Halaman Dashboard
 Error ini biasanya terjadi ketika mengaktifkan setingan ``web_analytics``. Untuk memperbaiki error ini silakan ikuti langkah-langkah berikut :
 1. Masuk ke phpmyadmin
 2. Pilih menu ``Variables`` di menu bagian atas
