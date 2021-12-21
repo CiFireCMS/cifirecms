@@ -31,9 +31,9 @@ $(function() {
 		}
 	});
 
-	$('#form_add').on('submit',function(e){
+	$('.submit_add').on('click',function(e){
 		e.preventDefault();
-		var form = $(this);
+		var form = $('#form_add');
 		form.find('.submit_add i').attr('class','fa fa-spin fa-spinner mr-2');
 		tinyMCE.triggerSave();
 		$.ajax({
@@ -41,20 +41,20 @@ $(function() {
 			data: form.serialize(),
 			dataType: 'json',
 			cache: false,
-			success:function(response){
-				if (response['success']==true) {
+			success:function(data){
+				if (data['success']==true) {
 					$(location).attr('href',admin_url+a_mod);
 				} else {
-					cfNotif(response['alert']);
+					cfNotif(data['alert']);
 				}
 				form.find('.submit_add i').attr('class','cificon licon-send mr-2');
 			}
 		});
 	});
 
-	$('#form_update').on('submit',function(e){
+	$('.submit_update').on('click',function(e){
 		e.preventDefault();
-		var form = $(this);
+		var form = $('#form_update');
 		form.find('.submit_update i').attr('class','fa fa-spin fa-spinner mr-2');
 		tinyMCE.triggerSave();
 		$.ajax({
@@ -62,22 +62,21 @@ $(function() {
 			data: form.serialize(),
 			dataType: 'json',
 			cache: false,
-			success:function(response){
-				cfNotif(response['alert']);
+			success:function(data){
+				cfNotif(data['alert']);
 				form.find('.submit_update i').attr('class','fa fa-save mr-2');
 			}
 		});
 	});
 
-	cfTnyMCE('#Content', 200); // load TnyMCE
+	cfTnyMCE('#Content', 200);
 
 	$('#delpict').on('click',function(e){
 		e.preventDefault();
-		$('#picture').val('');
-		$('#imgprv').attr('src', site_url + '/images/noimage.jpg');
+		$('#picture').val(''),
+		$('#imgprv').attr('src',site_url+'images/noimage.jpg')
 	});
 
-	$('input:not(textarea)').keydown(function(e){if(13==(e.witch||e.keyCode))return e.preventDefault(),!1});
 	$('#title').on('input',function(){var e;e=(e=(e=$(this).val()).replace(/\s+/g,' ')).replace(/_/g,' '),$('#seotitle').val(e.toLowerCase()),$('#seotitle').val($('#seotitle').val().replace(/\W/g,' ')),$('#seotitle').val($('#seotitle').val().replace(/\s+/g,'-'))});
 	$('#seotitle').on('input',function(){var e;e=(e=(e=$(this).val()).replace(/\s+/g,' ')).replace(/_/g,' '),$(this).val(e.toLowerCase()),$(this).val($(this).val().replace(/\W/g,' ')),$(this).val($(this).val().replace(/\s+/g,'-'))});
 });

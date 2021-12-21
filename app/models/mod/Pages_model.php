@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Pages_model extends CI_Model {
 
 	private $_table = 't_pages';
-	private $_column_order = array(null, 'id', 'title','seotitle','active', null);
-	private $_column_search = array('id', 'title', 'active');
+	private $_column_order = array(null, 'id', 'title', 'seotitle', null, null);
+	private $_column_search = array('id', 'title', 'seotitle');
 
 	public function __construct()
 	{
@@ -20,7 +20,7 @@ class Pages_model extends CI_Model {
 		if ($type === 'count')
 		{
 			$this->$method();
-			$result = $this->db->get()->num_rows();
+			$result =  $this->db->get()->num_rows();
 		}
 
 		if ($type === 'data')
@@ -38,19 +38,20 @@ class Pages_model extends CI_Model {
 				$query = $this->db->get();
 			}
 			
-			$result = $query->result_array();
+			$result =  $query->result_array();
 		}
 
 		return $result;
 	}
 
+
 	private function _all_pages()
 	{
-		$this->db->select('id,title,seotitle,active');
+		$this->db->select('id,title,seotitle,active');		
 		$this->db->from($this->_table);
 
-		$i = 0;	
-		foreach ($this->_column_search as $item) 
+		$i = 0;
+		foreach ( $this->_column_search as $item ) 
 		{
 			if ( $this->input->post('search')['value'] )
 			{
@@ -65,7 +66,6 @@ class Pages_model extends CI_Model {
 				{
 					$this->db->or_like($item, $search_key);
 				}
-
 				if ( count($this->_column_search)-1 == $i ) 
 				{
 					$this->db->group_end(); 
@@ -82,86 +82,79 @@ class Pages_model extends CI_Model {
 		}
 		else
 		{
-			$this->db->order_by('id', 'DESC');
+			$this->db->order_by('id','DESC');
 		}
 	}
 
-
-	public function insert($data)
+	
+	
+	public function insert_data($data)
 	{
-		$query = $this->db->insert($this->_table, $data);
-		return $query;
-	}
-
-
-	public function update($pk, $data)
-	{
-		$id = xss_filter(decrypt($pk),'sql');
-		$query = $this->db->where('id', $id);
-		$query = $this->db->update($this->_table, $data);
-		return $query;
-	}
-
-
-	public function delete($id)
-	{
-		if ( $this->cek_id($id) > 0 ) 
-		{
-			$query = $this->db->where('id', $id);
-			$query = $this->db->delete($this->_table);
-			return TRUE;
-		}
-		else
-			return FALSE;
-	}
-
-
-	public function get_pages($id) 
-	{
-		$query = $this->db->where('id', $id);
-		$query = $this->db->get($this->_table);
-		$query = $query->row_array();
-		return $query;
-	}
-
-
-	public function cek_id($id=0)
-	{
-		$query = $this->db->select('id');
-		$query = $this->db->where('id', $id);
-		$query = $this->db->get($this->_table);
-		$result = $query->num_rows();
-		$int = (int)$result;
-		return $int;
+		$this->db->insert($this->_table,$data);
 	}
 	
 
-	public function cek_seotitle($seotitle)
+	public function update_data($ID, array $data)
 	{
-		$query = $this->db
-			     ->where('seotitle',$seotitle)
-			     ->get($this->_table)
-			     ->num_rows();
-		return $query;
+		if ( $this->cek_id($ID) == 1 )
+		{
+			$this->db->where('id', $ID)->update($this->_table, $data);
+			return TRUE;
+		}
+
+		return FALSE;
 	}
 
 
-	public function cek_seotitle2($id, $seotitle)
+	public function delete($ID = 0)
 	{
-		$query = $this->db
-			     ->select('id,seotitle')
-			     ->where('seotitle', $seotitle)
-			     ->get($this->_table);
+		if ($ID > 1 && $this->cek_id($ID) == 1) 
+		{
+			$this->db->where('id', $ID)->delete($this->_table);
+			return TRUE;
+		}
 
+		return FALSE;
+	}
+
+
+	public function get_pages($ID)
+	{
+		return $this->db->where('id', $ID)->get($this->_table)->row_array();
+	}
+
+
+	public function cek_id($ID = 0)
+	{
+		$int = 0;
+		$query = $this->db->select('id')->where('id', $ID)->get($this->_table);
+		$int = $query->num_rows();
+		return $int;
+	}
+
+
+	public function cek_seotitle($seotitle = '')
+	{
+		$query = $this->db->where("BINARY seotitle = '$seotitle'", NULL, FALSE)->get($this->_table);
+		$result = $query->num_rows();
+
+		if ( $result == 0 ) return TRUE;
+		return FALSE;
+	}
+
+
+	public function cek_seotitle2($ID, $seotitle)
+	{
+		$cek = $this->db->where("BINARY seotitle = '$seotitle'", NULL, FALSE)->get($this->_table);
 		if (
-		    $query->num_rows() == '1' && 
-		    $query->row_array()['id'] == $id || 
-		    $query->num_rows() != '1'
+			$cek->num_rows() == 1 && 
+			$cek->row_array()['id'] == $ID || 
+			$cek->num_rows() != 1
 		   ) 
 		{
 			return TRUE;
 		}
-		else 
-			return FALSE;
-	}
+
+		return FALSE;
+	}	
 } // End class.
