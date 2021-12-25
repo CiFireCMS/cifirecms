@@ -55,7 +55,7 @@
 					<div class="form-group">
 						<label><?=lang_line('_status');?> <span class="text-danger">*</span></label>
 						<select name="status" class="select-bs">
-							<option value="<?=$res_pages['active'];?>" style="display:none;"><?=($res_pages['active'] == 'Y' ? lang_line('ui_publish') : lang_line('ui_draft'));?></option>
+							<?=$status;?>
 							<option value="Y"><?=lang_line('ui_publish');?></option>
 							<option value="N"><?=lang_line('ui_draft');?></option>
 						</select>
@@ -77,7 +77,7 @@
 			</div>
 		</div>
 		<div class="content-footer">
-			<button type="submit" class="submit_update btn btn-lg btn-primary mr-2"><i id="submit_icon" class="fa fa-save mr-2"></i><?=lang_line('button_save');?></button>
+			<button type="button" class="submit_update btn btn-lg btn-primary mr-2"><i id="submit_icon" class="fa fa-save mr-2"></i><?=lang_line('button_save');?></button>
 		</div>
 		<?=form_close();?>
 	</div>

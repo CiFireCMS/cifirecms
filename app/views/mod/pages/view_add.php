@@ -76,7 +76,7 @@
 			</div>
 		</div>
 		<div class="content-footer">
-			<button type="submit" class="submit_add btn btn-lg btn-primary mr-2"><i id="submit_icon" class="cificon licon-send mr-2"></i><?=lang_line('button_submit');?></button>
+			<button type="button" class="submit_add btn btn-lg btn-primary mr-2"><i id="submit_icon" class="cificon licon-send mr-2"></i><?=lang_line('button_submit');?></button>
 		</div>
 		<?=form_close();?>
 	</div>

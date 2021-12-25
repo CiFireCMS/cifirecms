@@ -9,8 +9,6 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "cifirecms/installer": "dev-main",
-        "codeigniter/framework": "~3.1",
         "vlucas/phpdotenv": "^4.1"
     },
     "require-dev": {

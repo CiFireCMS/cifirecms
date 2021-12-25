@@ -1064,7 +1064,14 @@ if ( ! function_exists('group_active'))
 		$user_id = decrypt(login_key());
 		$getUser = $CI->db->where('id',$user_id)->get('t_user')->row_array();
 		$getGroup = $CI->db->where('pk',$getUser['key_group'])->get('t_user_group')->row_array();
-		$result = $getGroup[$param];
+		
+		if ($getGroup) {
+			$result = $getGroup[$param];
+		}
+		else {
+			$result = '';
+		}
+		
 		return $result;
 	}
 }

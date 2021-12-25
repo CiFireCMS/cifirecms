@@ -2,7 +2,7 @@
 /**
  * MIT License
  * 
- * Copyright (c) 2019 - 2021 CiFireCMS
+ * Copyright (c) 2019 - 2022 CiFireCMS
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -110,7 +110,8 @@ switch (ENVIRONMENT)
  * This variable must contain the name of your "system" directory.
  * Set the path if it is not in the same directory as this file.
 */
-$system_path = dirname(__DIR__).DIRECTORY_SEPARATOR.'vendor/codeigniter/framework/system';
+// $system_path = dirname(__DIR__).DIRECTORY_SEPARATOR.'vendor/codeigniter/framework/system';
+$system_path = dirname(__DIR__).DIRECTORY_SEPARATOR.'system';
 
 
 /*
@@ -128,7 +129,7 @@ $system_path = dirname(__DIR__).DIRECTORY_SEPARATOR.'vendor/codeigniter/framewor
  *
  * NO TRAILING SLASH!
 */
-$application_folder = file_exists(dirname(__DIR__).'/.env') ? dirname(__DIR__).'/app' : dirname(__DIR__).'/vendor/cifirecms/installer/application';
+$application_folder = file_exists(dirname(__DIR__).'/.env') ? dirname(__DIR__).'/app' : dirname(__DIR__).'/installer/app';
 
 /*
  *---------------------------------------------------------------

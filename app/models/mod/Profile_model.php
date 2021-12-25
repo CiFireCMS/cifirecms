@@ -16,9 +16,10 @@ class Profile_model extends CI_Model {
 	public function update(array $data)
 	{
 		if ( $this->cek_id($this->_id) > 0 )
+		{
 			$this->db->where('id', $this->_id)->update($this->_table, $data);
+		}
 	}
-
 
 
 	public function get_data() 
@@ -48,38 +49,9 @@ class Profile_model extends CI_Model {
 	}
 
 
-	public function get_photo2($id) 
-	{
-		$query = $this->db->where('id', $id);
-		$query = $this->db->get($this->_table);
-		$result = $query->row_array();
-		$photo = $result['photo'];
-		return $photo;
-	}
-
-
-	public function get_photo()
-	{
-		if ( $this->cek_id($this->_id) > 0 )
-		{
-			$query = $this->db->where('id', $this->_id);
-			$query = $this->db->get('t_user');
-			$result = $query->row_array();
-			$photo = $result['photo'];
-			return $photo;
-		}
-		else 
-		{
-			return NULL;
-		}
-	}
-
-
 	public function cek_id($id)
 	{
-		$query = $this->db->select('id');
-		$query = $this->db->where('id', $id);
-		$query = $this->db->get($this->_table);
+		$query = $this->db->select('id')->where('id', $id)->get($this->_table);
 		$result = $query->num_rows();
 
 		if ( $result < 1 )

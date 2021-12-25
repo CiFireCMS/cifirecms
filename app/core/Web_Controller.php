@@ -35,12 +35,12 @@ class Web_Controller extends MY_Controller {
 	}
 
 
-	public function render_view($view = '')
+	public function render_view($view = '', $template = '_template')
 	{
 		if (file_exists(VIEWPATH.$this->_theme_folder."/".$view.".php"))
 		{
 			$this->__content_view = $view;
-			$this->load->view($this->_theme_folder."/_template", $this->vars);
+			$this->load->view($this->_theme_folder."/".$template, $this->vars);
 		} 
 		else
 		{
@@ -59,7 +59,14 @@ class Web_Controller extends MY_Controller {
 
 	public function theme_asset($asset = '')
 	{
-		return site_url('themes/'.theme_active('folder').'/'.$asset);
+		$result = '';
+
+		if (file_exists($this->_theme_folder.'/'.$asset))
+		{
+			$result = site_url($this->_theme_folder.'/'.$asset);
+		}
+
+		return $result;
 	}
 
 

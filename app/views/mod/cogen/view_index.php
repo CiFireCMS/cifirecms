@@ -1,16 +1,23 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div class="page-inner">
-	<div class="card compogen mg-b-100 mg-t-20">
-		<div class="card-header tx-center cogen-title">
-			<h3>
-				<font class="text-primary">C</font>
-				<font class="text-success">o</font>
-				<font class="text-warning">G</font>
-				<font class="text-danger">e</font>
-				<font class="text-info">n</font>
-			</h3>
-			<span>Component Generateor</span>
+	<div class="d-sm-flex align-items-center justify-content-between pd-b-20">
+		<div class="pageheader pd-t-20 pd-b-0">
+			<div class="d-flex justify-content-between">
+				<div class="clearfix">
+					<div class="breadcrumb pd-0 pd-b-10 mg-0">
+						<a href="#" class="breadcrumb-item"><?=lang_line('ui_dashboard');?></a>
+						<a href="#" class="breadcrumb-item"><?=lang_line('ui_module');?></a>
+						<a href="#" class="breadcrumb-item"><?=lang_line('mod_title');?></a>
+					</div>
+					<h4 class="pd-0 mg-0 tx-20 tx-dark tx-spacing--1">Component Generator</h4>
+				</div>
+			</div>
 		</div>
+	</div>
+
+
+
+	<div class="card compogen mg-b-100">
 
 		<?=form_open('', 'class="wizard-form steps-validation" data-fouc');?>
 

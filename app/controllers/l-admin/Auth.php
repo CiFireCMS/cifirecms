@@ -27,36 +27,6 @@ class Auth extends MY_Controller {
 		}
 		else
 		{
-			if ( $this->input->is_ajax_request() )
-			{
-				$this->form_validation->set_rules(array(
-					array(
-						'field' => 'data',
-						'label' => lang_line('username'),
-						'rules' => 'required|trim|min_length[4]|max_length[20]|regex_match[/^[a-z0-9_.]+$/]'
-					)
-				));
-
-				if ( $this->form_validation->run() )
-				{
-					$username = xss_filter($this->input->post('data'), 'xss');
-					$response['status'] =  $this->auth_model->cek_user(encrypt($username));
-					$response['html'] =  '<div class="form-group">
-												<label>'. lang_line('password') .'</label>
-												<input type="password" name="'. $this->vars['input_pwd'] .'" id="password" class="form-control" required autofocus/>
-											</div>
-											<button type="submit" class="btn btn-brand btn-block mg-t-20">'. lang_line('button_login') .'</button>
-											<div class="text-center mg-t-20">
-												<a href="'. admin_url('forgot') .'">'. lang_line('forgot_password') .'?</a>
-											</div>';
-				}
-				else
-				{
-					$response = 0;
-				}
-				$this->json_output($response);
-			}
-
 			if ( $this->input->method() == 'post' )
 			{
 				return $this->_submit_login();
@@ -64,8 +34,6 @@ class Auth extends MY_Controller {
 
 			else
 			{
-				$this->vars['script'] = '<script type="text/javascript">$("input:not(textarea)").keydown(function(t){if(13==(t.witch||t.keyCode))return t.preventDefault(),!1}),$(".input-username").on("input",function(){var t=$(this),n=$(this).val();n.length>=20&&t.val(function(){return console.log(n.substr(0,20)),n.substr(0,20)}),$.ajax({type:"POST",data:{data:n,csrf_name:csrfToken},dataType:"json",cache:!1,success:function(t){"1"==t.status?($(".input-password").html(t.html),$("#password").focus()):$(".input-password").html("")}})});</script>';
-
 				$this->load->view('backend/auth_header', $this->vars);
 				$this->load->view('backend/auth_login', $this->vars);
 				$this->load->view('backend/auth_footer', $this->vars);

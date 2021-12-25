@@ -54,10 +54,8 @@ class Cogen extends Backend_Controller {
 	{
 		// component
 		$component_name = $_POST['general']['component_name'];
-		// $component_type = $_POST['general']['component_type'];
 		$cname          = trim($_POST['general']['class_name'],'_');
 		$class_name     = ucfirst($cname);
-		// $c_mod          = $_POST['general']['class_name'];
 
 		// File controller
 		$file_controller = "$class_name.php";

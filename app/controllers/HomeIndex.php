@@ -7,7 +7,5 @@ class HomeIndex extends Home {
 	public function __construct()
 	{
 		parent::__construct();
-
-		// var_dump(content_url());
 	}
 } // End Class

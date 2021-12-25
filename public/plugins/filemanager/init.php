@@ -8,11 +8,11 @@ define('ENVIRONMENT', 'production');
 define('BASEPATH', dirname(dirname(dirname(__DIR__))));
 
 define('APPPATH', BASEPATH . $ds . $f_application . $ds);
-define('LIBPATH', BASEPATH . "{$ds}vendor{$ds}codeigniter{$ds}framework{$ds}system{$ds}libraries{$ds}Session{$ds}");
+define('LIBPATH', BASEPATH . "{$ds}system{$ds}libraries{$ds}Session{$ds}");
 
 require_once LIBPATH . 'Session_driver.php';
 require_once LIBPATH . "drivers{$ds}Session_files_driver.php";
-require_once BASEPATH . "{$ds}vendor{$ds}codeigniter{$ds}framework{$ds}system{$ds}core{$ds}Common.php";
+require_once BASEPATH . "{$ds}system{$ds}core{$ds}Common.php";
 
 $config = get_config();
 

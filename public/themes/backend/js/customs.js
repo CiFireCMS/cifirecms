@@ -420,4 +420,23 @@ $(document).ready(function() {
 	$('.select-2-nosearch').select2({
 		minimumResultsForSearch: Infinity
 	});
+
+	$('#title').on('input', function() {
+		var _link;
+		_link = $.trim($(this).val());
+		_link = _link.replace(/\s+/g,' ');
+		$('#seotitle').val(_link.toLowerCase());
+		$('#seotitle').val($('#seotitle').val().replace(/\W/g, ' '));
+		$('#seotitle').val($.trim($('#seotitle').val()));
+		$('#seotitle').val($('#seotitle').val().replace(/\s+/g, '-'));
+	});
+
+	$('#seotitle').on('input', function() {
+		var _link;
+		_link = $(this).val();
+		_link = _link.replace(/\s+/g,' ');
+		$('#seotitle').val(_link.toLowerCase());
+		$('#seotitle').val($('#seotitle').val().replace(/\W/g, ' '));
+		$('#seotitle').val($('#seotitle').val().replace(/\s+/g, '-'));
+	});
 });

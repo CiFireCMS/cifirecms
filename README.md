@@ -58,6 +58,7 @@ cifirecms
 └── public  -->  0777 (semua folder dan file)
 ```
 
+
 ## .htaccess
 Standard **.htaccess** configuration.
 ```
@@ -103,6 +104,7 @@ RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
 RewriteRule ^ http://%1%{REQUEST_URI} [L,NE,R=301]
 ```
 
+
 ### Environment
 Jika web sudah siap di online-kan silahkan ubah kode pada ``.env`` cari code ``CI_ENV=development`` edit menadi ``CI_ENV=production``
 
@@ -112,13 +114,6 @@ Jika web sudah siap di online-kan silahkan ubah kode pada ``.env`` cari code ``C
 * Masukan Username dan Password seperti pada awal instalasi.
 
 
-## Official Links
-* Official       : https://www.cifirecms.org
-* GitHub         : https://github.com/CiFireCMS
-* Facebook       : https://web.facebook.com/cifirecms
-* Facebook group : https://web.facebook.com/groups/cifirecms
-
-
 ## Penanganan Error Ketika Masuk Halaman Dashboard
 Error ini biasanya terjadi ketika mengaktifkan setingan ``web_analytics``. Untuk memperbaiki error ini silakan ikuti langkah-langkah berikut :
 1. Masuk ke phpmyadmin
@@ -126,6 +121,13 @@ Error ini biasanya terjadi ketika mengaktifkan setingan ``web_analytics``. Untuk
 3. Pada bagian filter input/ketikan ``mode``
 4. Klik ``Edit`` pada variable ``sql mode`` hapus ``ONLY_FULL_GROUP_BY``
 5. Klik ``Save``
+
+
+## Official Links
+* Official       : https://www.cifirecms.org
+* GitHub         : https://github.com/CiFireCMS
+* Facebook Page  : https://web.facebook.com/cifirecms
+* Facebook group : https://web.facebook.com/groups/cifirecms
 
 
 ## License
