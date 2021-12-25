@@ -118,15 +118,6 @@ Jika web sudah siap di online-kan silahkan ubah kode pada ``.env`` cari code ``C
 * Masukan Username dan Password seperti pada awal instalasi.
 
 
-## Penanganan Error Ketika Masuk Halaman Dashboard
-Error ini biasanya terjadi ketika mengaktifkan setingan ``web_analytics``. Untuk memperbaiki error ini silakan ikuti langkah-langkah berikut :
-1. Masuk ke phpmyadmin
-2. Pilih menu ``Variables`` di menu bagian atas
-3. Pada bagian filter input/ketikan ``mode``
-4. Klik ``Edit`` pada variable ``sql mode`` hapus ``ONLY_FULL_GROUP_BY``
-5. Klik ``Save``
-
-
 ## Official Links
 * Official       : https://www.cifirecms.org
 * GitHub         : https://github.com/CiFireCMS
