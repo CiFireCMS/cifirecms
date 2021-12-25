@@ -42,40 +42,24 @@ class Dashboard extends Backend_Controller {
 
 			for ($i = $range; $i >= 0; $i--) 
 			{
-				if ($i == 0) 
-				{
-					$visitorstemp = $this->db
-						->where('date', date('Y-m-d'))
-						->group_by('ip')
-						->get('t_visitor')
-						->result_array();
+				$date = ($i == 0) ? date('Y-m-d') : date('Y-m-d', strtotime('-'.$i.' days'));
+                
+                $visitorstemp = $this->db
+                    ->select('ip')
+                    ->where('date', $date)
+                    ->group_by('ip')
+                    ->count_all_results('t_visitor');
 
-					$hitstemp = $this->db
-						->select('SUM(hits) as hitstoday')
-						->where('date', date('Y-m-d'))
-						->group_by('date')
-						->get('t_visitor')
-						->row_array();
-				} 
-				else 
-				{
-					$visitorstemp = $this->db
-						->where('date', date('Y-m-d', strtotime('-'.$i.' days')))
-						->group_by('ip')
-						->get('t_visitor')
-						->result_array();
+                $hitstemp = $this->db
+                    ->select('SUM(hits) as hitstoday')
+                    ->where('date', $date)
+                    ->group_by('date')
+                    ->get('t_visitor')
+                    ->row_array();
 
-					$hitstemp = $this->db
-						->select('SUM(hits) as hitstoday')
-						->where('date', date('Y-m-d', strtotime('-'.$i.' days')))
-						->group_by('date')
-						->get('t_visitor')
-						->row_array();
-				}
-
-				$arrvisitor[$i] = count($visitorstemp);
-				$this->vars['arrhari'][$i] = '"'.ci_date(date('Y-m-d', strtotime('-'.$i.' days')), 'D, d M').'"';
-				$arrhits[$i] = (empty($hitstemp['hitstoday']) ? '0' : $hitstemp['hitstoday']);
+                $arrvisitor[$i] = $visitorstemp;
+                $this->vars['arrhari'][$i] = '"'.ci_date(date('Y-m-d', strtotime('-'.$i.' days')), 'D, d M').'"';
+                $arrhits[$i] = (empty($hitstemp['hitstoday']) ? '0' : $hitstemp['hitstoday']);
 			}
 			
 			$this->vars['rvisitors']  = array_combine(array_keys($arrvisitor), array_reverse(array_values($arrvisitor)));
@@ -87,4 +71,6 @@ class Dashboard extends Backend_Controller {
 
 		$this->render_view('view_index');
 	}
-} // End Class.
+}
+
+// End Class.
