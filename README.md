@@ -30,7 +30,7 @@ CiFireCMS adalah platform CMS open source gratis Indonesia dibuat menggunakan fr
 ```
 
 
-## Install via composer
+## Download via composer
 Untuk mengambil rilis terakhir :
 ``composer create-project cifirecms/cifirecms cifirecms-project``
 
