@@ -12,7 +12,7 @@
 			<label><?=lang_line('enter_your_email')?></label>
 			<input type="email" name="email" class="form-control" maxlength="80" placeholder="<?=lang_line('enter_your_email');?>"/>
 		</div>
-		<button type="submit" class="btn btn-brand btn-block" type="submit"><i class="cificon licon-send mr-2"></i><?=lang_line('button_send');?></button>
+		<button type="submit" class="btn btn-brand btn-block" type="submit"><i class="fa fa-send mr-2"></i><?=lang_line('button_send');?></button>
 		<p class="mg-t-20 mg-b-0"><a href="<?=admin_url('login');?>"><?=lang_line('back_to_login');?></a></p>
 		<?=form_close();?>
 	</div>
