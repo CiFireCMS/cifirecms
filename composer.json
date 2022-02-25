@@ -1,20 +1,20 @@
 {
-    "description": "CiFireCMS Framework",
     "name": "cifirecms/cifirecms",
-    "type": "project",
+    "description": "CiFireCMS Framework",
     "license": "MIT",
+    "type": "project",
     "homepage": "https://www.cifirecms.org",
     "support": {
         "source": "https://github.com/CiFireCMS/cifirecms"
     },
-    "minimum-stability": "dev",
     "require": {
         "vlucas/phpdotenv": "^4.1"
     },
     "require-dev": {
-		"mikey179/vfsstream": "1.1.*"
-	},
+        "mikey179/vfsstream": "1.1.*"
+    },
     "suggest": {
         "paragonie/random_compat": "Provides better randomness in PHP 5.x"
-    }
+    },
+    "minimum-stability": "dev"
 }
