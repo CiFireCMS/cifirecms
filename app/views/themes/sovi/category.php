@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <!-- left content -->
-<div class="col-lg-8 col-md-12 clearfix mb-5 left-content">
+<div class="col-lg-9 col-md-12 clearfix mb-5 left-content">
 	<div class="box-category">
 		<div class="post-head">
 			<h4><i class="cificon licon-folder mr-1"></i> <?=$result_category['title']?></h4>
@@ -10,14 +10,14 @@
 			<?php foreach ($category_post as $res): ?>
 			<div class="post-lists">
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div class="image-warper">
 							<a href="<?=post_url($res['post_seotitle']);?>" title="<?=$res['post_title'];?>">
 								<img  src="<?=post_images($res['picture'],'medium',TRUE);?>" alt="<?=$res['post_title'];?>">
 							</a>
 						</div>
 					</div>
-					<div class="col-md-8">
+					<div class="col-md-9">
 						<div class="media-body post-info">
 							<h5>
 								<a href="<?=post_url($res['post_seotitle']);?>" title="<?=$res['post_title'];?>"><?=$res['post_title'];?></a>
@@ -29,7 +29,6 @@
 							</ul>
 							<!--/ meta -->
 							<p class="description"><?=cut($res['content'],150);?>...</p>
-							<a href="<?=post_url($res['post_seotitle']);?>" class="readmore">Read More</a>
 						</div>
 					</div>
 				</div>
@@ -48,7 +47,7 @@
 <!--/ left content -->
 
 <!-- sidebar -->
-<div class="col-lg-4 col-md-12 clearfix mb-5 sidebar">
+<div class="col-lg-3 col-md-12 clearfix mb-5 sidebar">
 	<?php $this->CI->_layout('sidebar'); ?>
 </div>
 <!--/ sidebar -->

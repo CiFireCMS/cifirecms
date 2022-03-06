@@ -29,14 +29,14 @@ class Setting extends Backend_Controller {
 						fopen($path, "r") or die("Could not open file!");
 						write_file($path, $data_content);
 
-						$response['success'] = true;
+						$response['success'] = TRUE;
 						$response['alert']['type'] = 'success';
 						$response['alert']['content'] = lang_line('_metasocial_update_success');
 						$this->json_output($response);
 					}
 					else
 					{
-						$response['success'] = false;
+						$response['success'] = FALSE;
 						$response['alert']['type'] = 'error';
 						$response['alert']['content'] = 'Access denied';
 						$this->json_output($response);
@@ -45,7 +45,7 @@ class Setting extends Backend_Controller {
 
 				else
 				{
-					$response['success'] = false;
+					$response['success'] = FALSE;
 					$response['alert']['type'] = 'error';
 					$response['alert']['content'] = 'ERROR';
 					$this->json_output($response);
@@ -577,16 +577,16 @@ class Setting extends Backend_Controller {
 			if (empty($options))
 			{
 				$this->form_validation->set_message('_valid_add_options', lang_line('form_validation_required'));
-				return false;
+				return FALSE;
 			}
 			else if ( $valid == 1)
 			{
 				$this->form_validation->set_message('_valid_add_options', lang_line('form_validation_already_exists'));
-				return false;
+				return FALSE;
 			}
 			else
 			{
-				return true;
+				return TRUE;
 			}
 		}
 		else
@@ -606,12 +606,12 @@ class Setting extends Backend_Controller {
 			if (empty($options))
 			{
 				$this->form_validation->set_message('_valid_edit_options', lang_line('form_validation_required'));
-				return false;
+				return FALSE;
 			}
-			elseif ($valid == false)
+			elseif ($valid == FALSE)
 			{
 				$this->form_validation->set_message('_valid_edit_options', lang_line('form_validation_already_exists'));
-				return  false;
+				return  FALSE;
 			}
 			else
 			{
@@ -632,10 +632,10 @@ class Setting extends Backend_Controller {
 			if ($this->input->method() == 'post')
 			{
 				$bakName     = 'cifiremasterz'.md5(date('Ymd'));
-				$backupWebz  = $this->input->post('web') == '1' ? true : false;
+				$backupWebz  = $this->input->post('web') == '1' ? TRUE : FALSE;
 				$inputTablez = $this->input->post('table');	
 				
-				if ($backupWebz == true)
+				if ($backupWebz == TRUE)
 				{
 					$this->_dataWebz($bakName);
 				}
@@ -674,7 +674,7 @@ class Setting extends Backend_Controller {
 			if (!empty($sbak) && $sbak['filez'] == $filez)
 			{
 				$this->session->unset_userdata($ses);
-				force_download(PUBLICPATH."uploads/$filez", null);
+				force_download(PUBLICPATH."uploads/$filez", NULL);
 			}
 			else
 			{
@@ -706,28 +706,25 @@ class Setting extends Backend_Controller {
 		$this->load->library('myzip');
 		$this->myzip->zip_start(FCPATH.$bakName.'.zip');
 
-		$this->db = $this->load->database('mysqli', true);
+		$this->db = $this->load->database('mysqli', TRUE);
 		$this->load->dbutil();
-		
 		$dbName = 'database';
-
 		$dataBasez = $this->dbutil->backup(array(
 			'filename'   => $dbName,
 			'tables'     => $inputTablez,
 			'ignore'     => array(),
 			'format'     => 'txt',
-			'add_drop'   => true,
-			'add_insert' => true,
+			'add_drop'   => TRUE,
+			'add_insert' => TRUE,
 			'newline'    => "\n",
-			'foreign_key_checks' => true
+			'foreign_key_checks' => TRUE
 		));
 		
 		write_file(FCPATH."$dbName.sql", $dataBasez);
 		
 		$this->myzip->zip_add(FCPATH."$dbName.sql");
 		
-		if ($this->myzip->zip_end()) 
-		{
+		if ($this->myzip->zip_end()) {
 			@unlink(FCPATH."$dbName.sql");
 		}
 	}

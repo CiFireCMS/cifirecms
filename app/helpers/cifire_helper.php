@@ -714,7 +714,7 @@ if ( ! function_exists('clean_tag'))
 	{
 		if ( isset($str) )
 		{
-			$d = array ('\\','#',';','\'','"','[',']','{','}',')','(','|','`','~','!','%','$','^','*','=','?','+','<','>','.','@',':','/','&');
+			$d = array ('\\','#',';','\'','"','[',']','{','}',')','(','|','`','~','!','%','$','^','*','=','?','+','<','>','@',':','/','&');
 			$str = str_replace($d, '', $str);
 			$str = stripcslashes($str);	
 		}
@@ -1064,14 +1064,7 @@ if ( ! function_exists('group_active'))
 		$user_id = decrypt(login_key());
 		$getUser = $CI->db->where('id',$user_id)->get('t_user')->row_array();
 		$getGroup = $CI->db->where('pk',$getUser['key_group'])->get('t_user_group')->row_array();
-		
-		if ($getGroup) {
-			$result = $getGroup[$param];
-		}
-		else {
-			$result = '';
-		}
-		
+		$result = $getGroup[$param];
 		return $result;
 	}
 }

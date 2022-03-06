@@ -5,6 +5,7 @@ $lang['mod_title_edit'] = 'Edit Profile';
 
 $lang['edit_profile'] = 'Edit Profile';
 
+
 $lang['_name'] = 'Name';
 $lang['_username'] = 'Username';
 $lang['_username_note'] = 'Username cannot be changed';

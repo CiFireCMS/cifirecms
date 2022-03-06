@@ -20,14 +20,14 @@ class Search extends Web_controller {
 		}
 		else
 		{
-			$q = !empty($this->input->get('q')) ? $this->input->get('q') : null;
+			$q = !empty($this->input->get('q')) ? $this->input->get('q') : NULL;
 			$decq = urldecode($q);
 			$get_q = $decq;
 			$keywords = $this->_validate($get_q);
 
 			if ( !empty($keywords) )
 			{
-				$get_page = xss_filter($this->input->get('page', null), 'sql');
+				$get_page = xss_filter($this->input->get('page', TRUE), 'sql');
 				$get_page = ($get_page == 0 ? 1 : $get_page);
 				$batas    = get_setting('page_item');
 				$posisi   = ($get_page-1) * $batas;

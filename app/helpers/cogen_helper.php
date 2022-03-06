@@ -2,8 +2,12 @@
 
 if ( ! function_exists('dump_file_html')) {
 /**
- * Ini adalah fungsi untuk membuat konten file index.html.
+ * - File index.html
+ * - Ini adalah fungsi untuk membuat konten file index.html.
+ * 
+ * @return void|string
 */
+
 function dump_file_html() {
 $write = <<<EOS
 <html><head><title>403 Forbidden</title></head><body><p>Directory access is forbidden.</p></body></html>
@@ -23,7 +27,11 @@ if ( ! function_exists('dump_view_index')) {
 */
 
 /**
- * Ini adalah fungsi untuk membuat konten view view_index.php
+ * - View index.
+ * - Ini adalah fungsi untuk membuat konten view view_index.php
+ * 
+ * @param 	string|array 	$data
+ * @return 	void|string
 */
 function dump_view_index($data='') {
 $data_general    = $data['general'];
@@ -73,7 +81,13 @@ EOS;
 
 $write .= <<<EOS
 		</div>
-	</div>	
+	</div>
+
+	<div>
+		<?=\$this->cifire_alert->show(\$this->mod);?>
+		<div class="ajax_alert" style="display:none;"></div>
+	</div>
+	
 	<div class="card">
 		<div class="table-responsive">
 			<div class="card-body">
@@ -143,6 +157,21 @@ return $write;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if ( ! function_exists('dump_view_add')) {
 /**
  * ---------------------------------------------------------
@@ -151,7 +180,11 @@ if ( ! function_exists('dump_view_add')) {
 */
 
 /**
- * Ini adalah fungsi untuk membuat konten view view_add.php
+ * - View add.
+ * - Ini adalah fungsi untuk membuat konten view view_add.php
+ * 
+ * @param 	string|array 	$data
+ * @return 	void|string
 */
 function dump_view_add($data = '') {
 $write = '';
@@ -194,7 +227,7 @@ $write .= <<<EOS
 	</div>
 
 	<div>
-		<?=\$this->cifire_alert->show(\$this->mod.'add');?>
+		<?=\$this->cifire_alert->show(\$this->mod);?>
 		<div class="ajax_alert" style="display:none;"></div>
 	</div>
 
@@ -361,6 +394,12 @@ return $write;
 
 
 
+
+
+
+
+
+
 if ( ! function_exists('dump_view_edit')) {
 /**
  * -----------------------------------------------------------
@@ -369,7 +408,11 @@ if ( ! function_exists('dump_view_edit')) {
 */
 
 /**
- * Ini adalah fungsi untuk membuat konten view view_edit.php
+ * - View edit
+ * - Ini adalah fungsi untuk membuat konten view view_edit.php
+ * 
+ * @param 	string|array 	$data
+ * @return 	void|string
 */
 function dump_view_edit($data = '') {
 
@@ -414,7 +457,7 @@ $write .= <<<EOS
 	</div>
 
 	<div>
-		<?=\$this->cifire_alert->show(\$this->mod.'edit');?>
+		<?=\$this->cifire_alert->show(\$this->mod);?>
 		<div class="ajax_alert" style="display:none;"></div>
 	</div>
 
@@ -573,6 +616,12 @@ return $write;
 
 
 
+
+
+
+
+
+
 if ( ! function_exists('dump_file_javascript')) {
 /**
  * -------------------------------------------------------------
@@ -581,11 +630,23 @@ if ( ! function_exists('dump_file_javascript')) {
 */
 
 /**
- * Ini adalah fungsi untuk membuat konten file script modjs.
+ * - File Mod Js
+ * - Ini adalah fungsi untuk membuat konten file script modjs.
+ * 
+ * @param 	string|array 	$data
+ * @return 	void|string
 */
 function dump_file_javascript($data = '') {
 $rdate = DATE('Y-m-d | h:i');
 $write = <<<EOS
+/**
+ * - This file was created using CoGen
+ * 
+ * - Date created : {$rdate}
+ * - Author       : CiFireCMS
+ * - License      : MIT License
+*/
+
 $(function() {
 	'use strict'
 
@@ -698,6 +759,10 @@ return $write;
 
 
 
+
+
+
+
 if ( ! function_exists('dump_file_controller')) {
 /**
  * ----------------------------------------------------------------
@@ -706,7 +771,11 @@ if ( ! function_exists('dump_file_controller')) {
 */
 
 /**
- * Ini adalah fungsi untuk membuat konten file controller.
+ * - File Controller.
+ * - Ini adalah fungsi untuk membuat konten file controller.
+ * 
+ * @param 	string|array 	$data
+ * @return 	void|string
 */
 function dump_file_controller($data = '') {
 $data_general   = $data['general'];
@@ -735,6 +804,14 @@ $write = '';
 $rdate = DATE('Y-m-d | h:i');
 $write .= <<<EOS
 <?php
+/**
+ * - This file was created using CoGen
+ * 
+ * - Date created : {$rdate}
+ * - Author       : CiFireCMS
+ * - License      : MIT License
+*/
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class {$class_name} extends Backend_Controller {
@@ -921,12 +998,12 @@ $write .= <<<EOS
 
 					if (\$this->{$model_name}->insert(\$data_isert))
 					{
-						\$this->cifire_alert->set(\$this->mod.'add', 'info', 'Data has been successfully added');
+						\$this->cifire_alert->set(\$this->mod, 'info', 'Data has been successfully added');
 						redirect(admin_url(\$this->mod),'refresh');
 					}
 					else
 					{
-						\$this->cifire_alert->set(\$this->mod.'add', 'danger', "Oups..! Some error occurred.<br>Please complete the data correctly");
+						\$this->cifire_alert->set(\$this->mod, 'danger', "Oups..! Some error occurred.<br>Please complete the data correctly");
 					}
 				}
 			}
@@ -1000,6 +1077,7 @@ $write .= <<< EOS
 					if ( \$this->form_validation->run() )
 					{
 						\$data_update = array(\n
+
 EOS;
 
 if (!empty($data['field'])){
@@ -1033,17 +1111,14 @@ $write .= <<< EOS
 
 						if (\$this->{$model_name}->update(\$id_edit, \$data_update))
 						{
-							\$this->cifire_alert->set(\$this->mod.'edit', 'info', 'Data has been successfully updated');
+							\$this->cifire_alert->set(\$this->mod, 'info', 'Data has been successfully updated');
 						}
 						else
 						{
-							\$this->cifire_alert->set(\$this->mod.'edit', 'danger', "Oups..! Some error occurred.<br>Please complete the data correctly");
+							\$this->cifire_alert->set(\$this->mod, 'danger', "Oups..! Some error occurred.<br>Please complete the data correctly");
 						}
-
-						redirect(uri_string());
 					}
 				}
-
 				\$data_edit = \$this->{$model_name}->get_data_edit(\$id_edit);
 				\$this->vars['data_row'] = \$data_edit;
 				\$this->render_view('view_edit');
@@ -1116,7 +1191,11 @@ if ( ! function_exists('dump_file_model')) {
 */
 
 /**
- * Ini adalah fungsi untuk membuat konten file model.
+ * - File Model
+ * - Ini adalah fungsi untuk membuat konten file model.
+ * 
+ * @param 	string|array 	$data
+ * @return 	void|string
 */
 
 function dump_file_model($data = '') {
@@ -1147,6 +1226,14 @@ $write = '';
 $rdate = DATE('Y-m-d | h:i');
 $write .= <<<EOS
 <?php
+/**
+ * - This file was created using CoGen
+ * 
+ * - Date created : {$rdate}
+ * - Author       : CiFireCMS
+ * - License      : MIT License
+*/
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class {$class_name} extends CI_Model {
@@ -1340,7 +1427,13 @@ return $write;
 
 if ( ! function_exists('write_input_text')) {
 /**
- * Ini adalah fungsi untuk membuat input text.
+ * - Text.
+ * - Ini adalah fungsi untuk membuat input text.
+ * 
+ * @param 	string 	$input_label
+ * @param 	string 	$field_name
+ * @param 	string 	$val
+ * @return 	void|string
 */
 function write_input_text($input_label = '', $field_name = '', $val = '') {
 $input_label = humanize($input_label);
@@ -1404,7 +1497,13 @@ return $content;
 
 if ( ! function_exists('write_input_select')) {
 /**
- * Ini adalah fungsi untuk membuat input select.
+ * - Select Option.
+ * - Ini adalah fungsi untuk membuat input select.
+ * 
+ * @param 	string 	$input_label
+ * @param 	string 	$field_name
+ * @param 	string 	$val
+ * @return 	void|string
 */
 function write_input_select($input_label = '', $field_name = '', $val = '', array $options) {
 $input_label = humanize($input_label);
@@ -1443,7 +1542,13 @@ return $content;
 
 if ( ! function_exists('write_input_enum')) {
 /**
- * Ini adalah fungsi untuk membuat input select.
+ * - Select ENUM.
+ * - Ini adalah fungsi untuk membuat input select.
+ * 
+ * @param 	string 	$input_label
+ * @param 	string 	$field_name
+ * @param 	string 	$val
+ * @return 	void|string
 */
 function write_input_enum($input_label = '', $field_name = '', $options, $default, $val = FALSE) {
 $input_label = humanize($input_label);
@@ -1492,7 +1597,13 @@ return $content;
 
 if ( ! function_exists('write_input_textarea')) {
 /**
- * Ini adalah fungsi untuk membuat input textarea.
+ * - Textarea.
+ * - Ini adalah fungsi untuk membuat input textarea.
+ * 
+ * @param 	string 	$input_label
+ * @param 	string 	$field_name
+ * @param 	string 	$val
+ * @return 	void|string
 */
 function write_input_textarea($input_label = '', $field_name = '', $val = '') {
 $input_label = humanize($input_label);
@@ -1520,7 +1631,13 @@ return $content;
 
 if ( ! function_exists('write_input_tinymce')) {
 /**
- * Ini adalah fungsi untuk membuat input textarea dengan plugin TinyMCE.
+ * - Textarea TinyMCE.
+ * - Ini adalah fungsi untuk membuat input textarea dengan plugin TinyMCE.
+ * 
+ * @param 	string 	$input_label
+ * @param 	string 	$field_name
+ * @param 	string 	$val
+ * @return 	void|string
 */
 function write_input_tinymce($input_label = '', $field_name = '', $val = '') {
 $input_label = humanize($input_label);
@@ -1548,7 +1665,13 @@ return $content;
 
 if ( ! function_exists('write_input_date')) {
 /**
- * Ini adalah fungsi untuk membuat input date.
+ * - Text DATE.
+ * - Ini adalah fungsi untuk membuat input date.
+ * 
+ * @param 	string 	$input_label
+ * @param 	string 	$field_name
+ * @param 	string 	$val
+ * @return 	void|string
 */
 function write_input_date($input_label = '', $field_name = '', $val = '') {
 $input_label = humanize($input_label);
@@ -1586,7 +1709,13 @@ return $content;
 
 if ( ! function_exists('write_input_time')) {
 /**
- * Ini adalah fungsi untuk membuat input time.
+ * - Text Time.
+ * - Ini adalah fungsi untuk membuat input time.
+ * 
+ * @param 	string 	$input_label
+ * @param 	string 	$field_name
+ * @param 	string 	$val
+ * @return 	void|string
 */
 function write_input_time($input_label = '', $field_name = '', $val = '') {
 $input_label = humanize($input_label);
@@ -1624,7 +1753,13 @@ return $content;
 
 if ( ! function_exists('write_input_datetime')) {
 /**
- * Ini adalah fungsi untuk membuat input datetime.
+ * - Text DateTime.
+ * - Ini adalah fungsi untuk membuat input datetime.
+ * 
+ * @param 	string 	$input_label
+ * @param 	string 	$field_name
+ * @param 	string 	$val
+ * @return 	void|string
 */
 function write_input_datetime($input_label = '', $field_name = '', $val = '') {
 $input_label = humanize($input_label);
@@ -1662,7 +1797,13 @@ return $content;
 
 if ( ! function_exists('write_input_filemanager')) {
 /**
- * Ini adalah fungsi untuk membuat input browse filemanager.
+ * - File input browse filemanager.
+ * - Ini adalah fungsi untuk membuat input browse filemanager.
+ * 
+ * @param 	string 	$input_label
+ * @param 	string 	$field_name
+ * @param 	string 	$val
+ * @return 	void|string
 */
 function write_input_filemanager($input_label = '', $field_name = '', $val = '') {
 $input_label = humanize($input_label);
@@ -1698,6 +1839,17 @@ return $content;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 /**
  * ---------------------------------------------------------------------------------------------
  * Dum for frontend file Controller *.php
@@ -1717,8 +1869,16 @@ $rdate          = DATE('Y-m-d | h:i');
 
 $write = '';
 $write .= <<<EOS
-<?php 
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+/**
+ * - This file was created using CoGen
+ * 
+ * - Mod          : {$component_name}
+ * - File         : {$filename}
+ * - Date created : {$rdate}
+ * - Author       : CiFireCMS
+ * - License      : MIT License
+*/
 
 class {$class_name} extends Web_controller {
 
@@ -1744,8 +1904,23 @@ class {$class_name} extends Web_controller {
 } // End Class.
 EOS;
 
+
+
 return $write;
 } //---------> End function dump_frontend_controller.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1773,8 +1948,16 @@ $filename = $class_name.".php";
 $rdate = DATE('Y-m-d | h:i');
 $write = '';
 $write .= <<<EOS
-<?php 
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+/**
+ * - This file was created using CoGen
+ * 
+ * - Mod          : {$component_name}
+ * - File         : {$filename}.php
+ * - Date created : {$rdate}
+ * - Author       : CoGen
+ * - License      : MIT License
+*/
 
 class {$class_name} extends CI_Model {
 
@@ -1812,3 +1995,146 @@ return $write;
 } //---------> End function dump_frontend_model.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * ---------------------------------------------------------------------------------------------
+ * Dum for frontend file View  *.php
+ * ---------------------------------------------------------------------------------------------
+*/
+function dump_frontend_view($data) {
+$component_name = $data['general']['component_name'];
+if (!empty($data['col'])) {
+	$data_cols = $data['col'];
+}
+
+$write = '';
+$write .= <<<EOS
+<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
+<!-- 
+*******************************************************
+	Include Header Template
+******************************************************* 
+-->
+<?php \$this->CI->render_view('header'); ?>
+
+<!-- 
+*******************************************************
+	Insert Content
+******************************************************* 
+-->
+
+<section id="page-title">
+	<div class="container clearfix">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="<?=site_url();?>">Home</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{$component_name}</li>
+		</ol>
+	</div>
+</section>
+<section id="content">
+	<div class="content-wrap pt-5">
+		<div class="container clearfix">
+			<div class="">
+				<h1>{$component_name}</h1>
+			</div>
+			<div class="col_full detail-content">
+
+				<table class="table table-condensed table-sm table-bordered table-striped">
+					<thead>
+						<tr>\n
+EOS;
+
+if (!empty($data['col'])) {
+foreach ($data_cols as $key => $val) {
+$row_value = humanize($val['col_name']);
+$write .= <<< EOS
+							<th>{$row_value}</th>\n
+EOS;
+}
+}
+
+$write .= <<<EOS
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach (\$datas as \$result): ?>
+						<tr>\n
+EOS;
+
+if (!empty($data['col'])) {
+foreach ($data_cols as $key => $val) {
+$td_value = $val['col_field'];
+$write .= <<< EOS
+							<td><?=\$result['{$td_value}'];?></td>\n
+EOS;
+}
+}
+
+$write .= <<<EOS
+						</tr>
+						<?php endforeach ?>
+					</tbody>
+				</table>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</section>
+
+<!-- 
+*******************************************************
+	Include Footer Template
+******************************************************* 
+-->
+<?php \$this->CI->render_view('footer'); ?>
+EOS;
+
+return $write;
+} //---------> End function dump_frontend_view.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * ---------------------------------------------------------------------------------------------
+ * Dum for frontend route
+ * ---------------------------------------------------------------------------------------------
+*/
+function dump_frontend_route($data) {
+$class_name  = "Mod_".seotitle($data['general']['class_name'],'_')."_model";
+$class_route = (!empty($data['frontend']['route']) ? $data['frontend']['route'] : "mod-".seotitle($class_name));
+$controller  = "mod_".seotitle($data['general']['class_name'],'_');
+
+$write = <<<EOS
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+\$route['{$class_route}'] = '{$controller}/index';
+EOS;
+return $write;
+} //---------> End function dump_frontend_view.

@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <!-- left content -->
-<div class="col-lg-8 col-md-12 clearfix mb-5 left-content">
+<div class="col-lg-9 col-md-12 clearfix mb-5 left-content">
 	<div class="post-inner clearfix">
 		<!-- post tags -->
 		<div class="tagcloud clearfix mb-1">
@@ -27,8 +27,8 @@
 
 		<!-- post meta -->
 		<ul class="entry-meta clearfix">
-			<li><i class="cificon licon-calendar"></i> <?=ci_date($result_post['datepost'], 'l, d F Y');?> &nbsp; <i class="cificon licon-clock"></i> <?=ci_date($result_post['timepost'], 'h:i A');?></li>
 			<li><a href="<?=site_url('category/'.$result_post['category_seotitle']);?>"><i class="cificon licon-folder"></i> <?=$result_post['category_title'];?></a></li>
+			<li><i class="cificon licon-calendar"></i> <?=ci_date($result_post['datepost'], 'l, d F Y');?> &nbsp; <i class="cificon licon-clock"></i> <?=ci_date($result_post['timepost'], 'h:i A');?></li>
 			<li><a href="#comments"><i class="cificon licon-message-square"></i> <?=$result_post['comment'];?></a></li>
 			<li><i class="cificon licon-eye"></i> <?=$result_post['hits'];?></li>
 		</ul>
@@ -253,7 +253,7 @@
 <!--/ left content -->
 
 <!-- sidebar -->
-<div class="col-lg-4 col-md-12 clearfix mb-5 sidebar">
+<div class="col-lg-3 col-md-12 clearfix mb-5 sidebar">
 	<?php $this->CI->_layout('sidebar'); ?>
 </div>
 <!--/ sidebar -->

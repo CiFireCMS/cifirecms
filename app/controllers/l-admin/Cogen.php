@@ -54,8 +54,10 @@ class Cogen extends Backend_Controller {
 	{
 		// component
 		$component_name = $_POST['general']['component_name'];
+		// $component_type = $_POST['general']['component_type'];
 		$cname          = trim($_POST['general']['class_name'],'_');
 		$class_name     = ucfirst($cname);
+		// $c_mod          = $_POST['general']['class_name'];
 
 		// File controller
 		$file_controller = "$class_name.php";
@@ -106,11 +108,11 @@ class Cogen extends Backend_Controller {
 		// component not exists (OK)
 		elseif (
 		         $cek_mod_db == 0 && 
-		    	 $cek_controller_file == false && 
-		    	 $cek_model_file == false && 
-		    	 $cek_views_dir == false &&
-		    	 $cek_modjs_file == false &&
-		    	 $cek_db_table == false
+		    	 $cek_controller_file == FALSE && 
+		    	 $cek_model_file == FALSE && 
+		    	 $cek_views_dir == FALSE &&
+		    	 $cek_modjs_file == FALSE &&
+		    	 $cek_db_table == FALSE
 		       )
 		{
 			// Load dbforge.
@@ -129,8 +131,8 @@ class Cogen extends Backend_Controller {
 				$field_1_name => array(
 					'type'           => 'INT',
 					'constraint'     => $field_1_lenght,
-					'unsigned'       => true,
-					'auto_increment' => true
+					'unsigned'       => TRUE,
+					'auto_increment' => TRUE
 				)
 			));
 
@@ -158,7 +160,7 @@ class Cogen extends Backend_Controller {
 							$value['com_filed_name'] => array(
 								'type'    => $type_val,
 								'default' => $value['com_filed_default'],
-								// 'null' => true,
+								// 'null' => TRUE,
 						)));
 					}
 
@@ -196,7 +198,7 @@ class Cogen extends Backend_Controller {
 									'type'       => 'INT',
 									'constraint' => $value['com_filed_lenght'],
 									'default'    => $value['com_filed_default'],
-									'null'       => true
+									'null'       => TRUE
 								)
 							));
 						}
@@ -206,7 +208,7 @@ class Cogen extends Backend_Controller {
 								$value['com_filed_name'] => array(
 									'type'       => 'INT',
 									'constraint' => $value['com_filed_lenght'],
-									'null'       => true
+									'null'       => TRUE
 								)
 							));
 						}
@@ -220,7 +222,7 @@ class Cogen extends Backend_Controller {
 								'type'       => $value['com_filed_type'],
 								'constraint' => $value['com_filed_lenght'],
 								'default'    => $value['com_filed_default'],
-								'null'       => true
+								'null'       => TRUE
 							)
 						));			
 					}
@@ -228,13 +230,13 @@ class Cogen extends Backend_Controller {
 			} // end if.
 			
 			// set field_1 as primary key.
-			$this->dbforge->add_key($field_1_name, true);
+			$this->dbforge->add_key($field_1_name, TRUE);
 			// table ENGINE type.
 			$table_attr = array('ENGINE' => 'InnoDB');
 			$this->db->db_debug = false;
 			
 			// Create the table.
-			if ( $this->dbforge->create_table($table_name, true, $table_attr) )
+			if ( $this->dbforge->create_table($table_name, TRUE, $table_attr) )
 			{
 				// insert new data to table t_component.
 				$this->db->insert("t_component", array(
@@ -336,7 +338,7 @@ class Cogen extends Backend_Controller {
 		{
 			if ( $this->session->flashdata('citem') == $val ) 
 			{
-				$this->vars['fitur'] = (!empty($_SESSION['_frontend']) ? $_SESSION['_frontend'] : null);
+				$this->vars['fitur'] = (!empty($_SESSION['_frontend']) ? $_SESSION['_frontend'] : NULL);
 				$this->vars['c_link'] = $val;
 				$this->render_view('success');
 

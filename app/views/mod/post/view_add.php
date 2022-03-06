@@ -1,4 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+		<?=form_open('','id="form_add" autocomplete="off"');?>
 <div class="page-inner">
 	<div class="d-sm-flex align-items-center justify-content-between pd-b-20">
 		<div class="pageheader pd-t-20 pd-b-0">
@@ -16,11 +17,12 @@
 		</div>
 		<div class="mg-t-15">
 			<button type="button" class="btn btn-sm pd-x-15 btn-white btn-uppercase" onclick="window.location='<?=admin_url($this->mod);?>'"><i data-feather="arrow-left" class="mr-2"></i><?=lang_line('button_back');?></button>
+
+			<button type="submit" class="btn btn-sm pd-x-15 btn-white btn-uppercase ml-2 submit_add"><i id="submit_icon" class="cificon licon-send mr-2"></i><?=lang_line('button_submit');?></button>
 		</div>
 	</div>
 
 	<div class="content">
-		<?=form_open('','id="form_add" autocomplete="off"');?>
 		<div class="content-inner">
 			<div class="row">
 				<div class="col-md-9">
@@ -150,6 +152,6 @@
 		<div class="content-footer">
 			<button type="submit" class="submit_add btn btn-lg btn-primary mr-2"><i id="submit_icon" class="cificon licon-send mr-2"></i><?=lang_line('button_submit');?></button>
 		</div>
-		<?=form_close();?>
 	</div>
 </div>
+		<?=form_close();?>

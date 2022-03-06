@@ -15,7 +15,7 @@ class Post extends Web_controller {
 		$getSegments = $this->uri->segment(count($this->uri->segments));
 		$getSeotitle = seotitle($getSegments);
 
-		if ( !empty($getSeotitle) && $this->post_model->cek_post($getSeotitle) == true ) 
+		if ( !empty($getSeotitle) && $this->post_model->cek_post($getSeotitle) == TRUE ) 
 		{
 			$id_post = $this->post_model->id_post($getSeotitle);
 			$data_post = $this->post_model->get_post($getSeotitle);
@@ -36,7 +36,7 @@ class Post extends Web_controller {
 			{
 				$this->vars['result_post']  = $data_post;
 				$this->vars['result_post']['content'] = $this->_content($data_post); // set content
-				$this->vars['content_paging'] = $this->_content($data_post, true); // set content paging
+				$this->vars['content_paging'] = $this->_content($data_post,TRUE); // set content paging
 				
 				// link prev post & next post.
 				$this->vars['prev_post'] = $this->_prev_post($id_post); 
@@ -48,7 +48,7 @@ class Post extends Web_controller {
 				$this->meta_title($data_post['post_title'].' - '.get_setting('web_name'));
 				$this->meta_keywords($data_post['tag'].', '.get_setting('web_keyword'));
 				$this->meta_description(cut($data_post['content'], 150));
-				$this->meta_image(post_images($data_post['picture'], 'medium', true));
+				$this->meta_image(post_images($data_post['picture'], 'medium', TRUE));
 				
 				$this->render_view('post');
 
@@ -64,7 +64,7 @@ class Post extends Web_controller {
 	}
 
 
-	private function _content($data = '', $pagination = false)
+	private function _content($data = '', $pagination = FALSE)
 	{
 		$pagebreak  = explode('&lt;!-- pagebreak --&gt;', $data['content']);
 		$_countPage = count($pagebreak);
@@ -75,7 +75,7 @@ class Post extends Web_controller {
 		$result = '';
 		switch ($pagination)
 		{
-			case true:
+			case TRUE:
 				$config['base_url']   = post_url($data['post_seotitle'])."?page=";
 				$config['index_page'] = $_index+1;   // halaman aktif
 				$config['total_rows'] = $_countPage; // total data
@@ -103,7 +103,7 @@ class Post extends Web_controller {
 
 	private function _submit_comment($id_post = 0)
 	{
-		if ( get_setting('recaptcha') == 'Y' && googleCaptcha()->success == false )
+		if ( get_setting('recaptcha') == 'Y' && googleCaptcha()->success == FALSE )
 		{
 			$this->cifire_alert->set('alert_comment', 'danger', 'Please complete the captcha');
 		}
@@ -136,8 +136,8 @@ class Post extends Web_controller {
 				$data_comment = array(
 					'id_post' => xss_filter($id_post, 'sql'),
 					'parent'  => $parent,
-					'name'    => xss_filter($this->input->post('name', true), 'xss'),
-					'email'   => $this->input->post('email', true),
+					'name'    => xss_filter($this->input->post('name', TRUE), 'xss'),
+					'email'   => $this->input->post('email', TRUE),
 					'comment' => xss_filter($this->input->post('comment')),
 					'ip'      => $this->input->ip_address(),
 					'active'  => 'N'
@@ -158,7 +158,7 @@ class Post extends Web_controller {
 	{
 		$data = $this->post_model->prev_post($id);
 
-		if ( $data == false )
+		if ( $data == FALSE )
 		{
 			$result = array(
 				'title' => '', 
@@ -183,7 +183,7 @@ class Post extends Web_controller {
 	{
 		$data = $this->post_model->next_post($id);
 		
-		if ( $data == false )
+		if ( $data == FALSE )
 		{
 			$result = array(
 				'title' => '', 

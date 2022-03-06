@@ -207,8 +207,8 @@
 	<a href="javascript:void(0)" data-click="scroll-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
 	<!--/ Scroll To Top End -->
 
-	<!-- Javascript -->
-	<script src="<?=site_url('plugins/pace/pace.min.js');?>"></script>
+	<!-- Javascript
+	<script src="<?=site_url('plugins/pace/pace.min.js');?>"></script> -->
 	<script src="<?=site_url('plugins/feather/feather.min.js');?>"></script>
 	<script src="<?=site_url('plugins/jquery-ui/jquery-ui.js');?>"></script>
 	<script src="<?=site_url('plugins/popper/popper.js');?>"></script>

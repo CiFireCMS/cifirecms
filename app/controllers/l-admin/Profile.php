@@ -23,8 +23,7 @@ class Profile extends Backend_Controller {
 		if ($this->role->i('read'))
 		{
 			$this->vars['gender'] = ($this->data['user_gender']=='M' ? lang_line('_male') : lang_line('_female'));
-
-			$this->render_view('view_index');
+			$this->render_view('view_index', $this->vars);
 		}
 		else
 		{
@@ -37,12 +36,25 @@ class Profile extends Backend_Controller {
 	{
 		if ($this->role->i('modify'))
 		{	
-			$data = $this->profile_model->get_data();
-			$ID = $data['user_id'];
+			$this->vars['res'] = $this->profile_model->get_data();
+			$this->render_view('view_edit', $this->vars);
+		}
+		else
+		{
+			$this->render_403();
+		}
+	}
 
-			if ( $this->input->is_ajax_request() )
+
+	public function submit_update()
+	{
+		if ( $this->input->is_ajax_request() )
+		{
+			if ($this->role->i('modify'))
 			{
-				$this->form_validation->set_rules(array(
+				$id = decrypt(login_key('admin'));
+
+				$rules = array(
 					array(
 						'field' => 'name',
 						'label' => lang_line('_name'),
@@ -51,7 +63,7 @@ class Profile extends Backend_Controller {
 					array(
 						'field' => 'email',
 						'label' => lang_line('_email'),
-						'rules' => 'required|trim|min_length[4]|max_length[80]|valid_email|callback__cek_email['.$ID.']',
+						'rules' => 'required|trim|min_length[4]|max_length[80]|valid_email|callback__cek_email['.$id.']',
 					),
 					array(
 						'field' => 'input_password',
@@ -78,94 +90,99 @@ class Profile extends Backend_Controller {
 						'label' => lang_line('_about'),
 						'rules' => 'trim|max_length[600]',
 					)
-				));
+				);
+
+				$this->form_validation->set_rules($rules);
 
 				if ( $this->form_validation->run() ) 
 				{
-					$dataUpdate = array(
-						'password' => ( !empty($this->input->post('input_password')) ? encrypt($this->input->post('input_password')) : $data['user_password'] ),
-						'email'    => xss_filter($this->input->post('email', true), 'xss'),
-						'name'     => xss_filter($this->input->post('name'), 'xss'),
-						'gender'   => xss_filter($this->input->post('gender'), 'xss'),
-						'birthday' => date('Y-m-d',strtotime($this->input->post('birthday'))),
-						'about'    => xss_filter($this->input->post('about'), 'xss'),
-						'address'  => xss_filter($this->input->post('address'),'xss'),
-						'tlpn'     => xss_filter($this->input->post('tlpn'), 'xss')
-					);
+					$email = xss_filter($this->input->post('email', TRUE), 'xss');
 
-					if ( empty($_FILES['fupload']['tmp_name']) )
+					$cek_email = $this->db
+						->select('email')
+						->where("BINARY email='$email'", NULL, FALSE)
+						->where('email')
+						->get('t_user');
+
+					$countMail = $cek_email->num_rows();
+					$currentMail = $cek_email->row_array()['email'];
+					
+					$editMail =  $this->db
+						->select('email')
+						->where('id',$id)
+						->get('t_user')
+						->row_array();
+
+					if ( 
+					      $countMail == 1 &&
+					      $currentMail == $editMail['email'] || 
+					      $countMail != 1
+					    )
 					{
-						$rmPhoto = $this->input->post('rmphoto');
+						$in_pass = $this->input->post('input_password');
+						$data = array(
+							'password' => ( !empty($in_pass) ? encrypt($in_pass) : $this->data['user_password'] ),
+							'email'    => $email,
+							'name'     => xss_filter($this->input->post('name'), 'xss'),
+							'gender'   => xss_filter($this->input->post('gender'), 'xss'),
+							'birthday' => date('Y-m-d',strtotime($this->input->post('birthday'))),
+							'about'    => xss_filter($this->input->post('about'), 'xss'),
+							'address'  => xss_filter($this->input->post('address'),'xss'),
+							'tlpn'     => xss_filter($this->input->post('tlpn'), 'xss')
+						);
 
-						if ($rmPhoto == 'on')
+						if ( empty($_FILES['fupload']['tmp_name']) )
 						{
-							$newPhoto = random_string('numeric', 16).'.jpg';
-							$dataUpdate2 = array(
-								'photo' => $newPhoto
-							);
-
-							$dataUpdate2 = array_merge($dataUpdate, $dataUpdate2);
-
-							if (file_exists($this->path_photo.$data['user_photo']))
-							{
-								@unlink($this->path_photo.$data['user_photo']);
-							}
-
-							if (file_exists(PUBLICPATH.'thumbs/user/'.$data['user_photo']))
-							{
-								@unlink(PUBLICPATH.'thumbs/user/'.$data['user_photo']);
-							}
-
-							$this->profile_model->update($dataUpdate2);
-						}
-						else
-						{
-							$this->profile_model->update($dataUpdate);
-						}
-						
-						$response['success'] = true;
-						$response['alert']['type'] = 'success';
-						$response['alert']['content'] = lang_line('form_message_update_success');
-
-						$this->json_output($response);
-					}
-					else
-					{
-						$new_photo = $data['user_photo'];
-
-						$this->load->library('upload', array(
-							'upload_path'   => $this->path_photo,
-							'allowed_types' => "jpg|png|jpeg",
-							'file_name'     => $new_photo,
-							'max_size'      => 1024 * 10,
-							'overwrite'     => true
-						));
-
-						if ($this->upload->do_upload('fupload')) 
-						{
-							$this->profile_model->update($dataUpdate);
-
-							// crop image.
-							$this->load->library('simple_image');
-							$this->simple_image
-							     ->fromFile($this->path_photo.$new_photo)
-							     ->thumbnail(200, 200, 'center')
-							     ->toFile($this->path_photo.$new_photo);
+							$this->profile_model->update($data);
 
 							$response['success'] = true;
 							$response['alert']['type'] = 'success';
 							$response['alert']['content'] = lang_line('form_message_update_success');
-
 							$this->json_output($response);
 						}
 						else
 						{
-							$response['success'] = false;
-							$response['alert']['type'] = 'error';
-							$response['alert']['content'] = $this->upload->display_errors();
+							$new_photo = $this->profile_model->get_photo();
 
-							$this->json_output($response);
+							$this->load->library('upload', array(
+								'upload_path'   => $this->path_photo,
+								'allowed_types' => "jpg|png|jpeg",
+								'file_name'     => $new_photo,
+								'max_size'      => 1024 * 10,
+								'overwrite'     => TRUE
+							));
+
+							if ($this->upload->do_upload('fupload')) 
+							{
+								$this->profile_model->update($data);
+
+								// crop image.
+								$this->load->library('simple_image');
+								$this->simple_image
+								     ->fromFile($this->path_photo.$new_photo)
+								     ->thumbnail(200, 200, 'center')
+								     ->toFile($this->path_photo.$new_photo);
+
+								$response['success'] = true;
+								$response['alert']['type'] = 'success';
+								$response['alert']['content'] = lang_line('form_message_update_success');
+								$this->json_output($response);
+							}
+							else
+							{
+								$response['success'] = false;
+								$response['alert']['type'] = 'error';
+								$response['alert']['content'] = $this->upload->display_errors();
+								$this->json_output($response);
+							}
 						}
+					}
+					else
+					{
+						$response['success'] = false;
+						$response['alert']['type'] = 'error';
+						$response['alert']['content'] = lang_line('_mail_exist');
+						$this->json_output($response);
 					}
 				}
 				else 
@@ -173,20 +190,22 @@ class Profile extends Backend_Controller {
 					$response['success'] = false;
 					$response['alert']['type'] = 'error';
 					$response['alert']['content'] = validation_errors();
-
 					$this->json_output($response);
 				}
 			}
 			else
 			{
-				$this->vars['res'] = $data;
-				$this->render_view('view_edit');
+				$response['success'] = false;
+				$response['alert']['type'] = 'error';
+				$response['alert']['content'] = 'Access denied';
+				$this->json_output($response);
 			}
 		}
 		else
 		{
-			$this->render_403();
+			show_403();
 		}
+
 	}
 
 
@@ -194,14 +213,17 @@ class Profile extends Backend_Controller {
 	{
 		$cek = $this->profile_model->cek_email($id, $email);
 
-		if ($cek == false) 
+		if ($cek == FALSE) 
 		{
 			$this->form_validation->set_message('_cek_email', lang_line('form_validation_already_exists'));
-			return false;
+			return FALSE;
 		}
 		else 
 		{
-			return true;
+			return TRUE;
 		}
 	}
-} // End Calss.
+
+
+
+} // End Calss

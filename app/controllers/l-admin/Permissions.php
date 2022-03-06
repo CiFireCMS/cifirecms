@@ -180,11 +180,11 @@ class Permissions extends Backend_Controller {
 			if ($cek == 1)
 			{
 				$this->form_validation->set_message('_cek_add_group', lang_line('form_validation_already_exists'));
-				return false;
+				return FALSE;
 			}
 			else
 			{
-				return true;
+				return TRUE;
 			}
 		}
 		else
@@ -272,7 +272,7 @@ class Permissions extends Backend_Controller {
 			if (empty($group))
 			{
 				$this->form_validation->set_message('_cek_edit_group', lang_line('form_validation_required'));
-				return false;
+				return FALSE;
 			}
 			elseif (
 			    $query->num_rows() == 1 && 
@@ -280,12 +280,12 @@ class Permissions extends Backend_Controller {
 			    $query->num_rows() == 0
 			   ) 
 			{
-				return true;
+				return TRUE;
 			}
 			else 
 			{
 				$this->form_validation->set_message('_cek_edit_group', lang_line('form_validation_already_exists'));
-				return false;
+				return FALSE;
 			}
 		}
 		else
@@ -475,10 +475,10 @@ class Permissions extends Backend_Controller {
 
 						if ($this->form_validation->run())
 						{
-							$read_access   = !empty($this->input->post('read_access')) ? 1 : 0;
-							$write_access  = !empty($this->input->post('write_access')) ? 1 : 0;
-							$modify_access = !empty($this->input->post('modify_access')) ? 1 : 0;
-							$delete_access = !empty($this->input->post('delete_access')) ? 1 : 0;
+							$read_access   = !empty($this->input->post('read_access')) ? 1:0;
+							$write_access  = !empty($this->input->post('write_access')) ? 1:0;
+							$modify_access = !empty($this->input->post('modify_access')) ? 1:0;
+							$delete_access = !empty($this->input->post('delete_access')) ? 1:0;
 							
 							$data = array(
 								'group' => $res_group['group'],
@@ -571,10 +571,10 @@ class Permissions extends Backend_Controller {
 
 					if ($postPk == $queryGroup['pk']) // check pk from post and uri
 					{
-						$read_access   = !empty($this->input->post('read_access')) ? 1 : 0;
-						$write_access  = !empty($this->input->post('write_access')) ? 1 : 0;
-						$modify_access = !empty($this->input->post('modify_access')) ? 1 : 0;
-						$delete_access = !empty($this->input->post('delete_access')) ? 1 : 0;
+						$read_access   = !empty($this->input->post('read_access')) ? 1:0;
+						$write_access  = !empty($this->input->post('write_access')) ? 1:0;
+						$modify_access = !empty($this->input->post('modify_access')) ? 1:0;
+						$delete_access = !empty($this->input->post('delete_access')) ? 1:0;
 
 						$data = array(
 							'read_access'   => $read_access,
@@ -600,10 +600,10 @@ class Permissions extends Backend_Controller {
 				{
 					$this->vars['res_role'] = $res_role;
 					$this->vars['res_group'] = $queryGroup;
-					$this->vars['read_access'] = ($res_role['read_access'] == 1 ? 'checked' : '');
-					$this->vars['write_access'] = ($res_role['write_access'] == 1 ? 'checked' : '');
-					$this->vars['modify_access'] = ($res_role['modify_access'] == 1 ? 'checked' : '');
-					$this->vars['delete_access'] = ($res_role['delete_access'] == 1 ? 'checked' : '');
+					$this->vars['read_access'] = ($res_role['read_access']==1?'checked':'');
+					$this->vars['write_access'] = ($res_role['write_access']==1?'checked':'');
+					$this->vars['modify_access'] = ($res_role['modify_access']==1?'checked':'');
+					$this->vars['delete_access'] = ($res_role['delete_access']==1?'checked':'');
 
 					$this->render_view('edit_group_role');
 				}
@@ -658,10 +658,10 @@ class Permissions extends Backend_Controller {
 
 					if ($this->form_validation->run())
 					{
-						$read_access   = !empty($this->input->post('read_access')) ? 1 : 0;
-						$write_access  = !empty($this->input->post('write_access')) ? 1 : 0;
-						$modify_access = !empty($this->input->post('modify_access')) ? 1 : 0;
-						$delete_access = !empty($this->input->post('delete_access')) ? 1 : 0;
+						$read_access   = !empty($this->input->post('read_access')) ? 1:0;
+						$write_access  = !empty($this->input->post('write_access')) ? 1:0;
+						$modify_access = !empty($this->input->post('modify_access')) ? 1:0;
+						$delete_access = !empty($this->input->post('delete_access')) ? 1:0;
 
 						$data = array(
 							'group'         => seotitle($this->input->post('group')),
@@ -740,10 +740,10 @@ class Permissions extends Backend_Controller {
 					if ($this->input->post('act') == 'edit-role')
 					{
 						$data = array(
-							'read_access'   => !empty($this->input->post('read_access')) ? 1 : 0,
-							'write_access'  => !empty($this->input->post('write_access')) ? 1 : 0,
-							'modify_access' => !empty($this->input->post('modify_access')) ? 1 : 0,
-							'delete_access' => !empty($this->input->post('delete_access')) ? 1 : 0
+							'read_access'   => !empty($this->input->post('read_access')) ? 1:0,
+							'write_access'  => !empty($this->input->post('write_access')) ? 1:0,
+							'modify_access' => !empty($this->input->post('modify_access')) ? 1:0,
+							'delete_access' => !empty($this->input->post('delete_access')) ? 1:0
 						);
 
 						$this->permissions_model->update_role_by_id($id,$data);
@@ -763,10 +763,10 @@ class Permissions extends Backend_Controller {
 				else
 				{
 					$this->vars['res_role'] = $getRole;
-					$this->vars['read_access'] = ($getRole['read_access'] ==1 ? 'checked' : '');
-					$this->vars['write_access'] = ($getRole['write_access'] ==1 ? 'checked' : '');
-					$this->vars['modify_access'] = ($getRole['modify_access'] ==1 ? 'checked' : '');
-					$this->vars['delete_access'] = ($getRole['delete_access'] ==1 ? 'checked' : '');
+					$this->vars['read_access'] = ($getRole['read_access']==1?'checked':'');
+					$this->vars['write_access'] = ($getRole['write_access']==1?'checked':'');
+					$this->vars['modify_access'] = ($getRole['modify_access']==1?'checked':'');
+					$this->vars['delete_access'] = ($getRole['delete_access']==1?'checked':'');
 					$this->render_view('edit_list_role');
 				}
 			}
@@ -801,4 +801,5 @@ class Permissions extends Backend_Controller {
 			$this->json_output($response);
 		}
 	}
+
 } // End Class.

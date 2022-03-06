@@ -105,7 +105,7 @@ class Category extends Backend_Controller {
 						'title'       => xss_filter($this->input->post('title'), 'xss'),
 						'seotitle'    => seotitle($this->input->post('seotitle')),
 						'description' => xss_filter($this->input->post('description'), 'xss'),
-						'picture'      => $this->input->post('picture',true),
+						'picture'      => $this->input->post('picture',TRUE),
 						'active'      => $this->input->post('status')
 					);
 
@@ -140,7 +140,7 @@ class Category extends Backend_Controller {
 		$seotitle = seotitle($seotitle);
 		$cek      = $this->category_model->cek_seotitle($seotitle);
 
-		if ( $cek === false ) 
+		if ( $cek === FALSE ) 
 		{
 			$this->form_validation->set_message('_cek_add_seotitle', lang_line('form_validation_already_exists'));
 		}
@@ -194,7 +194,7 @@ class Category extends Backend_Controller {
 							'title'       => xss_filter($this->input->post('title'), 'xss'),
 							'seotitle'    => seotitle($this->input->post('seotitle')),
 							'description' => xss_filter($this->input->post('description'), 'xss'),
-							'picture'      => $this->input->post('picture',true),
+							'picture'      => $this->input->post('picture',TRUE),
 							'active'      => $this->input->post('status')
 						);
 
@@ -240,7 +240,7 @@ class Category extends Backend_Controller {
 		$idEdit   = $this->uri->segment(4);
 		$cek      = $this->category_model->cek_seotitle2($idEdit, $seotitle);
 		
-		if ( $cek === false ) 
+		if ( $cek === FALSE ) 
 		{
 			$this->form_validation->set_message('_cek_edit_seotitle', lang_line('form_validation_already_exists'));
 		} 

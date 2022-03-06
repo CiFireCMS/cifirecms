@@ -80,7 +80,7 @@ class Component extends Backend_Controller {
 			$id_component = decrypt($data[0]);
 			$component    = $this->component_model->get_modul($id_component);
 			
-			if ( $component != false )
+			if ( $component != FALSE )
 			{
 				$controllers_file = $this->_path['controllers'].ucfirst($component['class']).".php";
 				$models_file      = $this->_path['models'].ucfirst($component['class'])."_model.php";
@@ -186,7 +186,7 @@ class Component extends Backend_Controller {
 				'upload_path'   => $this->_path['temp'],
 				'allowed_types' => 'zip',
 				'file_name'     => $package_zip,
-				'overwrite'     => false,
+				'overwrite'     => FALSE,
 				'max_size'      => 1024 * 5 // 5Mb
 			));
 
@@ -237,14 +237,14 @@ class Component extends Backend_Controller {
 					if (!empty($_config['file_model'])) {
 						$cek_models = file_exists($this->_path['models'].$_config['file_model']);
 					} else {
-						$cek_models = false;
+						$cek_models = FALSE;
 					}
 
 					// cek apakah komponen memiliki file modjs.
 					if (!empty($_config['file_modjs'])) {
 						$cek_modjs = file_exists($this->_path['modjs'].$_config['file_modjs']);
 					} else {
-						$cek_modjs = false;
+						$cek_modjs = FALSE;
 					}
 
 					// cek tabel & data t_component.
@@ -252,8 +252,8 @@ class Component extends Backend_Controller {
 						$cek_table  = $this->db->table_exists($_config['table_name']);
 						$cek_mod_db = $this->db->where('class', $_config['class_name'])->get('t_component')->num_rows();
 					} else {
-						$cek_table  = false;
-						$cek_mod_db = false;
+						$cek_table  = FALSE;
+						$cek_mod_db = FALSE;
 					}
 
 					
@@ -264,38 +264,38 @@ class Component extends Backend_Controller {
 					if (!empty($_config['file_model'])) {
 						$cek_src_models = file_exists($src_dir.$sp.'models'.$sp.$_config['file_model']);
 					} else {
-						$cek_src_models = true;
+						$cek_src_models = TRUE;
 					}
 
 					if (!empty($_config['file_modjs'])) {
 						$cek_src_modjs = file_exists($src_dir.$sp.'modjs'.$sp.$_config['file_modjs']);
 					} else {
-						$cek_src_modjs = true;
+						$cek_src_modjs = TRUE;
 					}
 					
 					if (!empty($_config['file_sql'])) {
 						$cek_src_sql = file_exists($src_dir.$sp.'sql'.$sp.$_config['file_sql']);
 					} else {
-						$cek_src_sql = true;
+						$cek_src_sql = TRUE;
 					}
 
 
 					// jalankan cek.
 					if (
 						 // cek apakah komponen sudah ada di sistem.
-						 $cek_controllers == false && 
-						 $cek_models      == false && 
-						 $cek_views       == false && 
-						 $cek_modjs       == false && 
-						 $cek_table       == false && 
+						 $cek_controllers == FALSE && 
+						 $cek_models      == FALSE && 
+						 $cek_views       == FALSE && 
+						 $cek_modjs       == FALSE && 
+						 $cek_table       == FALSE && 
 						 $cek_mod_db      == 0 &&
 
 						 // cek apakah ada file komponen di folder temp.
-						 $cek_src_controllers == true && 
-						 $cek_src_models      == true  && 
-						 $cek_src_views       == true && 
-						 $cek_src_modjs       == true && 
-						 $cek_src_sql         == true
+						 $cek_src_controllers == TRUE && 
+						 $cek_src_models      == TRUE  && 
+						 $cek_src_views       == TRUE && 
+						 $cek_src_modjs       == TRUE && 
+						 $cek_src_sql         == TRUE
 						)
 					{
 						// Copy controllers dari folder temp ke sistem.
@@ -388,12 +388,12 @@ class Component extends Backend_Controller {
 	private function _import_sql($file) 
 	{
 		$this->db->trans_off();
-		$this->db->trans_start(true);
+		$this->db->trans_start(TRUE);
 		$this->db->trans_begin();
 		$sql = file_get_contents($file);
 		$this->db->query($sql);
 
-		if ( $this->db->trans_status() == true ) 
+		if ( $this->db->trans_status() == TRUE ) 
 		{
 			$this->db->trans_commit();
 			return true;
@@ -501,15 +501,15 @@ class Component extends Backend_Controller {
 			$sql_name      = $c_table.'.sql';
 			$path_temp_sql = $path_temp_component.'sql/'.$sql_name;
 
-			$this->db = $this->load->database('mysqli', true);
+			$this->db = $this->load->database('mysqli', TRUE);
 			$this->load->dbutil();
 
 			$backup_database = $this->dbutil->backup(array(
 				'tables'     => array($c_table), // Array of tables to backup.
 				'ignore'     => array(),         // List of tables to omit from the backup
 				'format'     => 'txt',           // gzip, zip, txt
-				'add_drop'   => true,            // Whether to add DROP TABLE statements to backup file
-				'add_insert' => true,            // Whether to add INSERT data to backup file
+				'add_drop'   => TRUE,            // Whether to add DROP TABLE statements to backup file
+				'add_insert' => TRUE,            // Whether to add INSERT data to backup file
 				'newline'    => "\n"             // Newline character used in backup file
 			));
 
@@ -520,11 +520,11 @@ class Component extends Backend_Controller {
 		$this->load->library('zip');
 		$zip_name = $dir_name.'.zip';
 
-		$this->zip->read_dir($path_temp_component . 'controllers', false);
-		$this->zip->read_dir($path_temp_component . 'models', false);
-		$this->zip->read_dir($path_temp_component . 'views', false);
-		$this->zip->read_dir($path_temp_component . 'modjs', false);
-		$this->zip->read_dir($path_temp_component . 'sql', false);
+		$this->zip->read_dir($path_temp_component . 'controllers', FALSE);
+		$this->zip->read_dir($path_temp_component . 'models', FALSE);
+		$this->zip->read_dir($path_temp_component . 'views', FALSE);
+		$this->zip->read_dir($path_temp_component . 'modjs', FALSE);
+		$this->zip->read_dir($path_temp_component . 'sql', FALSE);
 		$this->zip->read_file($path_temp_component . 'config.php');
 		$this->zip->compression_level = 9;
 		$this->zip->archive($path_temp_component.$zip_name);
@@ -538,7 +538,7 @@ class Component extends Backend_Controller {
 
 		// Download backup zip from content/uploads/.
 		$this->load->helper('download');
-		force_download(PUBLICPATH.'uploads/'.$zip_name, null);
+		force_download(PUBLICPATH.'uploads/'.$zip_name, NULL);
 
 		
 	} 

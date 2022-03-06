@@ -12,14 +12,8 @@
 			<label><?=lang_line('username')?></label>
 			<input id="username" type="text" name="<?=$input_uname;?>" class="form-control input-username" maxlength="20"/>
 		</div>
-		<div class="form-group">
-			<label><?=lang_line('password');?></label>
-			<input type="password" name="<?=$input_pwd;?>" id="password" class="form-control" required/>
-		</div>
-		<button type="submit" class="btn btn-brand btn-block mg-t-20"><?=lang_line('button_login');?></button>
-		<div class="text-center mg-t-20">
-			<a href="<?=admin_url('forgot');?>"><?=lang_line('forgot_password');?>?</a>
-		</div>
+		<div class="input-password"></div>
 		<?=form_close();?>
 	</div>
 </div>
+<?=$script?>

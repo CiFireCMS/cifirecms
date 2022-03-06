@@ -142,8 +142,7 @@ class Menumanager extends Backend_Controller {
 		{
 			if ($this->role->i('write'))
 			{
-				$post_title = trim(xss_filter($this->input->post('title', true), 'xss'));
-
+				$post_title = trim(xss_filter($this->input->post('title',TRUE),'xss'));
 				if (!empty($post_title)) 
 				{
 					if ($this->db->insert('t_menu_group', array('title' => $post_title))) 
@@ -202,7 +201,7 @@ class Menumanager extends Backend_Controller {
 		{
 			if ($this->role->i('modify'))
 			{
-				$input_title = trim($this->input->post('title', true));
+				$input_title = trim($this->input->post('title',TRUE));
 				$post_title = xss_filter($input_title,'xss');
 
 				if ( !empty($post_title) )
@@ -286,7 +285,7 @@ class Menumanager extends Backend_Controller {
 			{
 				$response['success'] = false;
 				$response['msg'] = 'Access denied';
-				$this->json_output($response, 403);
+				$this->json_output($response,403);
 			}
 		}
 		else
@@ -307,7 +306,7 @@ class Menumanager extends Backend_Controller {
 				
 				if (!empty($title))
 				{
-					$gid = xss_filter($this->input->post('gid', true), 'sql');
+					$gid = xss_filter($this->input->post('gid',TRUE),'sql');
 					$query_lp = $this->db
 								->select_max('position')
 								->where('group_id', 0)

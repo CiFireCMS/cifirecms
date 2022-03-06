@@ -232,7 +232,7 @@ class User extends Backend_Controller {
 					$data = array(
 						'key_group'    => xss_filter($this->input->post('group'), 'xss'),
 						'username' => xss_filter($this->input->post('username')),
-						'email'    => $this->input->post('email', true),
+						'email'    => $this->input->post('email', TRUE),
 						'password' => encrypt($this->input->post('input_password')),
 						'name'     => xss_filter($this->input->post('name'), 'xss'),
 						'gender'   => xss_filter($this->input->post('gender'), 'xss'),
@@ -259,7 +259,7 @@ class User extends Backend_Controller {
 							'allowed_types' => "jpg|png|jpeg",
 							'file_name'     => $photo_name,
 							'max_size'      => 1024 * 10,
-							'overwrite'     => true
+							'overwrite'     => TRUE
 						));
 
 						if ($this->upload->do_upload('fupload')) 
@@ -351,9 +351,9 @@ class User extends Backend_Controller {
 						$dataUpdate = array(
 							'key_group' => xss_filter($this->input->post('group'), 'xss'),
 							'password' => $password,
-							'email'    => $this->input->post('email', true),
+							'email'    => $this->input->post('email', TRUE),
 							'name'     => xss_filter($this->input->post('name'), 'xss'),
-							'gender'   => $this->input->post('gender', true),
+							'gender'   => $this->input->post('gender',TRUE),
 							'birthday' => date('Y-m-d',strtotime($this->input->post('birthday'))),
 							'address'  => xss_filter($this->input->post('address')),
 							'about'    => xss_filter($this->input->post('about'), 'xss'),
@@ -381,7 +381,7 @@ class User extends Backend_Controller {
 								'allowed_types' => "jpg|png|jpeg",
 								'file_name'     => $new_photo,
 								'max_size'      => 1024 * 10,
-								'overwrite'     => true
+								'overwrite'     => TRUE
 							));
 
 							if ($this->upload->do_upload('fupload')) 
@@ -437,10 +437,10 @@ class User extends Backend_Controller {
 	{
 		$cek = $this->user_model->cek_username($username);
 
-		if ($cek == false) 
+		if ($cek == FALSE) 
 		{
 			$this->form_validation->set_message('_cek_addusername', lang_line('form_validation_already_exists'));
-			return false;
+			return FALSE;
 		}
 
 		return $cek;
@@ -451,10 +451,10 @@ class User extends Backend_Controller {
 	{
 		$cek = $this->user_model->cek_email($email);
 
-		if ($cek == false) 
+		if ($cek == FALSE) 
 		{
 			$this->form_validation->set_message('_cek_addemail', lang_line('form_validation_already_exists'));
-			return false;
+			return FALSE;
 		}
 
 		return $cek;
@@ -465,14 +465,14 @@ class User extends Backend_Controller {
 	{
 		$cek = $this->user_model->cek_email2($id, $email);
 
-		if ($cek == false) 
+		if ($cek == FALSE) 
 		{
 			$this->form_validation->set_message('_cek_editemail', lang_line('form_validation_already_exists'));
-			return false;
+			return FALSE;
 		}
 		else 
 		{
-			return true;
+			return TRUE;
 		}
 	}
 } // End Class.

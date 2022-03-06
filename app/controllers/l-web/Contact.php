@@ -27,7 +27,7 @@ class Contact extends Web_controller {
 
 	private function _submit()
 	{
-		if ( get_setting('recaptcha') == 'Y' && googleCaptcha()->success == false )
+		if ( get_setting('recaptcha') == 'Y' && googleCaptcha()->success == FALSE )
 		{
 			$this->cifire_alert->set('contact', 'danger', 'Please complete the captcha');
 		}
@@ -59,9 +59,9 @@ class Contact extends Web_controller {
 			if ( $this->form_validation->run() ) 
 			{
 				$data_contact = array(
-					'name'    => xss_filter($this->input->post('name', true), 'xss'),
-					'email'   => $this->input->post('email', true),
-					'subject' => xss_filter($this->input->post('subject', true), 'xss'),
+					'name'    => xss_filter($this->input->post('name',TRUE), 'xss'),
+					'email'   => $this->input->post('email', TRUE),
+					'subject' => xss_filter($this->input->post('subject',TRUE), 'xss'),
 					'message' => xss_filter($this->input->post('message'), 'xss'),
 					'ip'      => $this->CI->input->ip_address(),
 					'box'     => 'in',

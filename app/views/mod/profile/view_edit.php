@@ -21,6 +21,7 @@
 	<div class="content">
 		<?=form_open_multipart('','id="form_update" autocomplete="off"');?>
 		<div class="content-inner">
+
 			<div class="row">
 				<!-- Usermane -->
 				<div class="col-md-4 col-lg-4">
@@ -102,24 +103,23 @@
 					</div>
 					<!--/ Address -->
 				</div>
+			</div>
 
-				<!-- Photo -->
-				<div class="form-group mb-0">
-					<div class="col-md-2">
+			<div class="row">
+				<div class="col-md-6">
+					<!-- Photo -->
+					<div class="form-group">
 						<label><?=lang_line('_photo');?></label>
-					</div>
-					<div class="col-md-12">
-						<div class="img-thumbnail user-avatar-i">
-							<img id="image-preview" src="<?=user_photo($this->data['user_photo']);?>" class="thumbnail us-avatar"/>
-							<div class="btn-group">
-								<label class="btn btn-secondary btn-icon mb-0" data-toggle="tooltip" data-placement="bottom" data-title="<?=lang_line('button_browse');?>"><i data-feather="folder"></i><input id="upload-image" type="file" name="fupload" class="custom-file-input" hidden/></label>
-								<label id="resetpict" class="btn btn-secondary btn-icon mb-0" data-photo="<?=user_photo($this->data['user_photo']);?>" data-toggle="tooltip" data-placement="bottom" data-title="<?=lang_line('button_reset');?>"><i data-feather="refresh-ccw"></i></label>
-								<label id="delpict" class="btn btn-secondary btn-icon mb-0" data-toggle="tooltip" data-placement="bottom" data-title="<?=lang_line('button_delete');?>"><i data-feather="x-circle"></i><input type="checkbox" id="delimg" name="rmphoto" hidden/></label>
-							</div>
+						<div class="custom-file">
+							<input id="fupload" type="file" name="fupload" class="custom-file-input"/>
+							<label label-for="fupload" class="custom-file-label" browse-label="<?=lang_line('button_browse');?>"><?=lang_line('button_choose_file');?></label>
 						</div>
 					</div>
+					<div class="text-center mg-t-30" style="width:100px;">
+						<img id="upload-image-preview" src="<?=user_photo($this->data['user_photo']);?>" style="border:1px solid #ddd;padding:5px;border-radius:4px;width:100%;">
+					</div>
+					<!--/ Photo -->
 				</div>
-				<!--/ Photo -->
 			</div>
 		</div>
 		<div class="content-footer">

@@ -250,7 +250,7 @@ class Comment extends Backend_Controller {
 			if ($act == 'banned')
 			{
 				$this->comment_model->update($pk,['active'=>'X']);
-				$response['success'] = true;
+				$response['success'] = TRUE;
 				$response['pk'] = $pk;
 				$response['act'] = 'active';
 				$response['status-class'] = 'badge badge-outline-danger';
@@ -263,7 +263,7 @@ class Comment extends Backend_Controller {
 			else if ($act == 'active')
 			{
 				$this->comment_model->update($pk,['active'=>'Y']);
-				$response['success'] = true;
+				$response['success'] = TRUE;
 				$response['pk'] = $pk;
 				$response['act'] = 'banned';
 				$response['status-class'] = 'badge badge-outline-success';

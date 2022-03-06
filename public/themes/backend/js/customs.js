@@ -2,7 +2,7 @@
 function getLangJSON(){
 	var result = $.ajax({
 		dataType: 'json',
-		url: site_url+'plugins/json/lang/'+lang_active+'.json',
+		url: content_url+'plugins/json/lang/'+lang_active+'.json',
 	});
 	return result;
 }
@@ -308,17 +308,17 @@ function cfTnyMCE(element,height){
 		autoresize_top_margin:5,
 		autoresize_bottom_margin:2,
 		visualblocks_default_state: true,
-		content_css: site_url+'plugins/tinymce/plugins/bootstrap/css/bootstrap.min.css,' + site_url + 'plugins/font-awesome/font-awesome.min.css',
+		content_css: content_url+'plugins/tinymce/plugins/bootstrap/css/bootstrap.min.css,' + content_url + 'plugins/font-awesome/font-awesome.min.css',
 		codemirror: {
 		    indentOnInit: true,
-		    path: site_url+'/plugins/codemirror'
+		    path: content_url+'/plugins/codemirror'
 		},
 		filemanager_title: 'File Manager',
 		filemanager_access_key: _FMKEY,
-		external_filemanager_path: site_url+'plugins/filemanager/',
+		external_filemanager_path: content_url+'plugins/filemanager/',
 		external_plugins: {
-			'responsivefilemanager': site_url + 'plugins/tinymce/plugins/responsivefilemanager/plugin.min.js',
-			'filemanager': site_url+'plugins/filemanager/plugin.min.js'
+			'responsivefilemanager': content_url + 'plugins/tinymce/plugins/responsivefilemanager/plugin.min.js',
+			'filemanager': content_url+'plugins/filemanager/plugin.min.js'
 		}
 	});
 }
@@ -384,7 +384,7 @@ function mimeFileType(mimesCode) {
 
 function responsive_filemanager_callback(){
 	var pict = $('#picture').val();
-	var url = site_url + 'uploads/' + pict;
+	var url = content_url + 'uploads/' + pict;
 	$('#imgprv').attr('src', url).show();
 	parent.$.fancybox.close();
 }
@@ -419,24 +419,5 @@ $(document).ready(function() {
 
 	$('.select-2-nosearch').select2({
 		minimumResultsForSearch: Infinity
-	});
-
-	$('#title').on('input', function() {
-		var _link;
-		_link = $.trim($(this).val());
-		_link = _link.replace(/\s+/g,' ');
-		$('#seotitle').val(_link.toLowerCase());
-		$('#seotitle').val($('#seotitle').val().replace(/\W/g, ' '));
-		$('#seotitle').val($.trim($('#seotitle').val()));
-		$('#seotitle').val($('#seotitle').val().replace(/\s+/g, '-'));
-	});
-
-	$('#seotitle').on('input', function() {
-		var _link;
-		_link = $(this).val();
-		_link = _link.replace(/\s+/g,' ');
-		$('#seotitle').val(_link.toLowerCase());
-		$('#seotitle').val($('#seotitle').val().replace(/\W/g, ' '));
-		$('#seotitle').val($('#seotitle').val().replace(/\s+/g, '-'));
 	});
 });

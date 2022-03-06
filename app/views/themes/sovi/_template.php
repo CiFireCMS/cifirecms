@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<title><?=$this->meta_title;?></title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
@@ -37,7 +37,7 @@
 
 	<!-- google analytics -->
 	<?=google_analytics();?>
-	
+	 
 </head>
 <body>
 	<section class="header">
@@ -47,6 +47,7 @@
 					<div class="col">
 						<div class="top-link">
 							<ul>
+								<li><a href="<?=admin_url()?>"><?=login_status()?'<i class="fa fa-user"></i> &nbsp;'.data_login('name'):"LOGIN";?></a></li>
 								<li><a href="<?=site_url('pages/about-us')?>">About Us</a></li>
 								<li><a href="<?=site_url('contact')?>">Contact</a></li>
 								<li><a href="#"><i class="fa fa-phone"></i> <?=get_setting('fax')?></a></li>
@@ -122,7 +123,7 @@
 		</div>
 	</section>
 
-	<section id="main" class="container main-content mt-5">
+	<section id="main" class="container main-content mt-2">
 		<div class="row">
 			<?php $this->CI->_layout($this->CI->__content_view); ?>
 		</div>

@@ -59,7 +59,7 @@ class Cifire_Role {
 				->get('t_roles')
 				->row_array();
 
-			if (!empty($get_role) && $get_role[$role]==1)
+			if ($get_role[$role]==1)
 			{
 				return TRUE;
 			}
