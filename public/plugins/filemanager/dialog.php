@@ -339,7 +339,8 @@ $get_params = http_build_query($get_params);
         </style>
         <![endif]-->
 
-        <script src="js/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+        <script src="js/jquery-1.12.4.min.js" crossorigin="anonymous"></script> <script src="js/jquery-ui.min.js" crossorigin="anonymous"></script> 
         
         <script src="js/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
         
