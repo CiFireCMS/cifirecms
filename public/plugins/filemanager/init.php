@@ -11,6 +11,7 @@ define('APPPATH', BASEPATH . $ds . $f_application . $ds);
 define('LIBPATH', BASEPATH . "{$ds}vendor{$ds}codeigniter{$ds}framework{$ds}system{$ds}libraries{$ds}Session{$ds}");
 
 require_once LIBPATH . 'Session_driver.php';
+require_once LIBPATH . 'CI_Session_driver_interface.php';
 require_once LIBPATH . "drivers{$ds}Session_files_driver.php";
 require_once BASEPATH . "{$ds}vendor{$ds}codeigniter{$ds}framework{$ds}system{$ds}core{$ds}Common.php";
 
@@ -35,21 +36,32 @@ $config = array(
 
 $class = new CI_Session_files_driver($config);
 
-if (is_php('5.4')) 
-{
-    session_set_save_handler($class, TRUE);
-} 
-else 
-{
-    session_set_save_handler(
-        array($class, 'open'),
-        array($class, 'close'),
-        array($class, 'read'),
-        array($class, 'write'),
-        array($class, 'destroy'),
-        array($class, 'gc')
-    );
-    register_shutdown_function('session_write_close');
-}
+// if (is_php('5.4')) 
+// {
+//     session_set_save_handler($class, TRUE);
+// } 
+// else 
+// {
+//     session_set_save_handler(
+//         array($class, 'open'),
+//         array($class, 'close'),
+//         array($class, 'read'),
+//         array($class, 'write'),
+//         array($class, 'destroy'),
+//         array($class, 'gc')
+//     );
+//     register_shutdown_function('session_write_close');
+// }
+session_set_save_handler(
+    array($class, 'open'),
+    array($class, 'close'),
+    array($class, 'read'),
+    array($class, 'write'),
+    array($class, 'destroy'),
+    array($class, 'gc')
+);
+register_shutdown_function('session_write_close');
+
+
 
 session_name($config['cookie_name']);
