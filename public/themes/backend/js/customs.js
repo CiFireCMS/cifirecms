@@ -2,7 +2,7 @@
 function getLangJSON(){
 	var result = $.ajax({
 		dataType: 'json',
-		url: content_url+'plugins/json/lang/'+lang_active+'.json',
+		url: site_url+'plugins/json/lang/'+lang_active+'.json',
 	});
 	return result;
 }
@@ -308,17 +308,17 @@ function cfTnyMCE(element,height){
 		autoresize_top_margin:5,
 		autoresize_bottom_margin:2,
 		visualblocks_default_state: true,
-		content_css: content_url+'plugins/tinymce/plugins/bootstrap/css/bootstrap.min.css,' + content_url + 'plugins/font-awesome/font-awesome.min.css',
+		content_css: site_url+'plugins/tinymce/plugins/bootstrap/css/bootstrap.min.css,' + site_url + 'plugins/font-awesome/font-awesome.min.css',
 		codemirror: {
 		    indentOnInit: true,
-		    path: content_url+'/plugins/codemirror'
+		    path: site_url+'/plugins/codemirror'
 		},
 		filemanager_title: 'File Manager',
 		filemanager_access_key: _FMKEY,
-		external_filemanager_path: content_url+'plugins/filemanager/',
+		external_filemanager_path: site_url+'plugins/filemanager/',
 		external_plugins: {
-			'responsivefilemanager': content_url + 'plugins/tinymce/plugins/responsivefilemanager/plugin.min.js',
-			'filemanager': content_url+'plugins/filemanager/plugin.min.js'
+			'responsivefilemanager': site_url + 'plugins/tinymce/plugins/responsivefilemanager/plugin.min.js',
+			'filemanager': site_url+'plugins/filemanager/plugin.min.js'
 		}
 	});
 }
@@ -384,7 +384,7 @@ function mimeFileType(mimesCode) {
 
 function responsive_filemanager_callback(){
 	var pict = $('#picture').val();
-	var url = content_url + 'uploads/' + pict;
+	var url = site_url + 'uploads/' + pict;
 	$('#imgprv').attr('src', url).show();
 	parent.$.fancybox.close();
 }
