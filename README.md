@@ -99,7 +99,6 @@ Jika web sudah siap di online-kan silahkan ubah kode pada ``.env`` cari code ``C
 
 
 ## Official Links
-* Official       : https://www.cifirecms.org
 * GitHub         : https://github.com/CiFireCMS
 * Facebook       : https://web.facebook.com/cifirecms
 * Facebook group : https://web.facebook.com/groups/cifirecms
