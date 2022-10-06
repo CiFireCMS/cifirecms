@@ -3,14 +3,14 @@
     "name": "cifirecms/cifirecms",
     "type": "project",
     "license": "MIT",
-    "homepage": "https://www.cifirecms.org",
+    "homepage": "https://github.com/CiFireCMS",
     "support": {
         "source": "https://github.com/CiFireCMS/cifirecms"
     },
     "minimum-stability": "dev",
     "require": {
-        "cifirecms/installer": "^1",
-        "codeigniter/framework": "~3.1",
+        "cifirecms/installer": "v1.*",
+        "codeigniter/framework": "3.1.11",
         "vlucas/phpdotenv": "^4.1"
     },
     "require-dev": {
