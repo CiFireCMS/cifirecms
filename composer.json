@@ -7,15 +7,12 @@
     "support": {
         "source": "https://github.com/CiFireCMS/cifirecms"
     },
-    "minimum-stability": "dev",
     "require": {
+		"php": ">=5.3.7",
         "cifirecms/installer": "v1.*",
         "codeigniter/framework": "3.1.11",
         "vlucas/phpdotenv": "^4.1"
     },
-    "require-dev": {
-		"mikey179/vfsstream": "1.1.*"
-	},
     "suggest": {
         "paragonie/random_compat": "Provides better randomness in PHP 5.x"
     }
