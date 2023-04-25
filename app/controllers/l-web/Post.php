@@ -64,41 +64,44 @@ class Post extends Web_controller {
 	}
 
 
-	private function _content($data = '', $pagination = FALSE)
-	{
-		$pagebreak  = explode('&lt;!-- pagebreak --&gt;', $data['content']);
-		$_countPage = count($pagebreak);
-		$_urlPost   = post_url($data['post_seotitle'])."?";
-		$_getPage   = xss_filter($this->input->get('page'),'sql');
-		$_index     = $_getPage > 0 ? $_getPage - 1 : $_getPage;
-		
-		$result = '';
-		switch ($pagination)
-		{
-			case TRUE:
-				$config['base_url']   = post_url($data['post_seotitle'])."?page=";
-				$config['index_page'] = $_index+1;   // halaman aktif
-				$config['total_rows'] = $_countPage; // total data
-				$config['total_link'] = $_countPage; // total page link number
-				$config['per_page']   = 1; // data per halaman (default get_setting('page_item'))
-				$config['limit_item'] = 5; // int of FALSE (limit page link number) 
-				$config['prev_link']  = '<i class="fa fa-angle-left"></i>'; // string or FALSE
-				$config['next_link']  = '<i class="fa fa-angle-right"></i>'; // string or FALSE
-				$this->cifire_pagination->initialize($config);
-
-				if ($_countPage > 1)
-				{
-					$result = $this->cifire_pagination->create_links();
-				}
-			break;
-			
-			default:
-				$result = html_entity_decode($pagebreak[$_index]);
-			break;
-		}
-
-		return $result;
-	}
+    private function _content($data = '', $pagination = FALSE)
+    {
+        $pagebreak  = explode('&lt;!-- pagebreak --&gt;', $data['content']);
+        $_countPage = count($pagebreak);
+        $_urlPost   = post_url($data['post_seotitle'])."?";
+        $_getPage   = xss_filter($this->input->get('page'),'sql');
+        $_index     = $_getPage > 0 ? $_getPage - 1 : $_getPage;
+        
+        $result = '';
+        if ($_getPage <= $_countPage)
+        {
+            switch ($pagination)
+            {
+                case TRUE:
+                    $config['base_url']   = post_url($data['post_seotitle'])."?page=";
+                    $config['index_page'] = $_index+1;   // halaman aktif
+                    $config['total_rows'] = $_countPage; // total data
+                    $config['total_link'] = $_countPage; // total page link number
+                    $config['per_page']   = 1; // data per halaman (default get_setting('page_item'))
+                    $config['limit_item'] = 5; // int of FALSE (limit page link number) 
+                    $config['prev_link']  = '<i class="fa fa-angle-left"></i>'; // string or FALSE
+                    $config['next_link']  = '<i class="fa fa-angle-right"></i>'; // string or FALSE
+                    $this->cifire_pagination->initialize($config);
+ 
+                    if ($_countPage > 1)
+                    {
+                        $result = $this->cifire_pagination->create_links();
+                    }
+                break;
+                
+                default:
+                    $result = html_entity_decode($pagebreak[$_index]);
+                break;
+            }
+        }
+ 
+        return $result;
+    }
 
 
 	private function _submit_comment($id_post = 0)
